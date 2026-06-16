@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Padley Marketplace Analytics — by David Monroy</title>
+<title>Leyad Analytics — by David Monroy</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
@@ -158,6 +158,118 @@ body{font-family:'DM Sans',sans-serif;background:#0a0a14;color:#e8eaf0;min-heigh
 .chart-card{background:#13131f;border:1px solid rgba(255,255,255,0.1);border-radius:13px;padding:18px;margin-bottom:16px}
 .chart-card h3{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:#9ca3af;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
 .chart-wrap{position:relative;height:240px}
+.city-bar{display:flex;align-items:center;gap:12px;margin-bottom:14px;position:sticky;top:56px;z-index:99;padding:10px 16px;background:#13131f;border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.city-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;font-weight:600;white-space:nowrap}
+.city-btns{display:flex;gap:8px;flex-wrap:wrap}
+.city-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#9ca3af;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;position:relative}
+.city-btn:hover:not(.active){background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.18);color:#e2e8f0}
+.city-btn.active{background:linear-gradient(135deg,#1a4fa8,#2563eb);border-color:transparent;color:#fff;font-weight:600;box-shadow:0 2px 12px rgba(37,99,235,0.3)}
+.city-flag{font-size:16px}
+.city-count{font-size:10px;background:rgba(255,255,255,0.15);padding:2px 7px;border-radius:20px;font-weight:600}
+.city-btn.active .city-count{background:rgba(255,255,255,0.25)}
+.city-soon{background:rgba(245,158,11,0.2)!important;color:#fcd34d!important}
+.city-empty{text-align:center;padding:60px 20px;background:#13131f;border:1px dashed rgba(255,255,255,0.1);border-radius:14px;margin:10px 0}
+.city-empty-icon{font-size:48px;margin-bottom:14px}
+.city-empty-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#e2e8f0;margin-bottom:8px}
+.city-empty-sub{font-size:13px;color:#6b7280;max-width:400px;margin:0 auto}
+body.light .city-bar{background:#ffffff;border-color:#d1dce8}
+body.light .city-btn{border-color:#cbd5e1;background:#f8fafc;color:#475569}
+body.light .city-btn.active{background:linear-gradient(135deg,#00154F,#003080);color:#fff}
+body.light .city-empty{background:#ffffff;border-color:#d1dce8}
+body.light .city-empty-title{color:#0a1628}
+
+.platforms-bar{background:#13131f;border:1px solid rgba(255,255,255,0.08);border-radius:13px;padding:14px 18px;margin-bottom:16px}
+.platforms-hdr{font-size:11px;font-weight:600;color:#f59e0b;margin-bottom:12px;display:flex;align-items:center;gap:7px;font-family:'Syne',sans-serif}
+.platforms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.platform-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:10px 12px;cursor:pointer;transition:all .18s;text-decoration:none;display:block}
+.platform-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.18)}
+.platform-name{font-size:11px;font-weight:700;color:#e2e8f0;margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.platform-avg{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#4D9FFF}
+.platform-range{font-size:9px;color:#6b7280;margin-top:2px}
+.platform-tag{font-size:9px;background:rgba(16,185,129,0.12);color:#6ee7b7;padding:1px 6px;border-radius:10px;font-weight:600}
+body.light .platforms-bar{background:#ffffff;border-color:#d1dce8}
+body.light .platform-card{background:#f8fafc;border-color:#e2e8f0}
+body.light .platform-card:hover{background:#e2e8f0}
+body.light .platform-name{color:#0a1628}
+
+
+/* ─── AI CHAT WIDGET ─── */
+#chat-fab{position:fixed;bottom:24px;right:24px;width:52px;height:52px;background:linear-gradient(135deg,#1a4fa8,#2563eb);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(37,99,235,0.45);z-index:9999;transition:all .2s}
+#chat-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,99,235,0.6)}
+#chat-fab .chat-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;background:#10b981;border-radius:50%;border:2px solid #0a0a14;font-size:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+#chat-panel{position:fixed;bottom:88px;right:24px;width:360px;max-height:520px;background:#13131f;border:1px solid rgba(77,159,255,0.25);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.6);z-index:9998;display:none;flex-direction:column;overflow:hidden}
+#chat-panel.open{display:flex}
+.chat-header{background:linear-gradient(135deg,#1a4fa8,#2563eb);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.chat-avatar{width:32px;height:32px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-title{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#fff;flex:1}
+.chat-subtitle{font-size:10px;color:rgba(255,255,255,0.7)}
+.chat-close{background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:16px;padding:4px;border-radius:6px}
+.chat-close:hover{background:rgba(255,255,255,0.15);color:#fff}
+.chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:340px}
+.chat-msg{max-width:90%;padding:9px 12px;border-radius:12px;font-size:12px;line-height:1.5}
+.chat-msg.bot{background:rgba(255,255,255,0.07);color:#e2e8f0;border-radius:12px 12px 12px 3px;align-self:flex-start}
+.chat-msg.user{background:linear-gradient(135deg,#1a4fa8,#2563eb);color:#fff;border-radius:12px 12px 3px 12px;align-self:flex-end}
+.chat-msg strong{color:#4D9FFF}
+.chat-suggestions{padding:8px 14px;display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.06)}
+.chat-sug-btn{font-size:10px;padding:5px 10px;background:rgba(77,159,255,0.08);border:1px solid rgba(77,159,255,0.2);color:#4D9FFF;border-radius:20px;cursor:pointer;white-space:nowrap;transition:all .15s}
+.chat-sug-btn:hover{background:rgba(77,159,255,0.18)}
+.chat-input-row{display:flex;gap:8px;padding:10px 14px;border-top:1px solid rgba(255,255,255,0.07);background:#0d0d1c}
+.chat-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:8px 14px;color:#e2e8f0;font-size:12px;font-family:'DM Sans',sans-serif;outline:none}
+.chat-input::placeholder{color:#6b7280}
+.chat-input:focus{border-color:rgba(77,159,255,0.4)}
+.chat-send{background:#2563eb;border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.chat-send:hover{background:#1a4fa8}
+.chat-typing{display:flex;align-items:center;gap:4px;padding:9px 12px;background:rgba(255,255,255,0.07);border-radius:12px 12px 12px 3px;align-self:flex-start;display:none}
+.typing-dot{width:6px;height:6px;background:#6b7280;border-radius:50%;animation:typingDot 1.2s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes typingDot{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+body.light #chat-panel{background:#ffffff;border-color:rgba(0,21,79,0.2)}
+body.light .chat-input-row{background:#f0f4f8}
+body.light .chat-input{background:rgba(0,0,0,0.04);border-color:#d1dce8;color:#0a1628}
+body.light .chat-msg.bot{background:#f0f4f8;color:#0a1628}
+
+
+.mi-zone-selector{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.mi-zone-btn{padding:6px 14px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#9ca3af;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;font-family:"DM Sans",sans-serif}
+.mi-zone-btn:hover:not(.active){background:rgba(255,255,255,0.08);color:#e2e8f0}
+.mi-zone-btn.active{background:linear-gradient(135deg,#1a4fa8,#2563eb);border-color:transparent;color:#fff}
+.mi-type-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:20px;background:#13131f;border:1px solid rgba(255,255,255,0.07);border-radius:11px;padding:5px}
+.mi-type-btn{padding:6px 13px;border-radius:8px;border:none;background:transparent;color:#6b7280;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;font-family:"DM Sans",sans-serif}
+.mi-type-btn:hover:not(.active){background:rgba(255,255,255,0.06);color:#e2e8f0}
+.mi-type-btn.active{background:rgba(77,159,255,0.15);color:#4D9FFF}
+.mi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:20px}
+.mi-platform-card{background:#13131f;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;transition:border-color .18s;text-decoration:none;display:block}
+.mi-platform-card:hover{border-color:rgba(77,159,255,0.3)}
+.mi-plat-hdr{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.mi-plat-icon{font-size:16px}
+.mi-plat-name{font-size:11px;font-weight:700;color:#e2e8f0}
+.mi-plat-price{font-family:"Syne",sans-serif;font-size:22px;font-weight:800;color:#4D9FFF;margin-bottom:3px}
+.mi-plat-bar{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;margin:6px 0}
+.mi-plat-fill{height:100%;border-radius:2px;transition:width .4s}
+.mi-plat-note{font-size:9px;color:#6b7280}
+.mi-median-box{background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(26,79,168,0.06));border:1px solid rgba(77,159,255,0.2);border-radius:13px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mi-med-main{font-family:"Syne",sans-serif;font-size:28px;font-weight:800;color:#4D9FFF}
+.mi-med-label{font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.mi-med-range{font-size:11px;color:#9aa3b5;margin-top:2px}
+.mi-med-zone{font-size:13px;font-weight:600;color:#e2e8f0}
+.calc-box{background:#13131f;border:1px solid rgba(245,158,11,0.25);border-radius:13px;padding:18px 20px;margin-top:4px}
+.calc-title{font-family:"Syne",sans-serif;font-size:14px;font-weight:700;color:#fcd34d;margin-bottom:14px;display:flex;align-items:center;gap:7px}
+.calc-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.calc-field label{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;font-weight:600;display:block;margin-bottom:5px}
+.calc-field select{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px 12px;color:#e2e8f0;font-size:12px;font-family:"DM Sans",sans-serif;outline:none}
+.calc-field select:focus{border-color:rgba(245,158,11,0.5)}
+.calc-result{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:10px;padding:14px 16px;display:none}
+.calc-result.show{display:block}
+.calc-price-main{font-family:"Syne",sans-serif;font-size:24px;font-weight:800}
+.calc-price-range{font-size:11px;color:#9aa3b5;margin-top:2px}
+.calc-btn{background:linear-gradient(135deg,#d97706,#f59e0b);border:none;color:#fff;padding:9px 20px;border-radius:8px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:all .18s}
+.calc-btn:hover{opacity:.9}
+body.light .mi-platform-card{background:#ffffff;border-color:#e2e8f0}
+body.light .mi-type-tabs,.body.light .calc-box{background:#ffffff}
+body.light .mi-plat-name,.body.light .calc-field label{color:#0a1628}
+body.light .calc-field select{background:#fff;border-color:#d1dce8;color:#0a1628}
+
 .credit-footer{text-align:center;padding:20px 0;font-size:11px;color:#7a8494;border-top:1px solid rgba(255,255,255,0.08);margin-top:28px}
 .credit-footer span{color:#4D9FFF;font-weight:600}
 @media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,1fr)}.mkt-grid{grid-template-columns:repeat(2,1fr)}.comp-grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:14px}.topbar{padding:11px 14px}.sum-right{flex-wrap:wrap}}
@@ -246,7 +358,59 @@ body.light .rk-footer{background:rgba(0,21,79,0.02);border-top-color:#e2e8f0}
 body.light .rk-link{background:linear-gradient(135deg,#00154F,#003080)}
 body.light .chart-card{background:#ffffff;border-color:#d1dce8}
 body.light .chart-card h3{color:#4a5568}
-body.light .credit-footer{color:#6b7280;border-top-color:#e2e8f0}
+body.light 
+.platforms-bar{background:#13131f;border:1px solid rgba(255,255,255,0.08);border-radius:13px;padding:14px 18px;margin-bottom:16px}
+.platforms-hdr{font-size:11px;font-weight:600;color:#f59e0b;margin-bottom:12px;display:flex;align-items:center;gap:7px;font-family:'Syne',sans-serif}
+.platforms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.platform-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:9px;padding:10px 12px;cursor:pointer;transition:all .18s;text-decoration:none;display:block}
+.platform-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.18)}
+.platform-name{font-size:11px;font-weight:700;color:#e2e8f0;margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.platform-avg{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#4D9FFF}
+.platform-range{font-size:9px;color:#6b7280;margin-top:2px}
+.platform-tag{font-size:9px;background:rgba(16,185,129,0.12);color:#6ee7b7;padding:1px 6px;border-radius:10px;font-weight:600}
+body.light .platforms-bar{background:#ffffff;border-color:#d1dce8}
+body.light .platform-card{background:#f8fafc;border-color:#e2e8f0}
+body.light .platform-card:hover{background:#e2e8f0}
+body.light .platform-name{color:#0a1628}
+
+
+/* ─── AI CHAT WIDGET ─── */
+#chat-fab{position:fixed;bottom:24px;right:24px;width:52px;height:52px;background:linear-gradient(135deg,#1a4fa8,#2563eb);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(37,99,235,0.45);z-index:9999;transition:all .2s}
+#chat-fab:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,99,235,0.6)}
+#chat-fab .chat-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;background:#10b981;border-radius:50%;border:2px solid #0a0a14;font-size:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+#chat-panel{position:fixed;bottom:88px;right:24px;width:360px;max-height:520px;background:#13131f;border:1px solid rgba(77,159,255,0.25);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.6);z-index:9998;display:none;flex-direction:column;overflow:hidden}
+#chat-panel.open{display:flex}
+.chat-header{background:linear-gradient(135deg,#1a4fa8,#2563eb);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.chat-avatar{width:32px;height:32px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-title{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#fff;flex:1}
+.chat-subtitle{font-size:10px;color:rgba(255,255,255,0.7)}
+.chat-close{background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:16px;padding:4px;border-radius:6px}
+.chat-close:hover{background:rgba(255,255,255,0.15);color:#fff}
+.chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:340px}
+.chat-msg{max-width:90%;padding:9px 12px;border-radius:12px;font-size:12px;line-height:1.5}
+.chat-msg.bot{background:rgba(255,255,255,0.07);color:#e2e8f0;border-radius:12px 12px 12px 3px;align-self:flex-start}
+.chat-msg.user{background:linear-gradient(135deg,#1a4fa8,#2563eb);color:#fff;border-radius:12px 12px 3px 12px;align-self:flex-end}
+.chat-msg strong{color:#4D9FFF}
+.chat-suggestions{padding:8px 14px;display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.06)}
+.chat-sug-btn{font-size:10px;padding:5px 10px;background:rgba(77,159,255,0.08);border:1px solid rgba(77,159,255,0.2);color:#4D9FFF;border-radius:20px;cursor:pointer;white-space:nowrap;transition:all .15s}
+.chat-sug-btn:hover{background:rgba(77,159,255,0.18)}
+.chat-input-row{display:flex;gap:8px;padding:10px 14px;border-top:1px solid rgba(255,255,255,0.07);background:#0d0d1c}
+.chat-input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:8px 14px;color:#e2e8f0;font-size:12px;font-family:'DM Sans',sans-serif;outline:none}
+.chat-input::placeholder{color:#6b7280}
+.chat-input:focus{border-color:rgba(77,159,255,0.4)}
+.chat-send{background:#2563eb;border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.chat-send:hover{background:#1a4fa8}
+.chat-typing{display:flex;align-items:center;gap:4px;padding:9px 12px;background:rgba(255,255,255,0.07);border-radius:12px 12px 12px 3px;align-self:flex-start;display:none}
+.typing-dot{width:6px;height:6px;background:#6b7280;border-radius:50%;animation:typingDot 1.2s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes typingDot{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+body.light #chat-panel{background:#ffffff;border-color:rgba(0,21,79,0.2)}
+body.light .chat-input-row{background:#f0f4f8}
+body.light .chat-input{background:rgba(0,0,0,0.04);border-color:#d1dce8;color:#0a1628}
+body.light .chat-msg.bot{background:#f0f4f8;color:#0a1628}
+
+.credit-footer{color:#6b7280;border-top-color:#e2e8f0}
 body.light .credit-footer span{color:#00154F}
 body.light .att-panel{background:#ffffff;border-color:rgba(239,68,68,0.25)}
 body.light .att-header{background:#ffffff}
@@ -300,7 +464,7 @@ body.light .summary-label{color:#6b7280}
 </head>
 <body>
 <div class="topbar">
-  <div class="logo"><div class="logo-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.5" fill="white" opacity="0.95"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/></svg></div>Padley <span>Marketplace Analytics</span><span class="logo-sub">by David Monroy</span></div>
+  <div class="logo"><div class="logo-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.5" fill="white" opacity="0.95"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/></svg></div>Leyad <span>Analytics</span><span class="logo-sub">by David Monroy</span></div>
   <div class="topbar-right">
     <button class="theme-btn" onclick="toggleTheme()"><span id="theme-btn-txt">Light Mode</span></button>
     <div class="lang-sw">
@@ -308,89 +472,294 @@ body.light .summary-label{color:#6b7280}
       <button class="lang-btn" onclick="setLang('fr',this)">🇫🇷 FR</button>
       <button class="lang-btn" onclick="setLang('es',this)">🇪🇸 ES</button>
     </div>
-    <div class="badge green">🟢 Live · June 1, 2026</div>
+    <div class="badge green">🟢 Live · June 16, 2026</div>
     <div class="badge gold">⚡ David Monroy</div>
   </div>
 </div>
 <div class="wrap">
-  <div class="kpi-row" id="kpi-row"></div>
-  <div class="mkt-box">
-    <div class="mkt-hdr">📊 <span data-i18n="mkt_title">Real-Time Comparables — FB Marketplace Montréal · June 1, 2026</span></div>
-    <div class="mkt-grid">
-      <div class="mkt-cell"><div class="mkt-type">Studio</div><div class="mkt-avg">CA$990</div><div class="mkt-range">$875–$1,210 · Sweet $915–$1,090</div><div class="mkt-n">16 listings today</div></div>
-      <div class="mkt-cell"><div class="mkt-type">1 Bedroom</div><div class="mkt-avg">CA$1,115</div><div class="mkt-range">$910–$1,310 · Sweet $1,010–$1,210</div><div class="mkt-n">20 listings today</div></div>
-      <div class="mkt-cell"><div class="mkt-type">2 Bedrooms</div><div class="mkt-avg">CA$1,395</div><div class="mkt-range">$1,170–$1,725 · Sweet $1,295–$1,545</div><div class="mkt-n">24 listings today</div></div>
-      <div class="mkt-cell"><div class="mkt-type">3 Bedrooms</div><div class="mkt-avg">CA$1,750</div><div class="mkt-range">$1,500–$2,050 · Sweet $1,625–$1,975</div><div class="mkt-n">10 listings today</div></div>
+  <!-- CITY SELECTOR -->
+  <div class="city-bar" id="city-bar">
+    <div class="city-label">🌎 City</div>
+    <div class="city-btns">
+      <button class="city-btn city-all active" onclick="switchCity('all',this)" id="btn-city-all">
+        <span class="city-flag">🏢</span> All Leyad
+        <span class="city-count" id="cnt-all"></span>
+      </button>
+      <button class="city-btn" onclick="switchCity('montreal',this)" id="btn-city-montreal">
+        <span class="city-flag">🇨🇦</span> Montréal
+        <span class="city-count" id="cnt-montreal"></span>
+      </button>
+      <button class="city-btn" onclick="switchCity('prince-albert',this)" id="btn-city-prince-albert">
+        <span class="city-flag">🇨🇦</span> Prince Albert
+        <span class="city-count" id="cnt-prince-albert"></span>
+      </button>
+      <button class="city-btn" onclick="switchCity('edmonton',this)" id="btn-city-edmonton">
+        <span class="city-flag">🇨🇦</span> Edmonton
+        <span class="city-count" id="cnt-edmonton"></span>
+      </button>
     </div>
   </div>
-  <div class="tabs">
-    <button class="tab active" onclick="showTab('fernando',this)">🏠 Fernando (8)</button>
-    <button class="tab" onclick="showTab('jeny',this)">🏠 Jeny (6)</button>
-    <button class="tab" onclick="showTab('kathleen',this)">🏠 Kathleen (4)</button>
-    <button class="tab" onclick="showTab('oriana',this)">🏠 Oriana (16)</button>
+
+    <div class="kpi-row" id="kpi-row"></div>
+  <div class="mkt-box">
+    <div class="mkt-hdr">📊 <span data-i18n="mkt_title">Real-Time Comparables — FB Marketplace Montréal · June 16, 2026</span></div>
+    <div class="mkt-grid">
+      <div class="mkt-cell"><div class="mkt-type">Studio</div><div class="mkt-avg">CA$975</div><div class="mkt-range">$860–$1,195 · Sweet $900–$1,075</div><div class="mkt-n">14 listings today</div></div>
+      <div class="mkt-cell"><div class="mkt-type">1 Bedroom</div><div class="mkt-avg">CA$1,095</div><div class="mkt-range">$895–$1,295 · Sweet $995–$1,195</div><div class="mkt-n">18 listings today</div></div>
+      <div class="mkt-cell"><div class="mkt-type">2 Bedrooms</div><div class="mkt-avg">CA$1,370</div><div class="mkt-range">$1,150–$1,700 · Sweet $1,280–$1,525</div><div class="mkt-n">22 listings today</div></div>
+      <div class="mkt-cell"><div class="mkt-type">3 Bedrooms</div><div class="mkt-avg">CA$1,720</div><div class="mkt-range">$1,480–$2,000 · Sweet $1,600–$1,950</div><div class="mkt-n">8 listings today</div></div>
+    </div>
+  </div>
+
+  <!-- MULTI-PLATFORM MARKET INTELLIGENCE -->
+  <div class="platforms-bar" id="platforms-bar">
+    <div class="platforms-hdr">🌐 Market Intelligence — Rental Platforms Avg (Montréal area · updated regularly)</div>
+    <div class="platforms-grid">
+      <a class="platform-card" href="https://www.facebook.com/marketplace/montreal/propertyrentals" target="_blank">
+        <div class="platform-name">📘 Facebook Marketplace <span class="platform-tag">LIVE</span></div>
+        <div class="platform-avg">CA$1,150/mo</div>
+        <div class="platform-range">Studio $960 · 1-bed $1,095 · 2-beds $1,370</div>
+      </a>
+      <a class="platform-card" href="https://www.rental.ca/rentals/qc/montreal" target="_blank">
+        <div class="platform-name">🏠 Rental.ca</div>
+        <div class="platform-avg">CA$1,280/mo</div>
+        <div class="platform-range">Studio $1,050 · 1-bed $1,200 · 2-beds $1,500</div>
+      </a>
+      <a class="platform-card" href="https://www.kijiji.ca/b-appartement-condo/grand-montreal/c37l80002" target="_blank">
+        <div class="platform-name">🟡 Kijiji</div>
+        <div class="platform-avg">CA$1,100/mo</div>
+        <div class="platform-range">Studio $900 · 1-bed $1,050 · 2-beds $1,350</div>
+      </a>
+
+      <a class="platform-card" href="https://www.lelocataire.com/montreal" target="_blank">
+        <div class="platform-name">🔷 LeLocataire.com</div>
+        <div class="platform-avg">CA$1,200/mo</div>
+        <div class="platform-range">Studio $980 · 1-bed $1,150 · 2-beds $1,480</div>
+      </a>
+      <a class="platform-card" href="https://www.realtor.ca/map#ZoomLevel=12&Center=45.508889,-73.554444&LatitudeMax=45.7&LatitudeMin=45.3&LongitudeMax=-73.4&LongitudeMin=-73.8&Sort=6-D&PropertyTypeGroupID=1&TransactionTypeId=3&Currency=CAD" target="_blank">
+        <div class="platform-name">🔴 Realtor.ca</div>
+        <div class="platform-avg">CA$1,450/mo</div>
+        <div class="platform-range">Studio $1,150 · 1-bed $1,350 · 2-beds $1,750</div>
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- ALL LEYAD ANALYTICS - shown only when "All Leyad" is active -->
+  <div id="all-leyad-analytics" style="display:block;margin-top:20px"></div>
+
+  <!-- ALL LEYAD (same tabs, just city filter changes) -->
+  <!-- MONTREAL TABS -->
+  <div class="tabs" id="tabs-montreal" style="display:none">
+    <button class="tab active" onclick="showTab('padly',this)">🏠 Padly (10)</button>
+    <button class="tab" onclick="showTab('fernando',this)">🏠 Fernando (5)</button>
+    <button class="tab" onclick="showTab('jeny',this)">🏠 Jeny (12)</button>
+    <button class="tab" onclick="showTab('kathleen',this)">🏠 Kathleen (7)</button>
+    <button class="tab" onclick="showTab('oriana',this)">🏠 Oriana (14)</button>
     <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
     <button class="tab" onclick="showTab('charts',this)">📊 Charts</button>
     <button class="tab" onclick="showTab('analytics',this)">📈 Company Analytics</button>
+    <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
+  </div>
+
+  <!-- PRINCE ALBERT TABS -->
+  <div class="tabs" id="tabs-prince-albert" style="display:none">
+    <button class="tab active" onclick="showTab('vinit',this)">🏠 Vinit (4)</button>
+    <button class="tab" onclick="showTab('avi',this)">🏠 Avi (2)</button>
+    <button class="tab" onclick="showTab('abhi',this)">🏠 Abhi (2)</button>
+    <button class="tab" onclick="showTab('leasewith',this)">🏠 LeaseWith (6)</button>
+    <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
+    <button class="tab" onclick="showTab('analytics',this)">📈 Analytics</button>
+    <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
+  </div>
+  <!-- EDMONTON TABS -->
+  <div class="tabs" id="tabs-edmonton" style="display:none">
+    <button class="tab active" onclick="showTab('safiya',this)">🏠 Safiya Ali (12)</button>
+    <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
+    <button class="tab" onclick="showTab('analytics',this)">📈 Analytics</button>
+    <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
   </div>
   <div id="pane-fernando" class="pane active"></div>
   <div id="pane-jeny" class="pane"></div>
   <div id="pane-kathleen" class="pane"></div>
   <div id="pane-oriana" class="pane"></div>
+  <div id="pane-padly" class="pane"></div>
   <div id="pane-ranking" class="pane"></div>
   <div id="pane-charts" class="pane"></div>
   <div id="pane-analytics" class="pane"></div>
-  <div class="credit-footer">Padley Marketplace Analytics · Built by <span>David Monroy</span> · Real-time FB Marketplace data · June 2026</div>
+  <div id="pane-marketintel" class="pane"></div>
+  <div id="pane-vinit" class="pane"></div>
+  <div id="pane-avi" class="pane"></div>
+  <div id="pane-abhi" class="pane"></div>
+  <div id="pane-leasewith" class="pane"></div>
+  <div id="pane-safiya" class="pane"></div>
+    <div class="credit-footer">Leyad Analytics · Built by <span>David Monroy</span> · Real-time FB Marketplace data · June 2026</div>
+
+<!-- AI CHAT FAB -->
+<button id="chat-fab" onclick="toggleChat()" title="Ask Leyad AI">
+  🤖
+  <span class="chat-badge">AI</span>
+</button>
+
+<!-- CHAT PANEL -->
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="chat-avatar">🏠</div>
+    <div style="flex:1">
+      <div class="chat-title">Leyad AI Assistant</div>
+      <div class="chat-subtitle">Ask anything about your portfolio</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-msg bot">👋 Hi David! I have access to all <strong>31 active listings</strong> across your 4 agents in Montréal. Ask me anything!</div>
+  </div>
+  <div class="chat-suggestions" id="chat-suggestions">
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Best performing listings?</button>
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Who needs attention?</button>
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Avg price by agent?</button>
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Oriana portfolio score?</button>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chat-input" type="text" placeholder="Ask about your listings..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
 </div>
 <script>
 const T={
-  en:{mkt_title:"Real-Time Comparables — FB Marketplace Montréal · June 1, 2026",score_lbl:"Balance Score",suggested:"Suggested",current:"Current",per_mo:"/mo",view_listing:"View on Marketplace →",comp_lbl:"📍 Real Comparables (~3km radius)",show:"Show ▼",hide:"Hide ▲",your_listing:"YOUR listing",recs_title:"🎯 Expert Analysis & Actions",why_here:"Why this score",improve:"What to fix",joined:"Joined",listings:"listings",reviews:"reviews",view_profile:"View profile",top_title:"🥇 TOP 10 — Best Balanced Listings",top_sub:"Max score = Price sweet spot (0% to -5% below avg) + 8+ photos + fresh listing + complete description.",worst_title:"⚠️ WORST 10 — Immediate Action Required",worst_sub:"Critical issues. Full action plan for each. Fix these NOW.",chart1:"Avg price by agent vs. market avg (CA$/mo)",chart2:"Active listings by agent",chart3:"Price position vs. today market",g1:"✅ Sweet spot (0 to -5%)",g2:"🟡 Acceptable (0 to +10%)",g3:"⚠️ Too high (>+10%)",g4:"⬇️ Below avg (attention)",pets:"🐾 Pets OK",fresh:"🆕 Fresh",old_b:"⏰ +1 week",agent_lbl:"Agent",see_det:"See analysis ▼",hide_det:"Hide ▲",no_chg:"✅ Optimal price"},
-  fr:{mkt_title:"Comparables réels — FB Marketplace Montréal · 1 juin 2026",score_lbl:"Score Équilibre",suggested:"Suggéré",current:"Actuel",per_mo:"/mois",view_listing:"Voir sur Marketplace →",comp_lbl:"📍 Comparables Réels (~3km)",show:"Voir ▼",hide:"Masquer ▲",your_listing:"VOTRE annonce",recs_title:"🎯 Analyse Expert & Actions",why_here:"Pourquoi ce score",improve:"Quoi corriger",joined:"Membre depuis",listings:"annonces",reviews:"avis",view_profile:"Voir profil",top_title:"🥇 TOP 10 — Meilleures Annonces",top_sub:"Score max = Prix zone idéale (0% à -5% sous moy.) + 8+ photos + fraîche + description complète.",worst_title:"⚠️ PIRES 10 — Action Immédiate",worst_sub:"Problèmes critiques. Plan d'action inclus.",chart1:"Prix moy. par agent vs. marché (CA$/mois)",chart2:"Annonces actives par agent",chart3:"Position prix vs. marché aujourd'hui",g1:"✅ Zone idéale (0 à -5%)",g2:"🟡 Acceptable (0 à +10%)",g3:"⚠️ Trop élevé (>+10%)",g4:"⬇️ Sous moy. (attention)",pets:"🐾 Animaux OK",fresh:"🆕 Récent",old_b:"⏰ +1 semaine",agent_lbl:"Agent",see_det:"Voir ▼",hide_det:"Masquer ▲",no_chg:"✅ Prix optimal"},
-  es:{mkt_title:"Comparables en tiempo real — FB Marketplace Montréal · 1 junio 2026",score_lbl:"Score Equilibrio",suggested:"Sugerido",current:"Actual",per_mo:"/mes",view_listing:"Ver en Marketplace →",comp_lbl:"📍 Comparables Reales (~3km)",show:"Ver ▼",hide:"Ocultar ▲",your_listing:"TU publicación",recs_title:"🎯 Análisis Experto & Acciones",why_here:"Por qué este score",improve:"Qué corregir",joined:"En Facebook desde",listings:"publicaciones",reviews:"reseñas",view_profile:"Ver perfil",top_title:"🥇 TOP 10 — Mejores Publicaciones",top_sub:"Score max = Precio zona óptima (0% a -5% bajo prom.) + 8+ fotos + publicación fresca + descripción completa.",worst_title:"⚠️ PEORES 10 — Acción Inmediata",worst_sub:"Problemas críticos. Plan de acción incluido.",chart1:"Precio prom. por agente vs. mercado (CA$/mes)",chart2:"Publicaciones activas por agente",chart3:"Posición precio vs. mercado hoy",g1:"✅ Zona óptima (0 a -5%)",g2:"🟡 Aceptable (0 a +10%)",g3:"⚠️ Demasiado alto (>+10%)",g4:"⬇️ Bajo prom. (atención)",pets:"🐾 Mascotas OK",fresh:"🆕 Reciente",old_b:"⏰ +1 semana",agent_lbl:"Agente",see_det:"Ver ▼",hide_det:"Ocultar ▲",no_chg:"✅ Precio óptimo"}
+  en:{mkt_title:"Real-Time Comparables — FB Marketplace Montréal · June 16, 2026",score_lbl:"Balance Score",suggested:"Suggested",current:"Current",per_mo:"/mo",view_listing:"View on Marketplace →",comp_lbl:"📍 Real Comparables (~3km radius)",show:"Show ▼",hide:"Hide ▲",your_listing:"YOUR listing",recs_title:"🎯 Expert Analysis & Actions",why_here:"Why this score",improve:"What to fix",joined:"Joined",listings:"listings",reviews:"reviews",view_profile:"View profile",top_title:"🥇 TOP 10 — Best Balanced Listings",top_sub:"Max score = Price sweet spot (0% to -5% below avg) + 8+ photos + fresh listing + complete description.",worst_title:"⚠️ WORST 10 — Immediate Action Required",worst_sub:"Critical issues. Full action plan for each. Fix these NOW.",chart1:"Avg price by agent vs. market avg (CA$/mo)",chart2:"Active listings by agent",chart3:"Price position vs. today market",g1:"✅ Sweet spot (0 to -5%)",g2:"🟡 Acceptable (0 to +10%)",g3:"⚠️ Too high (>+10%)",g4:"⬇️ Below avg (attention)",pets:"🐾 Pets OK",fresh:"🆕 Fresh",old_b:"⏰ +1 week",agent_lbl:"Agent",see_det:"See analysis ▼",hide_det:"Hide ▲",no_chg:"✅ Optimal price"},
+  fr:{mkt_title:"Comparables réels — FB Marketplace Montréal · 8 mai 2026",score_lbl:"Score Équilibre",suggested:"Suggéré",current:"Actuel",per_mo:"/mois",view_listing:"Voir sur Marketplace →",comp_lbl:"📍 Comparables Réels (~3km)",show:"Voir ▼",hide:"Masquer ▲",your_listing:"VOTRE annonce",recs_title:"🎯 Analyse Expert & Actions",why_here:"Pourquoi ce score",improve:"Quoi corriger",joined:"Membre depuis",listings:"annonces",reviews:"avis",view_profile:"Voir profil",top_title:"🥇 TOP 10 — Meilleures Annonces",top_sub:"Score max = Prix zone idéale (0% à -5% sous moy.) + 8+ photos + fraîche + description complète.",worst_title:"⚠️ PIRES 10 — Action Immédiate",worst_sub:"Problèmes critiques. Plan d'action inclus.",chart1:"Prix moy. par agent vs. marché (CA$/mois)",chart2:"Annonces actives par agent",chart3:"Position prix vs. marché aujourd'hui",g1:"✅ Zone idéale (0 à -5%)",g2:"🟡 Acceptable (0 à +10%)",g3:"⚠️ Trop élevé (>+10%)",g4:"⬇️ Sous moy. (attention)",pets:"🐾 Animaux OK",fresh:"🆕 Récent",old_b:"⏰ +1 semaine",agent_lbl:"Agent",see_det:"Voir ▼",hide_det:"Masquer ▲",no_chg:"✅ Prix optimal"},
+  es:{mkt_title:"Comparables en tiempo real — FB Marketplace Montréal · 8 mayo 2026",score_lbl:"Score Equilibrio",suggested:"Sugerido",current:"Actual",per_mo:"/mes",view_listing:"Ver en Marketplace →",comp_lbl:"📍 Comparables Reales (~3km)",show:"Ver ▼",hide:"Ocultar ▲",your_listing:"TU publicación",recs_title:"🎯 Análisis Experto & Acciones",why_here:"Por qué este score",improve:"Qué corregir",joined:"En Facebook desde",listings:"publicaciones",reviews:"reseñas",view_profile:"Ver perfil",top_title:"🥇 TOP 10 — Mejores Publicaciones",top_sub:"Score max = Precio zona óptima (0% a -5% bajo prom.) + 8+ fotos + publicación fresca + descripción completa.",worst_title:"⚠️ PEORES 10 — Acción Inmediata",worst_sub:"Problemas críticos. Plan de acción incluido.",chart1:"Precio prom. por agente vs. mercado (CA$/mes)",chart2:"Publicaciones activas por agente",chart3:"Posición precio vs. mercado hoy",g1:"✅ Zona óptima (0 a -5%)",g2:"🟡 Aceptable (0 a +10%)",g3:"⚠️ Demasiado alto (>+10%)",g4:"⬇️ Bajo prom. (atención)",pets:"🐾 Mascotas OK",fresh:"🆕 Reciente",old_b:"⏰ +1 semana",agent_lbl:"Agente",see_det:"Ver ▼",hide_det:"Ocultar ▲",no_chg:"✅ Precio óptimo"}
 };
 let LANG="en";
 function t(k){return T[LANG][k]||T.en[k]||k;}
 function setLang(lang,btn){LANG=lang;document.querySelectorAll(".lang-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.querySelectorAll("[data-i18n]").forEach(el=>el.innerHTML=t(el.dataset.i18n));renderAll();}
 
-const MKT={0:{avg:990,min:875,max:1210,slo:915,shi:1090,n:16},1:{avg:1115,min:910,max:1310,slo:1010,shi:1210,n:20},2:{avg:1395,min:1170,max:1725,slo:1295,shi:1545,n:24},3:{avg:1750,min:1500,max:2050,slo:1625,shi:1975,n:10}};
-const MKT_Z={longueuil_2:{avg:1390,min:1195,max:1600,slo:1300,shi:1525,n:8},verdun_2:{avg:1420,min:1200,max:1700,slo:1300,shi:1600,n:7},pointe_0:{avg:1000,min:875,max:1150,slo:880,shi:1050,n:4},anjou_1:{avg:1050,min:895,max:1290,slo:950,shi:1150,n:6},plateau_0:{avg:960,min:857,max:1195,slo:900,shi:1075,n:10},plateau_2:{avg:1490,min:1350,max:1700,slo:1400,shi:1625,n:8},granby_2:{avg:1196,min:1150,max:1260,slo:1150,shi:1250,n:5},hochelaga_0:{avg:960,min:850,max:1200,slo:890,shi:1050,n:8}};
+const MKT={0:{avg:975,min:860,max:1195,slo:900,shi:1075,n:14},1:{avg:1095,min:895,max:1295,slo:995,shi:1195,n:18},2:{avg:1370,min:1150,max:1700,slo:1280,shi:1525,n:22},3:{avg:1720,min:1480,max:2000,slo:1600,shi:1950,n:8}};
+const MKT_Z={
+  // PRINCE ALBERT market averages
+  pa_1:{avg:1221,min:1155,max:1365,slo:1155,shi:1280,n:7},
+  pa_2:{avg:1355,min:1120,max:1490,slo:1290,shi:1455,n:7},
+  pa_3:{avg:1250,min:1250,max:1250,slo:1200,shi:1300,n:1},outremont_1:{avg:1195,min:920,max:1595,slo:1050,shi:1350,n:8},outremont_2:{avg:1390,min:1050,max:1700,slo:1200,shi:1550,n:6},cdn_1:{avg:1150,min:950,max:1400,slo:1050,shi:1300,n:8},cdn_plamondon_2:{avg:1400,min:1200,max:1700,slo:1250,shi:1550,n:7},kirkland_2:{avg:1520,min:1350,max:1750,slo:1400,shi:1650,n:6},cdn_2:{avg:1450,min:1250,max:1700,slo:1350,shi:1600,n:8},montreal_1:{avg:1250,min:1050,max:1500,slo:1150,shi:1400,n:12},longueuil_2:{avg:1390,min:1195,max:1600,slo:1300,shi:1525,n:8},verdun_2:{avg:1420,min:1200,max:1700,slo:1300,shi:1600,n:7},pointe_0:{avg:1000,min:875,max:1150,slo:880,shi:1050,n:4},anjou_1:{avg:1050,min:895,max:1290,slo:950,shi:1150,n:6},plateau_0:{avg:960,min:857,max:1195,slo:900,shi:1075,n:10},plateau_2:{avg:1490,min:1350,max:1700,slo:1400,shi:1625,n:8},granby_2:{avg:1196,min:1150,max:1260,slo:1150,shi:1250,n:5},hochelaga_0:{avg:960,min:850,max:1200,slo:890,shi:1050,n:8},boisdboulogne_1:{avg:1240,min:1100,max:1450,slo:1150,shi:1350,n:8},boisdboulogne_2:{avg:1540,min:1350,max:1750,slo:1400,shi:1650,n:10},
+  // EDMONTON market averages
+  yeg_0:{avg:1020,min:850,max:1200,slo:950,shi:1095,n:6},
+  yeg_1:{avg:1180,min:1050,max:1350,slo:1100,shi:1250,n:10},
+  yeg_2:{avg:1295,min:1150,max:1500,slo:1200,shi:1375,n:12}};
 function getRef(beds,zone){return zone&&MKT_Z[zone]?MKT_Z[zone]:MKT[Math.min(beds,3)];}
+
+
+const MARKET_INTEL = {
+  montreal: {
+    zones: {
+      "Plateau-Mont-Royal":       {studio:{fb:990,rental:1100,kijiji:960,lelocataire:1010,realtor:1200},"1-bed":{fb:1180,rental:1350,kijiji:1150,lelocataire:1250,realtor:1450},"2-bed":{fb:1490,rental:1700,kijiji:1450,lelocataire:1550,realtor:1850},"3-bed":{fb:1850,rental:2100,kijiji:1800,lelocataire:1950,realtor:2300},"4-bed":{fb:2200,rental:2500,kijiji:2150,lelocataire:2350,realtor:2800},"5-bed":{fb:2700,rental:3100,kijiji:2650,lelocataire:2900,realtor:3500},"6-bed":{fb:3200,rental:3700,kijiji:3100,lelocataire:3400,realtor:4200}},
+      "Rosemont / La Petite-Patrie": {studio:{fb:965,rental:1050,kijiji:950,lelocataire:995,realtor:1150},"1-bed":{fb:1150,rental:1300,kijiji:1100,lelocataire:1200,realtor:1400},"2-bed":{fb:1420,rental:1600,kijiji:1380,lelocataire:1500,realtor:1750},"3-bed":{fb:1790,rental:2000,kijiji:1750,lelocataire:1900,realtor:2200},"4-bed":{fb:2100,rental:2400,kijiji:2050,lelocataire:2250,realtor:2700},"5-bed":{fb:2600,rental:2950,kijiji:2550,lelocataire:2800,realtor:3300},"6-bed":{fb:3100,rental:3500,kijiji:3050,lelocataire:3300,realtor:4000}},
+      "Hochelaga-Maisonneuve":    {studio:{fb:920,rental:1000,kijiji:900,lelocataire:940,realtor:1100},"1-bed":{fb:1095,rental:1220,kijiji:1050,lelocataire:1130,realtor:1350},"2-bed":{fb:1370,rental:1520,kijiji:1330,lelocataire:1430,realtor:1680},"3-bed":{fb:1700,rental:1900,kijiji:1660,lelocataire:1800,realtor:2100},"4-bed":{fb:2000,rental:2250,kijiji:1950,lelocataire:2100,realtor:2550},"5-bed":{fb:2450,rental:2750,kijiji:2400,lelocataire:2600,realtor:3100},"6-bed":{fb:2900,rental:3300,kijiji:2850,lelocataire:3100,realtor:3700}},
+      "Côte-des-Neiges (CDN)":   {studio:{fb:975,rental:1100,kijiji:960,lelocataire:1010,realtor:1200},"1-bed":{fb:1150,rental:1320,kijiji:1120,lelocataire:1220,realtor:1450},"2-bed":{fb:1430,rental:1620,kijiji:1400,lelocataire:1520,realtor:1780},"3-bed":{fb:1780,rental:2000,kijiji:1750,lelocataire:1900,realtor:2200},"4-bed":{fb:2100,rental:2380,kijiji:2050,lelocataire:2250,realtor:2700},"5-bed":{fb:2550,rental:2900,kijiji:2500,lelocataire:2750,realtor:3250},"6-bed":{fb:3000,rental:3450,kijiji:2950,lelocataire:3250,realtor:3900}},
+      "Verdun / Pointe-St-Charles":{studio:{fb:890,rental:980,kijiji:875,lelocataire:920,realtor:1070},"1-bed":{fb:1060,rental:1190,kijiji:1030,lelocataire:1100,realtor:1320},"2-bed":{fb:1350,rental:1500,kijiji:1310,lelocataire:1420,realtor:1650},"3-bed":{fb:1670,rental:1880,kijiji:1630,lelocataire:1780,realtor:2080},"4-bed":{fb:1980,rental:2230,kijiji:1930,lelocataire:2080,realtor:2520},"5-bed":{fb:2380,rental:2700,kijiji:2320,lelocataire:2550,realtor:3050},"6-bed":{fb:2850,rental:3200,kijiji:2800,lelocataire:3050,realtor:3650}},
+      "Mile-End / Outremont":    {studio:{fb:1020,rental:1180,kijiji:1000,lelocataire:1080,realtor:1300},"1-bed":{fb:1220,rental:1420,kijiji:1190,lelocataire:1320,realtor:1580},"2-bed":{fb:1560,rental:1800,kijiji:1520,lelocataire:1650,realtor:2000},"3-bed":{fb:1950,rental:2250,kijiji:1900,lelocataire:2100,realtor:2500},"4-bed":{fb:2350,rental:2700,kijiji:2300,lelocataire:2550,realtor:3000},"5-bed":{fb:2850,rental:3250,kijiji:2800,lelocataire:3050,realtor:3700},"6-bed":{fb:3400,rental:3900,kijiji:3350,lelocataire:3650,realtor:4500}},
+      "Anjou / Est de Montreal": {studio:{fb:900,rental:980,kijiji:880,lelocataire:920,realtor:1080},"1-bed":{fb:1080,rental:1200,kijiji:1050,lelocataire:1120,realtor:1350},"2-bed":{fb:1350,rental:1500,kijiji:1310,lelocataire:1430,realtor:1680},"3-bed":{fb:1680,rental:1890,kijiji:1640,lelocataire:1790,realtor:2090},"4-bed":{fb:2000,rental:2250,kijiji:1950,lelocataire:2100,realtor:2550},"5-bed":{fb:2400,rental:2700,kijiji:2350,lelocataire:2580,realtor:3050},"6-bed":{fb:2900,rental:3200,kijiji:2850,lelocataire:3100,realtor:3700}},
+      "Longueuil / South Shore": {studio:{fb:850,rental:950,kijiji:830,lelocataire:880,realtor:1030},"1-bed":{fb:1020,rental:1150,kijiji:1000,lelocataire:1070,realtor:1280},"2-bed":{fb:1280,rental:1440,kijiji:1250,lelocataire:1360,realtor:1600},"3-bed":{fb:1580,rental:1780,kijiji:1540,lelocataire:1680,realtor:1980},"4-bed":{fb:1880,rental:2120,kijiji:1840,lelocataire:2000,realtor:2400},"5-bed":{fb:2250,rental:2550,kijiji:2200,lelocataire:2400,realtor:2950},"6-bed":{fb:2700,rental:3050,kijiji:2650,lelocataire:2900,realtor:3500}},
+      "NDG / Cote-St-Luc":       {studio:{fb:930,rental:1060,kijiji:910,lelocataire:970,realtor:1150},"1-bed":{fb:1110,rental:1270,kijiji:1080,lelocataire:1170,realtor:1420},"2-bed":{fb:1400,rental:1600,kijiji:1360,lelocataire:1500,realtor:1760},"3-bed":{fb:1740,rental:1980,kijiji:1700,lelocataire:1870,realtor:2200},"4-bed":{fb:2070,rental:2350,kijiji:2020,lelocataire:2210,realtor:2680},"5-bed":{fb:2500,rental:2850,kijiji:2450,lelocataire:2700,realtor:3200},"6-bed":{fb:3000,rental:3400,kijiji:2950,lelocataire:3200,realtor:3850}},
+      "Westmount / Downtown":    {studio:{fb:1200,rental:1450,kijiji:1180,lelocataire:1350,realtor:1650},"1-bed":{fb:1550,rental:1850,kijiji:1500,lelocataire:1700,realtor:2100},"2-bed":{fb:2000,rental:2400,kijiji:1950,lelocataire:2200,realtor:2700},"3-bed":{fb:2600,rental:3100,kijiji:2550,lelocataire:2850,realtor:3500},"4-bed":{fb:3200,rental:3800,kijiji:3150,lelocataire:3500,realtor:4300},"5-bed":{fb:3900,rental:4600,kijiji:3850,lelocataire:4250,realtor:5200},"6-bed":{fb:4600,rental:5500,kijiji:4550,lelocataire:5100,realtor:6300}},
+      "Ahuntsic / Cartierville": {studio:{fb:940,rental:1050,kijiji:920,lelocataire:970,realtor:1130},"1-bed":{fb:1100,rental:1250,kijiji:1080,lelocataire:1160,realtor:1400},"2-bed":{fb:1380,rental:1560,kijiji:1340,lelocataire:1470,realtor:1720},"3-bed":{fb:1720,rental:1940,kijiji:1680,lelocataire:1840,realtor:2150},"4-bed":{fb:2050,rental:2320,kijiji:2000,lelocataire:2180,realtor:2640},"5-bed":{fb:2500,rental:2820,kijiji:2450,lelocataire:2680,realtor:3180},"6-bed":{fb:2950,rental:3350,kijiji:2900,lelocataire:3200,realtor:3800}},
+      "St-Laurent / Bois-Franc":  {studio:{fb:920,rental:1030,kijiji:900,lelocataire:950,realtor:1120},"1-bed":{fb:1090,rental:1230,kijiji:1060,lelocataire:1140,realtor:1380},"2-bed":{fb:1370,rental:1540,kijiji:1330,lelocataire:1450,realtor:1700},"3-bed":{fb:1700,rental:1920,kijiji:1660,lelocataire:1820,realtor:2130},"4-bed":{fb:2020,rental:2290,kijiji:1970,lelocataire:2160,realtor:2620},"5-bed":{fb:2450,rental:2770,kijiji:2400,lelocataire:2640,realtor:3140},"6-bed":{fb:2900,rental:3300,kijiji:2850,lelocataire:3150,realtor:3750}}
+    }
+  },
+  edmonton: { zones: {} }
+};
+const MI_PLATFORMS = [
+  {key:"fb",name:"Facebook MKT",icon:"📘",color:"#1877f2",url:"https://www.facebook.com/marketplace/montreal/propertyrentals"},
+  {key:"rental",name:"Rental.ca",icon:"🏠",color:"#e53e3e",url:"https://www.rental.ca/rentals/qc/montreal"},
+  {key:"kijiji",name:"Kijiji",icon:"🟡",color:"#d4aa00",url:"https://www.kijiji.ca/b-appartement-condo/grand-montreal/c37l80002"},
+
+  {key:"lelocataire",name:"LeLocataire",icon:"🔷",color:"#4a90d9",url:"https://www.lelocataire.com/montreal"},
+  {key:"realtor",name:"Realtor.ca",icon:"🔴",color:"#cc0000",url:"https://www.realtor.ca"}
+];
+const MI_BED_TYPES = ["studio","1-bed","2-bed","3-bed","4-bed","5-bed","6-bed"];
+const MI_BED_LABELS = {studio:"Studio","1-bed":"1 Chambre","2-bed":"2 Chambres","3-bed":"3 Chambres","4-bed":"4 Chambres","5-bed":"5 Chambres","6-bed":"6 Chambres"};
 
 const COMPS={
 
-  fernando_0:[{id:"907726872303049",price:2000,desc:"3 bed · 1484 Av. Morgan H1V 2P7 (~500m)"},{id:"942592795310447",price:1900,desc:"3 bed · 2025 Rue Gauthier H2K 1A8 (~2km)"},{id:"997834362594306",price:1800,desc:"3 bed · Hochelaga-Maisonneuve"},{id:"828793710288971",price:1695,desc:"3 bed · 1620 Av. Letourneux H1V 2M7 (<1km)"},{id:"2181549199348568",price:1950,desc:"3 bed · 4708 Pierre-de-Coubertin (~400m)"}],
-  fernando_1:[{id:"2438525586650524",price:1495,desc:"2 bed · 1450 Rue Vimont H1V 3K9 (<1km)"},{id:"1814475702864652",price:1700,desc:"2 bed · Hochelaga area"},{id:"1212582510253601",price:1495,desc:"2 bed · Montréal balcon in-unit laundry"},{id:"1605926454034264",price:1595,desc:"2 bed · Montréal Hochelaga 4.5"},{id:"782361268148036",price:1315,desc:"2 bed · Av. Bennett H1V 2T2 (~800m)"}],
-  fernando_2:[{id:"24102278979474116",price:1150,desc:"2 bed · 508 Rue Fournier Granby"},{id:"1600713031037905",price:1200,desc:"2 bed · Rue Simonds S Granby J2J"},{id:"708690341922075",price:1250,desc:"2 bed · Granby in-unit laundry"},{id:"2098570557671948",price:1180,desc:"2 bed · St-Hyacinthe nearby"},{id:"1590916145448413",price:1200,desc:"2 bed · Granby area"}],
-  fernando_3:[{id:"434324552875127",price:850,desc:"Studio · 3640 Rue Sherbrooke E (~40m)"},{id:"2356058284897321",price:950,desc:"Studio · H1V Boul. Pie-IX (<1km)"},{id:"731126346530065",price:1195,desc:"Studio · Montréal central heating"},{id:"1581374179590682",price:1199,desc:"Studio · 1850 Rue Viau Hochelaga"},{id:"974660114979213",price:1090,desc:"Studio · 770 Av. Ste-Croix H4L"}],
-  fernando_4:[{id:"434324552875127",price:850,desc:"Studio · 3640 Rue Sherbrooke E H1V"},{id:"2356058284897321",price:950,desc:"Studio · H1V Boul. Pie-IX"},{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E Verdun"},{id:"974660114979213",price:1090,desc:"Studio · 770 Av. Ste-Croix H4L"},{id:"3999869056977377",price:995,desc:"Studio · Westmount"}],
-  fernando_5:[{id:"2438525586650524",price:1495,desc:"1 bed · Rue Vimont H1V 3K9"},{id:"1814475702864652",price:1700,desc:"1 bed · Hochelaga just listed"},{id:"1212582510253601",price:1495,desc:"1 bed · Montréal balcon H1W"},{id:"828793710288971",price:1695,desc:"1 bed · Av. Letourneux H1V 2M7"},{id:"997834362594306",price:1800,desc:"1 bed · Hochelaga-Maisonneuve"}],
-  fernando_6:[{id:"997834362594306",price:1800,desc:"1 bed · Hochelaga-Maisonneuve"},{id:"828793710288971",price:1695,desc:"1 bed · Av. Letourneux H1V 2M7"},{id:"1814475702864652",price:1700,desc:"1 bed · Hochelaga just listed"},{id:"942592795310447",price:1900,desc:"1 bed · 2025 Rue Gauthier H2K"},{id:"2438525586650524",price:1495,desc:"1 bed · Rue Vimont H1V 3K9"}],
-  fernando_7:[{id:"942592795310447",price:1900,desc:"1 bed · 2025 Rue Gauthier H2K 1A8"},{id:"997834362594306",price:1800,desc:"1 bed · Hochelaga-Maisonneuve"},{id:"828793710288971",price:1695,desc:"1 bed · Av. Letourneux H1V 2M7"},{id:"1814475702864652",price:1700,desc:"1 bed · Hochelaga area"},{id:"2438525586650524",price:1495,desc:"1 bed · Rue Vimont H1V"}],
-  jeny_0:[{id:"856384833656288",price:1260,desc:"2 bed · Anjou/Est Montreal"},{id:"1166693968893622",price:1375,desc:"2 bed · Anjou just listed"},{id:"3978108585820206",price:1250,desc:"2 bed · Anjou area"},{id:"1988144475162258",price:1275,desc:"2 bed · Anjou/Mtl Est"},{id:"1675869836783899",price:1225,desc:"2 bed · Anjou/Mtl Est"}],
-  jeny_1:[{id:"986245861028031",price:1400,desc:"1 bed · St-Laurent H4L area"},{id:"1270633081177521",price:1295,desc:"1 bed · Bois-de-Boulogne area"},{id:"944344751913162",price:1350,desc:"1 bed · Montreal nearby"},{id:"1284606059868235",price:1125,desc:"1 bed · Montreal H4L area"},{id:"1701361554365982",price:945,desc:"1 bed · St-Laurent area"}],
-  jeny_2:[{id:"856384833656288",price:1260,desc:"2 bed · Anjou/Est Montreal"},{id:"1166693968893622",price:1375,desc:"2 bed · Anjou just listed"},{id:"3978108585820206",price:1250,desc:"2 bed · Anjou area"},{id:"1988144475162258",price:1275,desc:"2 bed · Anjou/Mtl Est"},{id:"1675869836783899",price:1225,desc:"2 bed · Anjou/Mtl Est"}],
-  jeny_3:[{id:"1433076228834455",price:1090,desc:"1 bed · Henri-Bourassa H2C area"},{id:"2183653389079122",price:1100,desc:"1 bed · Montreal Nord H2C"},{id:"939700775486837",price:940,desc:"1 bed · Montreal close by"},{id:"1309865257776605",price:1199,desc:"1 bed · Henri-Bourassa area"},{id:"992713410094900",price:1400,desc:"1 bed · Montreal Nord"}],
-  jeny_4:[{id:"4526759287596302",price:1010,desc:"1 bed · Av. Kirby-Hall Anjou H1K"},{id:"1594662298265636",price:750,desc:"1 bed · Rue d'Anjou H1Y"},{id:"682948724276472",price:700,desc:"1 bed · Anjou/Mtl Est balcon AC"},{id:"1174540549070241",price:1000,desc:"1 bed · Anjou/Est Mtl"},{id:"1476476977343903",price:930,desc:"1 bed · 8025 Av. Shelley H1Z"}],
-  jeny_5:[{id:"1270633081177521",price:1295,desc:"1 bed · Bois-de-Boulogne area"},{id:"986245861028031",price:1400,desc:"1 bed · St-Laurent H4L"},{id:"944344751913162",price:1350,desc:"1 bed · Montreal nearby"},{id:"1284606059868235",price:1125,desc:"1 bed · Montreal H4L area"},{id:"1701361554365982",price:945,desc:"1 bed · St-Laurent area"}],
-  kathleen_0:[{id:"1310944457800855",price:1380,desc:"2 bed · Rue Talbot Longueuil"},{id:"947778368079139",price:1695,desc:"2 bed · Longueuil"},{id:"1300041418292054",price:1375,desc:"2 bed · Longueuil"},{id:"2388020058367027",price:1425,desc:"2 bed · Longueuil just listed"},{id:"26877113195252496",price:1250,desc:"2 bed · Longueuil"}],
-  kathleen_1:[{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E Verdun (~1.5km)"},{id:"1293324249600338",price:999,desc:"Studio · 2380 Rue Ste-Catherine E H2K 2J4"},{id:"2855528941463617",price:925,desc:"Studio · 3935 Boul. St-Joseph E H1X just listed"},{id:"4367525826856123",price:1050,desc:"Studio · Montreal just listed"},{id:"1164147299247522",price:1095,desc:"Studio · Montreal tout inclus"}],
-  kathleen_2:[{id:"2266823757456691",price:1299,desc:"1 bed · 6655 Ch. Mackle CSL H4W 2Y3 (exact zone!)"},{id:"791183063932522",price:1090,desc:"1 bed · 2238 Rue Souvenir H3H 1S1 NDG just listed"},{id:"1343093990969442",price:1275,desc:"1 bed · 5460 Av. Bessborough H4V 2S6 NDG (~1.5km)"},{id:"1380254440789455",price:1125,desc:"1 bed · 4101 Rue Saint-Antoine O H4C Saint-Henri"},{id:"983613407488744",price:1350,desc:"1 bed · Montreal CSL/NDG area just listed"}],
-  kathleen_3:[{id:"947091604910618",price:1595,desc:"2 bed · 203 3e Avenue Verdun"},{id:"1297949855775584",price:1650,desc:"2 bed · Montreal balcon in-unit"},{id:"1609416033684639",price:1495,desc:"2 bed · Verdun Metro De L'Eglise"},{id:"1002717229101197",price:1790,desc:"2 bed · 777 Rue de l'Eglise H4G 2N1 (~500m!)"},{id:"2437242950062199",price:1725,desc:"2 bed · Montreal balcon AC"}],
-  oriana_0:[{id:"2855528941463617",price:925,desc:"Studio · 3935 Boul. St-Joseph E H1X"},{id:"1293324249600338",price:999,desc:"Studio · 2380 Rue Ste-Catherine E H2K"},{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E Verdun"},{id:"4367525826856123",price:1050,desc:"Studio · Montreal just listed"},{id:"1164147299247522",price:1095,desc:"Studio · Montreal tout inclus"}],
-  oriana_1:[{id:"2855528941463617",price:925,desc:"Studio · 3935 Boul. St-Joseph E H1X"},{id:"1293324249600338",price:999,desc:"Studio · 2380 Ste-Catherine E H2K"},{id:"4367525826856123",price:1050,desc:"Studio · Montreal"},{id:"1164147299247522",price:1095,desc:"Studio · Montreal"},{id:"974660114979213",price:1090,desc:"Studio · Av. Ste-Croix H4L"}],
-  oriana_2:[{id:"2201098553996255",price:995,desc:"Studio · Plateau/Rosemont"},{id:"1531464958406932",price:1020,desc:"Studio · Plateau Rosemont"},{id:"1665333491792470",price:959,desc:"Studio · Rue Durocher H2X Plateau"},{id:"1741941400108295",price:961,desc:"Studio · Jeanne-Mance H2X Plateau"},{id:"1265233062266323",price:1038,desc:"Studio · Plateau area"}],
-  oriana_3:[{id:"2201098553996255",price:995,desc:"Studio · Plateau/Rosemont"},{id:"1531464958406932",price:1020,desc:"Studio · Plateau Rosemont"},{id:"1665333491792470",price:959,desc:"Studio · Rue Durocher H2X Plateau"},{id:"1741941400108295",price:961,desc:"Studio · Jeanne-Mance H2X Plateau"},{id:"1265233062266323",price:1038,desc:"Studio · Plateau area"}],
-  oriana_4:[{id:"3129702643882732",price:1490,desc:"1 bed · Rosemont/Plateau"},{id:"1352414556988370",price:1550,desc:"1 bed · Rosemont/Plateau"},{id:"1412629733953605",price:1464,desc:"1 bed · Plateau/Rosemont"},{id:"2438525586650524",price:1495,desc:"1 bed · H1V area"},{id:"942592795310447",price:1900,desc:"1 bed · H2K Plateau-Est"}],
-  oriana_5:[{id:"3129702643882732",price:1490,desc:"2 bed · Rosemont/Plateau"},{id:"1352414556988370",price:1550,desc:"2 bed · Rosemont/Plateau"},{id:"4437673923145223",price:1600,desc:"2 bed · Rosemont/Plateau"},{id:"4294101084241565",price:1625,desc:"2 bed · Rosemont area"},{id:"1412629733953605",price:1464,desc:"2 bed · Plateau/Rosemont"}],
-  oriana_6:[{id:"2855528941463617",price:925,desc:"Studio · 3935 Boul. St-Joseph E H1X"},{id:"1293324249600338",price:999,desc:"Studio · 2380 Ste-Catherine E H2K"},{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E"},{id:"4367525826856123",price:1050,desc:"Studio · Montreal"},{id:"1164147299247522",price:1095,desc:"Studio · Montreal"}],
-  oriana_7:[{id:"2855528941463617",price:925,desc:"Studio · 3935 Boul. St-Joseph E H1X"},{id:"1293324249600338",price:999,desc:"Studio · 2380 Ste-Catherine E H2K"},{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E"},{id:"4367525826856123",price:1050,desc:"Studio · Montreal"},{id:"2201098553996255",price:995,desc:"Studio · Plateau/Rosemont"}],
-  oriana_8:[{id:"3129702643882732",price:1490,desc:"1 bed · Rosemont/Plateau"},{id:"1586741385746403",price:1730,desc:"1 bed · Plateau Rosemont"},{id:"1412629733953605",price:1464,desc:"1 bed · Plateau/Rosemont"},{id:"1370641005097492",price:1725,desc:"1 bed · Rosemont"},{id:"942592795310447",price:1900,desc:"1 bed · 2025 Rue Gauthier H2K"}],
-  oriana_9:[{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E Verdun"},{id:"3999869056977377",price:995,desc:"Studio · Westmount"},{id:"974660114979213",price:1090,desc:"Studio · 770 Av. Ste-Croix H4L"},{id:"2183523189147373",price:1020,desc:"Studio · Montreal central"},{id:"4367525826856123",price:1050,desc:"Studio · Montreal"}],
-  oriana_10:[{id:"2201098553996255",price:995,desc:"Studio · Plateau/Rosemont"},{id:"1531464958406932",price:1020,desc:"Studio · Plateau Rosemont"},{id:"1665333491792470",price:959,desc:"Studio · Rue Durocher H2X Plateau"},{id:"1741941400108295",price:961,desc:"Studio · Jeanne-Mance H2X Plateau"},{id:"1265233062266323",price:1038,desc:"Studio · Plateau area"}],
-  oriana_11:[{id:"2201098553996255",price:995,desc:"Studio · Plateau/Rosemont"},{id:"1531464958406932",price:1020,desc:"Studio · Plateau Rosemont"},{id:"1665333491792470",price:959,desc:"Studio · Rue Durocher H2X Plateau"},{id:"1741941400108295",price:961,desc:"Studio · Jeanne-Mance H2X Plateau"},{id:"1265233062266323",price:1038,desc:"Studio · Plateau area"}],
-  oriana_12:[{id:"947091604910618",price:1595,desc:"2 bed · 203 3e Avenue Verdun"},{id:"1297949855775584",price:1650,desc:"2 bed · Montreal balcon"},{id:"1609416033684639",price:1495,desc:"2 bed · Verdun Metro De L'Eglise"},{id:"1002717229101197",price:1790,desc:"2 bed · 777 Rue de l'Eglise H4G"},{id:"2437242950062199",price:1725,desc:"2 bed · Montreal balcon AC"}],
-  oriana_13:[{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E Verdun"},{id:"3999869056977377",price:995,desc:"Studio · Westmount"},{id:"974660114979213",price:1090,desc:"Studio · 770 Av. Ste-Croix H4L"},{id:"2183523189147373",price:1020,desc:"Studio · Montreal central"},{id:"4367525826856123",price:1050,desc:"Studio · Montreal"}],
-  oriana_14:[{id:"1452688199426121",price:1099,desc:"Studio · 418 Rue Abelard H3E Verdun"},{id:"3999869056977377",price:995,desc:"Studio · Westmount"},{id:"974660114979213",price:1090,desc:"Studio · 770 Av. Ste-Croix H4L"},{id:"2183523189147373",price:1020,desc:"Studio · Montreal central"},{id:"1164147299247522",price:1095,desc:"Studio · Montreal tout inclus"}],
-  oriana_15:[{id:"791183063932522",price:1090,desc:"1 bed · 2238 Rue Souvenir H3H NDG"},{id:"1343093990969442",price:1275,desc:"1 bed · 5460 Av. Bessborough H4V NDG"},{id:"1380254440789455",price:1125,desc:"1 bed · 4101 Rue Saint-Antoine O H4C"},{id:"2266823757456691",price:1299,desc:"1 bed · 6655 Ch. Mackle CSL H4W"},{id:"983613407488744",price:1350,desc:"1 bed · Montreal CSL/NDG area"}]
+  // VINIT — Prince Albert SK (Saskatchewan regional market comps)
+  vinit_0:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
+  vinit_1:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
+  vinit_2:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
+  vinit_3:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
+  // AVI — Prince Albert SK
+  avi_0:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
+  avi_1:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
+  // ABHI — Prince Albert SK
+  abhi_0:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
+  abhi_1:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
+  // LEASEWITH — Prince Albert SK
+  leasewith_0:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
+  leasewith_1:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
+  leasewith_2:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
+  leasewith_3:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
+  leasewith_4:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
+  leasewith_5:[{id:"936349539420746",price:1400,desc:"2-3 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2-3 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2-3 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2-3 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2-3 bed apt · Saskatoon SK"}],
+  // FERNANDO — updated June 1, 2026
+  fernando_0:[{id:"2187227072078780",price:1015,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"1982233582499884",price:1095,desc:"1 bed · St-Jean area"},{id:"4472102216361059",price:950,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"597295911506305",price:970,desc:"1 bed · St-Jean area"},{id:"989551803486769",price:1000,desc:"1 bed · St-Jean-sur-Richelieu"}],
+  fernando_1:[{id:"1413844743785487",price:1280,desc:"2 bed · Hochelaga area"},{id:"2021207379273939",price:1250,desc:"2 bed · Hochelaga area"},{id:"1319648489559089",price:1300,desc:"2 bed · Hochelaga/Rosemont"},{id:"35467536479561282",price:1150,desc:"2 bed · H1V area"},{id:"812079261725175",price:1200,desc:"2 bed · Hochelaga"}],
+  fernando_2:[{id:"3162072874181637",price:1150,desc:"2 bed · Granby area"},{id:"2117027492214419",price:1200,desc:"2 bed · Granby"},{id:"1779612953018792",price:1180,desc:"2 bed · Granby area"},{id:"2166177694310853",price:1200,desc:"2 bed · Granby"},{id:"1331454555711354",price:1150,desc:"2 bed · Granby area"}],
+  fernando_3:[{id:"1349392823704088",price:1040,desc:"Studio · Hochelaga area"},{id:"35467536479561282",price:1150,desc:"Studio · H1V area"},{id:"1999397557618084",price:950,desc:"Studio · Hochelaga active"},{id:"2257425745076514",price:975,desc:"Studio · Hochelaga area"},{id:"900039733064510",price:980,desc:"Studio · Hochelaga/Rosemont"}],
+  fernando_4:[{id:"1413844743785487",price:1280,desc:"1 bed · Hochelaga area"},{id:"1349392823704088",price:1040,desc:"1 bed · Hochelaga"},{id:"35467536479561282",price:1150,desc:"1 bed · H1V area"},{id:"3444376162407026",price:1240,desc:"1 bed · Hochelaga area"},{id:"1674421750366574",price:1160,desc:"1 bed · Hochelaga/Rosemont"}],
+  fernando_5:[{id:"1413844743785487",price:1280,desc:"1 bed · Hochelaga area"},{id:"1349392823704088",price:1040,desc:"1 bed · Hochelaga"},{id:"35467536479561282",price:1150,desc:"1 bed · H1V area"},{id:"1999397557618084",price:950,desc:"1 bed · Hochelaga active"},{id:"1674421750366574",price:1160,desc:"1 bed · Hochelaga/Rosemont"}],
+  // JENY — updated June 15, 2026 (external comps only)
+  jeny_0:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  jeny_1:[{id:"4199444106854405",price:2150,desc:"4 bed · H4N area"},{id:"1447392076691114",price:1995,desc:"3-4 bed · Villaray area"},{id:"1380879849797657",price:1921,desc:"3-4 bed · Montréal area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"105646229470122",price:2325,desc:"2+ bed · Montréal area"}],
+  jeny_2:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  jeny_3:[{id:"1863901180946430",price:1570,desc:"3 bed · H4N area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"1675391193989408",price:1300,desc:"3 bed · H4N area"},{id:"1380879849797657",price:1921,desc:"3 bed · Montréal area"},{id:"1447392076691114",price:1995,desc:"3 bed · Villaray area"}],
+  jeny_4:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
+  jeny_5:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  jeny_6:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
+  jeny_7:[{id:"1863901180946430",price:1570,desc:"3 bed · H4N area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"1675391193989408",price:1300,desc:"3 bed · H4N area"},{id:"1380879849797657",price:1921,desc:"3 bed · Montréal area"},{id:"1447392076691114",price:1995,desc:"3 bed · Villaray area"}],
+  jeny_8:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  jeny_9:[{id:"4199444106854405",price:2150,desc:"4 bed · H4N area"},{id:"1447392076691114",price:1995,desc:"3-4 bed · Villaray area"},{id:"1380879849797657",price:1921,desc:"3-4 bed · Montréal area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"105646229470122",price:2325,desc:"2+ bed · Montréal area"}],
+  jeny_10:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  // KATHLEEN — updated June 1, 2026
+  kathleen_0:[{id:"2417651825377376",price:1395,desc:"2 bed · Longueuil active"},{id:"1635011634466277",price:1300,desc:"2 bed · Longueuil area"},{id:"1854213255211491",price:1380,desc:"2 bed · Longueuil active"},{id:"1706717364079024",price:1191,desc:"2 bed · Longueuil"},{id:"27151531624486955",price:1150,desc:"2 bed · Longueuil area"}],
+  kathleen_1:[{id:"852449477284389",price:830,desc:"Studio · PSC/Verdun area"},{id:"1487337136741369",price:1050,desc:"Studio · Verdun/PSC"},{id:"4488508004764438",price:1195,desc:"Studio · Verdun active"},{id:"1887112175328798",price:1100,desc:"Studio · PSC/Verdun area"},{id:"832607362879629",price:1125,desc:"Studio · PSC/Verdun"}],
+  kathleen_2:[{id:"1528762415631582",price:1215,desc:"1 bed · CSL/NDG active"},{id:"1409033714321598",price:1100,desc:"1 bed · CSL area"},{id:"1121941610154515",price:1245,desc:"1 bed · CSL/NDG"},{id:"3091172984603461",price:900,desc:"1 bed · CSL area"},{id:"832546819422302",price:1100,desc:"1 bed · CSL/Verdun"}],
+  kathleen_3:[{id:"983635817593974",price:1895,desc:"2 bed · Verdun/PSC active"},{id:"2094846054420622",price:1850,desc:"2 bed · Verdun area"},{id:"1488450439695037",price:1750,desc:"2 bed · CSL/Verdun"},{id:"1702036797915949",price:1487,desc:"2 bed · Verdun area"},{id:"1528762415631582",price:1215,desc:"2 bed · CSL/Verdun active"}],
+  kathleen_4:[{id:"2417651825377376",price:1395,desc:"2 bed · Longueuil active"},{id:"1635011634466277",price:1300,desc:"2 bed · Longueuil area"},{id:"1854213255211491",price:1380,desc:"2 bed · Longueuil active"},{id:"1706717364079024",price:1191,desc:"2 bed · Longueuil"},{id:"27151531624486955",price:1150,desc:"2 bed · Longueuil area"}],
+  kathleen_5:[{id:"2187227072078780",price:1015,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"1982233582499884",price:1095,desc:"1 bed · St-Jean area"},{id:"4472102216361059",price:950,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"597295911506305",price:970,desc:"1 bed · St-Jean area"},{id:"989551803486769",price:1000,desc:"1 bed · St-Jean-sur-Richelieu"}],
+  // ORIANA — updated June 1, 2026
+  oriana_0:[{id:"1041993035163944",price:965,desc:"Studio · Plateau active"},{id:"1615361739534230",price:1020,desc:"Studio · Plateau/Rosemont"},{id:"2252831575459743",price:1100,desc:"Studio · Plateau area"},{id:"1337514244921403",price:950,desc:"Studio · Rosemont active"},{id:"1343891087621906",price:945,desc:"Studio · Plateau/Rosemont"}],
+  oriana_1:[{id:"1041993035163944",price:965,desc:"Studio · Plateau active"},{id:"1615361739534230",price:1020,desc:"Studio · Plateau/Rosemont"},{id:"2252831575459743",price:1100,desc:"Studio · Plateau area"},{id:"1337514244921403",price:950,desc:"Studio · Rosemont active"},{id:"1343891087621906",price:945,desc:"Studio · Plateau/Rosemont"}],
+  oriana_2:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont/Plateau active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau area"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
+  oriana_3:[{id:"2145618059345686",price:1100,desc:"1 bed · Plateau/Rosemont"},{id:"1041993035163944",price:965,desc:"1 bed · Plateau active"},{id:"1615361739534230",price:1020,desc:"1 bed · Plateau area"},{id:"1337514244921403",price:950,desc:"1 bed · Rosemont active"},{id:"2252831575459743",price:1100,desc:"1 bed · Plateau area"}],
+  oriana_4:[{id:"2145618059345686",price:1100,desc:"1 bed · Plateau/Rosemont"},{id:"1041993035163944",price:965,desc:"1 bed · Plateau active"},{id:"1615361739534230",price:1020,desc:"1 bed · Plateau area"},{id:"1337514244921403",price:950,desc:"1 bed · Rosemont active"},{id:"2252831575459743",price:1100,desc:"1 bed · Plateau area"}],
+  oriana_5:[{id:"2145618059345686",price:1100,desc:"1 bed · Plateau/Rosemont"},{id:"1041993035163944",price:965,desc:"1 bed · Plateau active"},{id:"1615361739534230",price:1020,desc:"1 bed · Rosemont area"},{id:"1337514244921403",price:950,desc:"1 bed · Rosemont active"},{id:"2252831575459743",price:1100,desc:"1 bed · Plateau"}],
+  oriana_6:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont/Plateau active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
+  oriana_7:[{id:"1041993035163944",price:965,desc:"Studio · Plateau active"},{id:"1615361739534230",price:1020,desc:"Studio · Rosemont/Plateau"},{id:"1337514244921403",price:950,desc:"Studio · Rosemont active"},{id:"1343891087621906",price:945,desc:"Studio · Plateau area"},{id:"2252831575459743",price:1100,desc:"Studio · Plateau"}],
+  oriana_8:[{id:"1536312595167412",price:1595,desc:"2 bed Outremont area"},{id:"833285806178161",price:1295,desc:"2 bed CDN area"},{id:"1747261136642725",price:1150,desc:"2 bed CDN area"},{id:"1320683976689040",price:1269,desc:"2 bed CDN/Plamondon"},{id:"1690733308839719",price:1150,desc:"2 bed CDN active"}],
+  oriana_9:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
+  oriana_10:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau area"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
+  // PADLY — updated June 15, 2026 (external comps only)
+  padly_0:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  padly_1:[{id:"4199444106854405",price:2150,desc:"4 bed · H4N area"},{id:"1447392076691114",price:1995,desc:"3-4 bed · Villaray area"},{id:"1380879849797657",price:1921,desc:"3-4 bed · Montréal area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"105646229470122",price:2325,desc:"2+ bed · Montréal area"}],
+  padly_2:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  padly_3:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  padly_4:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
+  padly_5:[{id:"1863901180946430",price:1570,desc:"3 bed · H4N area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"1675391193989408",price:1300,desc:"3 bed · H4N area"},{id:"1380879849797657",price:1921,desc:"3 bed · Montréal area"},{id:"1447392076691114",price:1995,desc:"3 bed · Villaray area"}],
+  padly_6:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
+  padly_7:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
+  padly_8:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
+  // EDMONTON — Safiya Ali (updated June 15, 2026)
+  safiya_0:[{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"}],
+  safiya_1:[{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"}],
+  safiya_2:[{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"},{id:"1034604192558218",price:1295,desc:"1 bed · Edmonton AB"},{id:"938960442532626",price:1050,desc:"1 bed · Edmonton AB"}],
+  safiya_3:[{id:"1020112944048278",price:1250,desc:"Studio · Edmonton AB"},{id:"1768415207868398",price:1050,desc:"Studio · Edmonton AB"},{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"}],
+  safiya_4:[{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"}],
+  safiya_5:[{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"938960442532626",price:1050,desc:"1 bed · Edmonton AB"},{id:"1034604192558218",price:1295,desc:"1 bed · Edmonton AB"}],
+  safiya_6:[{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"}],
+  safiya_7:[{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"}],
+  safiya_8:[{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"},{id:"938960442532626",price:1050,desc:"1 bed · Edmonton AB"},{id:"1034604192558218",price:1295,desc:"1 bed · Edmonton AB"}],
+  safiya_9:[{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"}]
 };;
 
 // PRICE RULES (surgical precision):
@@ -556,56 +925,145 @@ function renderAgent(pane,data,name,initials,color,rating,reviews,count,year,url
 }
 
 const FERNANDO=[
-  {id:"3067588726763735",price:1690,beds:3,title:"3 Beds 1 Bath Apartment",loc:"4304 Av. Pierre-de-Coubertin H1V 1A6",zone:"hochelaga_3",pets:false,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/3067588726763735/"},
-  {id:"1302856535317477",price:1490,beds:2,title:"2 Beds 1 Bath Apartment",loc:"4304 Av. Pierre-de-Coubertin H1V 1A6",zone:"hochelaga_2",pets:false,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/1302856535317477/"},
-  {id:"1941437793127850",price:1250,beds:2,title:"2 Beds - Granby J2G 3Z8",loc:"53 Boulevard Fortin, Granby J2G 3Z8",zone:"granby_2",pets:true,desc_ok:true,photos:12,link:"https://www.facebook.com/marketplace/item/1941437793127850/"},
-  {id:"4048302245461950",price:1020,beds:0,title:"Studio - Sherbrooke Est",loc:"3600 Rue Sherbrooke E, Montréal H1V",zone:"hochelaga_0",pets:false,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/4048302245461950/"},
-  {id:"841922065508962",price:890,beds:0,title:"Studio - Pierre-de-Coubertin",loc:"4304 Pierre de Coubertin, Montréal H1V",zone:"hochelaga_0",pets:true,desc_ok:false,photos:4,link:"https://www.facebook.com/marketplace/item/841922065508962/"},
-  {id:"1595209748487971",price:1250,beds:1,title:"1 Bed - Hochelaga H1W",loc:"4761 Rue Hochelaga, Montréal H1W",zone:"hochelaga_1",pets:true,desc_ok:true,photos:9,link:"https://www.facebook.com/marketplace/item/1595209748487971/"},
-  {id:"1857773424945196",price:1090,beds:1,title:"1 Bed - Ontario Est",loc:"4750 Rue Ontario E, Montréal (Hochelaga-Maisonneuve)",zone:"hochelaga_1",pets:false,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/1857773424945196/"},
-  {id:"1263795249302184",price:1150,beds:1,title:"1 Bed - Mercier/Rosemont NEW",loc:"Rue Chouinard/Langelier, Mercier-Rosemont",zone:"hochelaga_1",pets:false,desc_ok:true,photos:4,link:"https://www.facebook.com/marketplace/item/1263795249302184/"}
+  {id:"2749592918731362",price:950,beds:1,title:"1 Bed - St-Jean-sur-Richelieu",loc:"914 Rue Desaulniers, St-Jean-sur-Richelieu J3A 1B1",zone:"sjsr_1",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/2749592918731362/"},
+  {id:"1941437793127850",price:1190,beds:2,title:"2 Beds - Granby",loc:"47 Boul. Fortin, Granby J2G",zone:"granby_2",pets:true,desc_ok:true,photos:9,link:"https://www.facebook.com/marketplace/item/1941437793127850/"},
+  {id:"4048302245461950",price:1020,beds:0,title:"Studio - Sherbrooke Est",loc:"3600 Rue Sherbrooke E, Montréal",zone:"hochelaga_0",pets:false,desc_ok:true,photos:12,link:"https://www.facebook.com/marketplace/item/4048302245461950/"},
+  {id:"1595209748487971",price:1190,beds:1,title:"1 Bed - Hochelaga",loc:"Montréal, QC (Hochelaga-Maisonneuve)",zone:"hochelaga_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1595209748487971/"},
+  {id:"1857773424945196",price:1090,beds:1,title:"1 Bed - Ontario Est",loc:"4750 Rue Ontario E, Montréal",zone:"hochelaga_1",pets:false,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/1857773424945196/"}
 ];
 const JENY=[
-  {id:"27793277350362160",price:1550,beds:2,title:"2 Beds - Boul. Gouin O H4J",loc:"5854 Boul. Gouin O, Montréal H4J 1E4",zone:"anjou_2",pets:true,desc_ok:true,photos:2,link:"https://www.facebook.com/marketplace/item/27793277350362160/"},
-  {id:"1024781670114295",price:1300,beds:1,title:"1 Bed - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N 1L3",zone:"boisdboulogne_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1024781670114295/"},
-  {id:"938581265749088",price:1365,beds:2,title:"2 Beds - Tremolières Anjou H1K",loc:"7790 Av. Trémolières, Montréal H1K 1C4",zone:"anjou_2",pets:true,desc_ok:true,photos:2,link:"https://www.facebook.com/marketplace/item/938581265749088/"},
-  {id:"1612675646665752",price:1190,beds:1,title:"1 Bed - Henri-Bourassa E H2C",loc:"1440 Boul. Henri-Bourassa E, Montréal H2C 2W3",zone:"bourassa_1",pets:false,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/1612675646665752/"},
-  {id:"1460715528940813",price:1290,beds:1,title:"1 Bed - Joseph-Renaud Anjou H1K",loc:"6351 Boul. Joseph-Renaud, Anjou H1K 3T7",zone:"anjou_1",pets:true,desc_ok:true,photos:2,link:"https://www.facebook.com/marketplace/item/1460715528940813/"},
-  {id:"1627772358407461",price:1350,beds:1,title:"1 Bed - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N 1L5",zone:"boisdboulogne_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1627772358407461/"}
+  {id:"1666508177964242",price:1400,beds:2,title:"2 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:6,link:"https://www.facebook.com/marketplace/item/1666508177964242/"},
+  {id:"999665305943650",price:1175,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:false,desc_ok:true,photos:6,link:"https://www.facebook.com/marketplace/item/999665305943650/"},
+  {id:"1305091565073651",price:1690,beds:3,title:"3 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_3",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1305091565073651/"},
+  {id:"2249267352543415",price:1450,beds:2,title:"2 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2249267352543415/"},
+  {id:"1016859050917664",price:1990,beds:4,title:"4 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1016859050917664/"},
+  {id:"2708034686256458",price:1450,beds:2,title:"2 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2708034686256458/"},
+  {id:"1675318406743053",price:1450,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N 1L5",zone:"bdb_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1675318406743053/"},
+  {id:"1299292945605460",price:1990,beds:4,title:"4 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N 1L5",zone:"bdb_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1299292945605460/"},
+  {id:"26865914716435349",price:1125,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/26865914716435349/"},
+  {id:"1511979823709890",price:1490,beds:2,title:"2 Beds - Joseph-Renaud Anjou",loc:"6451 Boul. Joseph-Renaud, Anjou H1K 3R5",zone:"anjou_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1511979823709890/"},
+  {id:"1630951488162931",price:1690,beds:3,title:"3 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_3",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1630951488162931/"},
+  {id:"1772916453873747",price:1125,beds:1,title:"1 Bed - Joseph-Renaud H1K",loc:"6351 Boul. Joseph-Renaud, Montréal H1K 3T7",zone:"anjou_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1772916453873747/"}
 ];
 const KATHLEEN=[
-  {id:"1283754646584083",price:1400,beds:2,title:"2 Beds - Longueuil (Renovated)",loc:"Longueuil, QC",zone:"longueuil_2",pets:true,desc_ok:true,photos:8,old:true,link:"https://www.facebook.com/marketplace/item/1283754646584083/"},
-  {id:"1483681166642491",price:775,beds:0,title:"Studio - Pointe-St-Charles H3K",loc:"591 Av. Ash, Montréal (Pointe-St-Charles H3K)",zone:"pointe_0",pets:false,desc_ok:true,photos:5,old:true,link:"https://www.facebook.com/marketplace/item/1483681166642491/"},
-  {id:"796969926806044",price:1050,beds:1,title:"1 Bed - Côte-St-Luc H4W",loc:"7030 Ch. Côte-St-Luc, Montréal H4W",zone:"csl_1",pets:true,desc_ok:true,photos:6,old:true,link:"https://www.facebook.com/marketplace/item/796969926806044/"},
-  {id:"1297695602272848",price:1650,beds:2,title:"2 Beds+Office - Verdun H4G",loc:"3468 Rue de Verdun, Montréal H4G",zone:"verdun_2",pets:true,desc_ok:true,photos:7,old:true,link:"https://www.facebook.com/marketplace/item/1297695602272848/"}
+  {id:"1283754646584083",price:1400,beds:2,title:"2 Beds - Longueuil",loc:"Longueuil, QC",zone:"longueuil_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1283754646584083/"},
+  {id:"1483681166642491",price:775,beds:0,title:"Studio - Pointe-St-Charles H3K",loc:"591 Av. Ash, Montréal H3K 2R5",zone:"pointe_0",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1483681166642491/"},
+  {id:"796969926806044",price:1050,beds:1,title:"1 Bed - Côte-St-Luc H4V",loc:"7030 Ch. de la Côte-St-Luc, Montréal H4V 1J3",zone:"csl_1",pets:true,desc_ok:true,photos:6,link:"https://www.facebook.com/marketplace/item/796969926806044/"},
+  {id:"1297695602272848",price:1550,beds:2,title:"2 Beds - Verdun H4G",loc:"3468 Rue de Verdun, Montréal H4G 1K3",zone:"verdun_2",pets:true,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/1297695602272848/"},
+  {id:"3300139370147371",price:1500,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/3300139370147371/"},
+  {id:"1672227080665224",price:1200,beds:1,title:"1 Bed - Rue Fort-Rolland NEW",loc:"3975 Rue du Fort-Rolland, Montréal",zone:"mtl_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1672227080665224/"},
+  {id:"1172734774837694",price:1075,beds:1,title:"1 Bed - St-Jean NEW",loc:"St-Jean-sur-Richelieu, QC",zone:"sjsr_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1172734774837694/"}
 ];
 const ORIANA=[
-  {id:"1561213462339530",price:950,beds:0,title:"Studio - Rue Bellechasse H1T",loc:"4470 Rue de Bellechasse, Montréal H1T 1Y8",zone:"rosemont_0",pets:true,desc_ok:true,photos:4,link:"https://www.facebook.com/marketplace/item/1561213462339530/"},
-  {id:"805633369097507",price:1095,beds:0,title:"Studio - Rue Aylwin H1W",loc:"1401 Rue Aylwin, Montréal H1W 3B6",zone:"hochelaga_0",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/805633369097507/"},
-  {id:"996164832881894",price:975,beds:0,title:"Studio - Rue Rivard H2J Plateau",loc:"5205 Rue Rivard, Montréal H2J 2P4",zone:"plateau_0",pets:false,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/996164832881894/"},
-  {id:"983021297924710",price:920,beds:0,title:"Studio - Boul. Edouard-Montpetit",loc:"2767 Boul. Edouard-Montpetit, Montréal",zone:"plateau_0",pets:false,desc_ok:true,photos:6,link:"https://www.facebook.com/marketplace/item/983021297924710/"},
-  {id:"2133909704121299",price:1275,beds:1,title:"1 Bed - Av. Bloomfield H3N",loc:"8191 Av. Bloomfield, Montréal H3N 2H8",zone:"rosemont_2",pets:true,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/2133909704121299/"},
-  {id:"1622021245743292",price:1400,beds:2,title:"2 Beds - Rue Cartier H2E",loc:"7235 Rue Cartier, Montréal H2E 2J3",zone:"rosemont_2",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/1622021245743292/"},
-  {id:"2531915787259271",price:1100,beds:1,title:"1 Bed - Rue Masson H1X",loc:"3915 Rue Masson, Montréal H1X 1T2",zone:"rosemont_0",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2531915787259271/"},
+  {id:"4333936743526446",price:975,beds:0,title:"Studio - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_0",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/4333936743526446/"},
+  {id:"1717178149708590",price:975,beds:0,title:"Studio - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_0",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1717178149708590/"},
+  {id:"2479921289125738",price:1250,beds:2,title:"2 Beds - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2479921289125738/"},
+  {id:"1731509484829607",price:1100,beds:1,title:"1 Bed - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1731509484829607/"},
+  {id:"26719565651069249",price:1100,beds:1,title:"1 Bed - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/26719565651069249/"},
+  {id:"2133909704121299",price:1195,beds:1,title:"1 Bed - Av. Bloomfield H3N",loc:"8191 Av. Bloomfield, Montréal H3N 2H8",zone:"rosemont_1",pets:true,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/2133909704121299/"},
+  {id:"1622021245743292",price:1350,beds:2,title:"2 Beds - Rue Cartier H2E",loc:"7235 Rue Cartier, Montréal H2E 2J3",zone:"rosemont_2",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/1622021245743292/"},
   {id:"2079978426731789",price:950,beds:0,title:"Studio - Rue Masson H1X",loc:"3915 Rue Masson, Montréal H1X 1T2",zone:"rosemont_0",pets:true,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/2079978426731789/"},
-  {id:"1302683928048846",price:1275,beds:1,title:"1 Bed - Rue St-Hubert H2R",loc:"7879 Rue St-Hubert, Montréal H2R 2P1",zone:"rosemont_2",pets:true,desc_ok:true,photos:12,link:"https://www.facebook.com/marketplace/item/1302683928048846/"},
-  {id:"1673049153835500",price:925,beds:0,title:"Studio - Av. Wilderton H3S",loc:"6510 Av. Wilderton, Montréal H3S 2L6",zone:"plateau_0",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1673049153835500/"},
-  {id:"1556778945871466",price:1075,beds:0,title:"Studio - Rue St-Denis H2J",loc:"5576 Rue St-Denis, Montréal H2J 2M5",zone:"plateau_0",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1556778945871466/"},
-  {id:"1497103595144660",price:1000,beds:0,title:"Studio - Rue St-Denis H2J (unit 2)",loc:"5576 Rue St-Denis, Montréal H2J 2M5",zone:"plateau_0",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1497103595144660/"},
-  {id:"967154719034258",price:1500,beds:2,title:"2 Beds - Rue du Fort H3H",loc:"1190 Rue du Fort, Montréal H3H 2B5",zone:"plateau_2",pets:true,desc_ok:true,photos:15,link:"https://www.facebook.com/marketplace/item/967154719034258/"},
-  {id:"2067658483812255",price:1250,beds:0,title:"Studio - Rue du Fort H3H",loc:"1190 Rue du Fort, Montréal H3H 2B5",zone:"plateau_0",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/2067658483812255/"},
-  {id:"2046531396239872",price:1250,beds:0,title:"Studio - Rue du Fort H3H (unit 2)",loc:"1190 Rue du Fort, Montréal H3H 2B5",zone:"plateau_0",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2046531396239872/"},
-  {id:"789417514106963",price:1325,beds:1,title:"1 Bed - Rue du Fort H3H",loc:"1190 Rue du Fort, Montréal H3H 2B5",zone:"plateau_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/789417514106963/"}
+  {id:"1247370840626384",price:1100,beds:1,title:"1 Bed - Av. Wilderton H3S NEW",loc:"6510 Av. Wilderton, Montréal H3S 2L6",zone:"cdn_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1247370840626384/"},
+  {id:"1926663458035953",price:1450,beds:2,title:"2 Beds - Av. Wilderton H3S NEW",loc:"6510 Av. Wilderton, Montréal H3S 2L6",zone:"cdn_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1926663458035953/"},
+  {id:"1006219368670126",price:1425,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1006219368670126/"},
+  {id:"2089793621954990",price:1195,beds:1,title:"1 Bed - Montréal NEW",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2089793621954990/"},
+  {id:"1614264882995447",price:1350,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1614264882995447/"},
+  {id:"1489659012646746",price:1375,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1489659012646746/"}
 ];
-const ALL_DATA=[...FERNANDO.map(i=>({...i,agent:"Fernando",agentColor:"#6366f1",agent_key:"fernando"})),...JENY.map(i=>({...i,agent:"Jeny",agentColor:"#10b981",agent_key:"jeny"})),...KATHLEEN.map(i=>({...i,agent:"Kathleen",agentColor:"#f59e0b",agent_key:"kathleen"})),...ORIANA.map(i=>({...i,agent:"Oriana",agentColor:"#ec4899",agent_key:"oriana"}))];
+const PADLY = [
+  {id:"2504514696636119",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/2504514696636119/"},
+  {id:"1935168083841448",price:2090,beds:4,title:"4 Beds - Bois-de-Boulogne H4N",loc:"10355 Boul. Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1935168083841448/"},
+  {id:"2069690823611127",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2069690823611127/"},
+  {id:"1694286468431462",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1694286468431462/"},
+  {id:"1580116903537458",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1580116903537458/"},
+  {id:"2509935376118338",price:1690,beds:3,title:"3 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_3",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2509935376118338/"},
+  {id:"2007511250153498",price:1190,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2007511250153498/"},
+  {id:"1348277713919375",price:1190,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1348277713919375/"},
+  {id:"1775175686783854",price:1190,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1775175686783854/"},
+  {id:"857783916917086",price:995,beds:0,title:"Studio - Rue la Fontaine NEW",loc:"3490 Rue la Fontaine, Montréal",zone:"mtl_0",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/857783916917086/"}
+];
+
+// City mapping
+// ─── PRINCE ALBERT AGENTS ───
+const VINIT = [
+  {id:"3054523851410988",title:"1 Bed - 399 32nd St W, Prince Albert SK",price:1280,beds:1,photos:6,desc_ok:true,pets:true,zone:"pa_1",loc:"399 32nd St W, Prince Albert SK S6V 5Z3",link:"https://www.facebook.com/marketplace/item/3054523851410988/",desc:"1 bed next to South Hill mall. Elevator. Balcony. Walk-in closet. Dog/cat friendly. 1yr lease."},
+  {id:"2606842419750650",title:"2 Bed - 3030 Dunn Dr, Prince Albert SK",price:1290,beds:2,photos:4,desc_ok:true,pets:true,zone:"pa_2",loc:"3030 Dunn Dr, Prince Albert SK S6V 7E7",link:"https://www.facebook.com/marketplace/item/2606842419750650/",desc:"Spacious 2 bed. Dog/cat friendly. AC. Balcony. 1 year lease. Heating available."},
+  {id:"633074193192702", title:"2 Bed - Prince Albert SK",price:1490,beds:2,photos:5,desc_ok:true,pets:true,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/633074193192702/",desc:"Perfect location for family. In-unit laundry. AC. Dishwasher. Walk-in closet. Balcony."},
+  {id:"29793418543636539",title:"2 Bed - Prince Albert SK",price:1120,beds:2,photos:4,desc_ok:true,pets:true,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/29793418543636539/",desc:"Apartment for rent. Dog/cat friendly. Fireplace. Dishwasher. Basement. Ceiling fan."},
+];
+const AVI = [
+  {id:"26363547823325331",title:"2 Bed - Prince Albert SK",price:1290,beds:2,photos:3,desc_ok:true,pets:false,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/26363547823325331/",desc:"Best and affordable apartment. One car park included. Heat and water included."},
+  {id:"901148949618689", title:"1 Bed - Prince Albert SK (South Hill)",price:1155,beds:1,photos:4,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK (South Hill area)",link:"https://www.facebook.com/marketplace/item/901148949618689/",desc:"Newly renovated 1 bedroom. New flooring. New appliances. One car park. Heat & water included."},
+];
+const ABHI = [
+  {id:"1689482188708476",title:"2 Bed - 1132 Central Ave, Prince Albert SK",price:1490,beds:2,photos:3,desc_ok:true,pets:false,zone:"pa_2",loc:"1132 Central Ave, Prince Albert SK",link:"https://www.facebook.com/marketplace/item/1689482188708476/",desc:"Apartment for rent. Downtown location. Wingspan Properties. Mon–Fri 9am–5pm."},
+  {id:"887514197633854", title:"1 Bed - Prince Albert SK (South Hill)",price:1155,beds:1,photos:4,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK (South Hill area)",link:"https://www.facebook.com/marketplace/item/887514197633854/",desc:"Newly renovated studio next to South Hill mall. New flooring & appliances. Heat & water included."},
+];
+const LEASEWITH = [
+  
+  {id:"1477304230836157",title:"2 Bed - 399 32nd St W, Prince Albert SK",price:1455,beds:2,photos:5,desc_ok:true,pets:true, zone:"pa_2",loc:"399 32nd St W, Prince Albert SK S6V 5Z3",link:"https://www.facebook.com/marketplace/item/1477304230836157/",desc:"Wingspan Properties. Dog/cat friendly. Elevator. Secured entry. Balcony. Walk-in closet."},
+  {id:"1842045623843093",title:"1 Bed - 33 River St E, Prince Albert SK",price:1190,beds:1,photos:4,desc_ok:true,pets:false,zone:"pa_1",loc:"33 River St E, Prince Albert SK",link:"https://www.facebook.com/marketplace/item/1842045623843093/",desc:"Wingspan Properties. 1 bed apartment. 33 River St E, Prince Albert SK."},
+  {id:"3625077684337629",title:"2 Bed - Prince Albert SK",price:1350,beds:2,photos:3,desc_ok:true,pets:false,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/3625077684337629/",desc:"Wingspan Properties. Apartment for rent. Contact for details."},
+  {id:"915190018100115", title:"1 Bed - Prince Albert SK",price:1190,beds:1,photos:3,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/915190018100115/",desc:"Wingspan Properties. 1132 Central Ave, Prince Albert SK S6V 4V6."},
+  {id:"1616908532762897",title:"1 Bed - Prince Albert SK",price:1215,beds:1,photos:3,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/1616908532762897/",desc:"Wingspan Properties. Location: 1132 Central Ave, Prince Albert SK."},
+  {id:"910197502004234", title:"3 Bed - 1401 28th St E, Prince Albert SK",price:1250,beds:3,photos:4,desc_ok:true,pets:false,zone:"pa_3",loc:"1401 28th St E, Prince Albert SK S6V 6Z8",link:"https://www.facebook.com/marketplace/item/910197502004234/",desc:"3 bed apartment. 1401 28th St E. Wingspan Properties."},
+
+];
+
+// ─── EDMONTON AGENTS ───
+const SAFIYA = [
+  
+  {id:"1854146668875521",title:"2 Bed - 10945 84 St NW, Edmonton AB",price:1250,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"10945 84 St NW, Edmonton AB T6A 3P8",link:"https://www.facebook.com/marketplace/item/1854146668875521/"},
+  {id:"1707985713723016",title:"2 Bed - 10707 106 St NW, Edmonton AB",price:1375,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"10707 106 St NW, Edmonton AB T5H 2X8",link:"https://www.facebook.com/marketplace/item/1707985713723016/"},
+  {id:"1020147234035102",title:"1 Bed - 10707 106 St NW, Edmonton AB",price:1195,beds:1,photos:4,desc_ok:true,pets:false,zone:"yeg_1",loc:"10707 106 St NW, Edmonton AB T5H 2X8",link:"https://www.facebook.com/marketplace/item/1020147234035102/"},
+  {id:"1026993743113953",title:"Studio - Edmonton AB",price:1095,beds:0,photos:4,desc_ok:true,pets:false,zone:"yeg_0",loc:"Edmonton, AB",link:"https://www.facebook.com/marketplace/item/1026993743113953/"},
+  {id:"987355700366540",title:"2 Bed - 11835 89 St NW, Edmonton AB",price:1250,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"11835 89 St NW, Edmonton AB T5B 3R8",link:"https://www.facebook.com/marketplace/item/987355700366540/"},
+  {id:"1495356855374967",title:"1 Bed - 11045 83 St NW, Edmonton AB",price:1150,beds:1,photos:4,desc_ok:true,pets:false,zone:"yeg_1",loc:"11045 83 St NW, Edmonton AB T5H 1S7",link:"https://www.facebook.com/marketplace/item/1495356855374967/"},
+  {id:"1794521644894108",title:"2 Bed - 11835 89 St NW (B), Edmonton AB",price:1295,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"11835 89 St NW, Edmonton AB T5B 3R8",link:"https://www.facebook.com/marketplace/item/1794521644894108/"},
+  {id:"26607311672302353",title:"2 Bed - 11835 89 St NW (C), Edmonton AB",price:1250,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"11835 89 St NW, Edmonton AB T5B 3R8",link:"https://www.facebook.com/marketplace/item/26607311672302353/"},
+  {id:"2424573657971273",title:"1 Bed - Edmonton AB (South)",price:1125,beds:1,photos:4,desc_ok:true,pets:false,zone:"yeg_1",loc:"Edmonton, AB",link:"https://www.facebook.com/marketplace/item/2424573657971273/"},
+  {id:"1582216172984187",title:"2 Bed - 10945 84 St NW (B), Edmonton AB",price:1350,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"10945 84 St NW, Edmonton AB T6A 3P8",link:"https://www.facebook.com/marketplace/item/1582216172984187/"},
+
+];
+
+const CITY_MAP = {
+  montreal: ["fernando","jeny","kathleen","oriana","padly"],
+  "prince-albert": ["vinit","avi","abhi","leasewith"],
+  edmonton: ["safiya"]
+};
+let ACTIVE_CITY = "all"; // "all" | "montreal" | "prince-albert" | "edmonton"
+
+function getCityData(city) {
+  if (city === "all") return ALL_DATA;
+  const agents = CITY_MAP[city] || [];
+  return ALL_DATA.filter(i => agents.includes(i.agent_key));
+}
+
+function getCityAgents(city) {
+  if (city === "all") return {
+    fernando: FERNANDO, jeny: JENY, kathleen: KATHLEEN, oriana: ORIANA
+  };
+  const agents = CITY_MAP[city] || [];
+  const map = {fernando:FERNANDO,jeny:JENY,kathleen:KATHLEEN,oriana:ORIANA};
+  const result = {};
+  agents.forEach(a => { if(map[a]) result[a] = map[a]; });
+  return result;
+}
+
+const ALL_DATA=[...FERNANDO.map(i=>({...i,agent:"Fernando",agentColor:"#6366f1",agent_key:"fernando"})),...JENY.map(i=>({...i,agent:"Jeny",agentColor:"#10b981",agent_key:"jeny"})),...KATHLEEN.map(i=>({...i,agent:"Kathleen",agentColor:"#f59e0b",agent_key:"kathleen"})),...ORIANA.map(i=>({...i,agent:"Oriana",agentColor:"#ec4899",agent_key:"oriana"})),...VINIT.map(i=>({...i,agent:"Vinit",agentColor:"#8b5cf6",agent_key:"vinit"})),...AVI.map(i=>({...i,agent:"Avi",agentColor:"#06b6d4",agent_key:"avi"})),...ABHI.map(i=>({...i,agent:"Abhi",agentColor:"#f97316",agent_key:"abhi"})),...LEASEWITH.map(i=>({...i,agent:"LeaseWith",agentColor:"#84cc16",agent_key:"leasewith"})),...SAFIYA.map(i=>({...i,agent:"Safiya",agentColor:"#0ea5e9",agent_key:"safiya"})),...PADLY.map(i=>({...i,agent:"Padly",agentColor:"#a855f7",agent_key:"padly"}))];
 
 function renderKPIs(){
-  const scores=ALL_DATA.map(i=>calcScore(i));const avgSc=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);const needAtt=scores.filter(s=>s<55).length;const avgPrice=Math.round(ALL_DATA.reduce((s,i)=>s+i.price,0)/ALL_DATA.length);
-  document.getElementById("kpi-row").innerHTML=`<div class="kpi" style="--ac:#6366f1"><div class="kpi-icon">📦</div><div class="kpi-val">${ALL_DATA.length}</div><div class="kpi-label">Active Listings</div><div class="kpi-sub">4 agents · Montréal area</div></div><div class="kpi" style="--ac:#10b981"><div class="kpi-icon">💰</div><div class="kpi-val">CA$${avgPrice.toLocaleString()}</div><div class="kpi-label">Avg Price/Month</div><div class="kpi-sub">Apts & studios only</div></div><div class="kpi" style="--ac:#f59e0b"><div class="kpi-icon">⭐</div><div class="kpi-val">4.4 ★</div><div class="kpi-label">Avg Agent Rating</div><div class="kpi-sub">Fernando 4.7 · Oriana ~4.9</div></div><div class="kpi" style="--ac:#8b5cf6"><div class="kpi-icon">🎯</div><div class="kpi-val">${avgSc}/100</div><div class="kpi-label">Portfolio Score</div><div class="kpi-sub">Price · Photos · Freshness</div></div><div class="kpi kpi-clickable" style="--ac:#ef4444" onclick="openAtt()" title="Click to see all listings needing attention"><div class="kpi-icon">⚠️</div><div class="kpi-val">${needAtt}</div><div class="kpi-label">Need Attention</div><div class="kpi-sub" style="color:#fca5a5;font-weight:600">👆 Click to view</div></div>`;
+  const cityData = getCityData(ACTIVE_CITY);
+  if(cityData.length===0){document.getElementById("kpi-row").innerHTML='<div style="text-align:center;padding:20px;color:#6b7280;grid-column:1/-1">No data for this city yet.</div>';return;}
+  const scores=cityData.map(i=>calcScore(i));const avgSc=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length);const needAtt=scores.filter(s=>s<55).length;const avgPrice=Math.round(cityData.reduce((s,i)=>s+i.price,0)/cityData.length);
+  const agents=[...new Set(cityData.map(i=>i.agent_key))].length;
+  document.getElementById("kpi-row").innerHTML=`<div class="kpi" style="--ac:#6366f1"><div class="kpi-icon">📦</div><div class="kpi-val">${cityData.length}</div><div class="kpi-label">Active Listings</div><div class="kpi-sub">${agents} agent${agents!==1?"s":""} · ${ACTIVE_CITY==="all"?"All cities":ACTIVE_CITY.charAt(0).toUpperCase()+ACTIVE_CITY.slice(1)}</div></div><div class="kpi" style="--ac:#10b981"><div class="kpi-icon">💰</div><div class="kpi-val">CA$${avgPrice.toLocaleString()}</div><div class="kpi-label">Avg Price/Month</div><div class="kpi-sub">Apts & studios only</div></div><div class="kpi" style="--ac:#f59e0b"><div class="kpi-icon">⭐</div><div class="kpi-val">4.1 ★</div><div class="kpi-label">Avg Agent Rating</div><div class="kpi-sub">Fernando 4.7 · Oriana 4.1</div></div><div class="kpi" style="--ac:#8b5cf6"><div class="kpi-icon">🎯</div><div class="kpi-val">${avgSc}/100</div><div class="kpi-label">Portfolio Score</div><div class="kpi-sub">Price · Photos · Freshness</div></div><div class="kpi kpi-clickable" style="--ac:#ef4444" onclick="openAtt()" title="Click to see all listings needing attention"><div class="kpi-icon">⚠️</div><div class="kpi-val">${needAtt}</div><div class="kpi-label">Need Attention</div><div class="kpi-sub" style="color:#fca5a5;font-weight:600">👆 Click to view</div></div>`;
 }
 
 function renderRanking(){
-  const scored=ALL_DATA.map(i=>({...i,sc:calcScore(i),d:getDiff(i.price,i.beds,i.zone||null)})).sort((a,b)=>b.sc-a.sc);
+  const cityData=getCityData(ACTIVE_CITY);
+  if(cityData.length===0){document.getElementById("pane-ranking").innerHTML='<div style="text-align:center;padding:40px;color:#6b7280">No data for this city yet.</div>';return;}
+  const scored=cityData.map(i=>({...i,sc:calcScore(i),d:getDiff(i.price,i.beds,i.zone||null)})).sort((a,b)=>b.sc-a.sc);
   const medals=["🥇","🥈","🥉","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣","🔟"];
   function card(item,rank,isTop){
     const c=scoreColor(item.sc);const r=getRef(item.beds,item.zone||null);const sug=getSuggested(item.price,item.beds,item.zone||null);const recs=buildRecs(item);const medal=isTop?(medals[rank-1]||rank):"#"+rank;
@@ -633,15 +1091,68 @@ function renderCharts(){
   ["ct1","ct2","ct3"].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=t(["chart1","chart2","chart3"][i]);});
 }
 function renderAll(){
+  updateCityCounts();
+  renderAllLeyadAnalytics();
   renderKPIs();
-  renderAgent("fernando",FERNANDO,"Fernando Muñoz","FM","#6366f1","4.7","47","8","2010","https://www.facebook.com/marketplace/profile/1764619868/","fernando");
-  renderAgent("jeny",JENY,"Jeny Ocaranza (Jenifer)","JO","#10b981","4.0","14","6","2010","https://www.facebook.com/marketplace/profile/100001182962462/","jeny");
-  renderAgent("kathleen",KATHLEEN,"Kathleen Harvey","KH","#f59e0b","3.9","12","4","2007","https://www.facebook.com/marketplace/profile/658666244/","kathleen");
-  renderAgent("oriana",ORIANA,"Oriana Samboni","OS","#ec4899","~4.9","73","16","2021","https://www.facebook.com/marketplace/profile/100065415266053/","oriana");
+  renderAgent("vinit",VINIT,"Vinit Leasing","VL","#8b5cf6","4.2","32","4","2024","https://www.facebook.com/marketplace/profile/61575700168800/","vinit");
+  renderAgent("avi",AVI,"Avi Leasing","AL","#06b6d4","4.0","18","2","2024","https://www.facebook.com/marketplace/profile/61572162310599/","avi");
+  renderAgent("abhi",ABHI,"Abhi Abhi","AA","#f97316","4.1","22","2","2024","https://www.facebook.com/marketplace/profile/100062298857231/","abhi");
+  renderAgent("leasewith",LEASEWITH,"LeaseWith Fenil","LF","#84cc16","4.3","45","6","2024","https://www.facebook.com/marketplace/profile/61579577724365/","leasewith");
+  renderAgent("fernando",FERNANDO,"Fernando Muñoz","FM","#6366f1","4.7","58","5","2010","https://www.facebook.com/marketplace/profile/1764619868/","fernando");
+  renderAgent("jeny",JENY,"Jeny Ocaranza","JO","#10b981","4.0","18","12","2010","https://www.facebook.com/marketplace/profile/100001182962462/","jeny");
+  renderAgent("kathleen",KATHLEEN,"Kathleen Harvey","KH","#f59e0b","3.7","17","7","2007","https://www.facebook.com/marketplace/profile/658666244/","kathleen");
+  renderAgent("oriana",ORIANA,"Oriana Samboni","OS","#ec4899","4.1","77","14","2021","https://www.facebook.com/marketplace/profile/100065415266053/","oriana");
+  renderAgent("safiya",SAFIYA,"Safiya Ali","SA","#0ea5e9","4.2","0","10","2023","https://www.facebook.com/marketplace/profile/100078883825365/","safiya");
+  renderAgent("padly",PADLY,"Padly Facebook","PF","#a855f7","4.0","0","10","2024","https://www.facebook.com/marketplace/profile/61590601774639/","padly");
   renderRanking();
   if(chartsBuilt)renderCharts();
 }
+function updateCityCounts() {
+  const allEl = document.getElementById("cnt-all");
+  if (allEl) allEl.textContent = ALL_DATA.length+" listings";
+  const mEl = document.getElementById("cnt-montreal");
+  if (mEl) { const d=getCityData("montreal"); mEl.textContent=d.length?d.length+" listings":""; }
+  const paEl = document.getElementById("cnt-prince-albert");
+  if (paEl) { const d=getCityData("prince-albert"); paEl.textContent=d.length?d.length+" listings":""; }
+}
+
+function switchCity(city, el) {
+  ACTIVE_CITY = city;
+  document.querySelectorAll(".city-btn").forEach(b => b.classList.remove("active"));
+  el.classList.add("active");
+
+  const allAnalytics = document.getElementById("all-leyad-analytics");
+
+  // Hide all city tab rows
+  ["montreal","prince-albert","edmonton"].forEach(c => {
+    const t = document.getElementById("tabs-" + c);
+    if (t) t.style.display = "none";
+  });
+
+  if (city === "all") {
+    // Show all-leyad analytics, hide agent panes
+    if (allAnalytics) allAnalytics.style.display = "block";
+    document.querySelectorAll(".pane").forEach(p => p.classList.remove("active"));
+    renderAllLeyadAnalytics();
+  } else {
+    // Hide all-leyad analytics, show city agent tabs
+    if (allAnalytics) allAnalytics.style.display = "none";
+    const cityTabs = document.getElementById("tabs-" + city);
+    if (cityTabs) {
+      cityTabs.style.display = "";
+      const firstTab = cityTabs.querySelector(".tab");
+      if (firstTab) firstTab.click();
+    }
+  }
+
+  renderKPIs();
+  renderRanking();
+  updateCityCounts();
+}
+
+
 function showTab(name,el){
+  if(name==="marketintel") setTimeout(renderMarketIntel, 50);
   document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
   document.querySelectorAll(".pane").forEach(p=>p.classList.remove("active"));
   el.classList.add("active");
@@ -649,7 +1160,8 @@ function showTab(name,el){
   if(name==="charts")renderCharts();
   if(name==="analytics")renderAnalytics();
 }
-renderAll();
+let analyticsFilter = '3m';
+let analyticsCharts = {};
 
 function openAtt(){
   const attItems=ALL_DATA.map((item,idx)=>{
@@ -742,23 +1254,20 @@ function toggleTheme(){
 // Historical data by week (last 12 weeks) — current week = week 0
 // Format: {week, date_label, active_listings, avg_price, avg_rating, portfolio_score}
 const ANALYTICS_DATA = [
-  {w:12,label:"Mar W1",listings:18,price:1145,rating:4.2,score:52},
-  {w:11,label:"Mar W2",listings:18,price:1150,rating:4.3,score:53},
-  {w:10,label:"Mar W3",listings:19,price:1148,rating:4.3,score:54},
-  {w:9, label:"Mar W4",listings:19,price:1155,rating:4.3,score:55},
-  {w:8, label:"Apr W1",listings:20,price:1162,rating:4.4,score:56},
-  {w:7, label:"Apr W2",listings:20,price:1168,rating:4.4,score:57},
-  {w:6, label:"Apr W3",listings:20,price:1172,rating:4.4,score:58},
-  {w:5, label:"Apr W4",listings:21,price:1178,rating:4.4,score:59},
-  {w:4, label:"May W1",listings:21,price:1182,rating:4.5,score:60},
-  {w:3, label:"May W2",listings:26,price:1190,rating:4.4,score:60},
-  {w:2, label:"May W3",listings:30,price:1198,rating:4.4,score:60},
-  {w:1, label:"May W4",listings:32,price:1203,rating:4.4,score:61},
-  {w:0, label:"Jun W1",listings:ALL_DATA.length,price:Math.round(ALL_DATA.reduce((s,i)=>s+i.price,0)/ALL_DATA.length),rating:4.4,score:Math.round(ALL_DATA.map(i=>calcScore(i)).reduce((a,b)=>a+b,0)/ALL_DATA.length)},
+  {w:12,label:"Feb W2",listings:16,price:1124,rating:4.1,score:48},
+  {w:11,label:"Feb W3",listings:17,price:1131,rating:4.2,score:50},
+  {w:10,label:"Feb W4",listings:17,price:1138,rating:4.2,score:51},
+  {w:9, label:"Mar W1",listings:18,price:1145,rating:4.2,score:52},
+  {w:8, label:"Mar W2",listings:18,price:1150,rating:4.3,score:53},
+  {w:7, label:"Mar W3",listings:19,price:1148,rating:4.3,score:54},
+  {w:6, label:"Mar W4",listings:19,price:1155,rating:4.3,score:55},
+  {w:5, label:"Apr W1",listings:20,price:1162,rating:4.4,score:56},
+  {w:4, label:"Apr W2",listings:20,price:1168,rating:4.4,score:57},
+  {w:3, label:"Apr W3",listings:20,price:1172,rating:4.4,score:58},
+  {w:2, label:"Apr W4",listings:21,price:1178,rating:4.4,score:59},
+  {w:1, label:"May W1",listings:21,price:1182,rating:4.5,score:60},
+  {w:0, label:"Now",listings:ALL_DATA.length,price:Math.round(ALL_DATA.reduce((s,i)=>s+i.price,0)/ALL_DATA.length),rating:4.4,score:Math.round(ALL_DATA.map(i=>calcScore(i)).reduce((a,b)=>a+b,0)/ALL_DATA.length)},
 ];
-
-let analyticsFilter = '3m'; // '1m','3m','6m','all'
-let analyticsCharts = {};
 
 function setAnalyticsFilter(f, el){
   analyticsFilter = f;
@@ -782,6 +1291,93 @@ function trendBadge(data, key){
   const cls = up ? 'trend-up' : 'trend-down';
   const arrow = up ? '↑' : '↓';
   return `<span class="trend-badge ${cls}">${arrow} ${Math.abs(pct)}%</span>`;
+}
+
+function renderAllLeyadAnalytics() {
+  const el = document.getElementById('all-leyad-analytics');
+  if (!el) return;
+  const data = getFilteredData();
+  const labels = data.map(d=>d.label);
+  const latest = data[data.length-1];
+  const first = data[0];
+
+  function changePct(key){
+    if(data.length<2)return '';
+    const d=((latest[key]-first[key])/first[key]*100);
+    const up=d>=0;
+    return `<span style="background:${up?'rgba(16,185,129,0.15)':'rgba(239,68,68,0.15)'};color:${up?'#34d399':'#f87171'};padding:2px 7px;border-radius:5px;font-size:10px;font-weight:600;margin-left:6px">${up?'↑':'↓'}${Math.abs(d).toFixed(1)}%</span>`;
+  }
+
+  const fl = ({en:['1 Month','3 Months','6 Months','All Time'],fr:['1 Mois','3 Mois','6 Mois','Tout'],es:['1 Mes','3 Meses','6 Meses','Todo']})[LANG]||['1 Month','3 Months','6 Months','All Time'];
+
+  el.innerHTML = `
+    <div class="analytics-hdr">
+      <div>
+        <div class="analytics-title">📈 All Leyad — Company Performance Analytics</div>
+        <div class="analytics-sub">Combined data across all cities · listings, pricing, ratings, score over time.</div>
+      </div>
+      <div class="filter-row">
+        <span style="font-size:11px;color:#9aa3b5;font-weight:500">Filter:</span>
+        <button class="filter-btn ${analyticsFilter==='month'?'active':''}" onclick="setAnalyticsFilterAll('month',this)">${fl[0]}</button>
+        <button class="filter-btn ${analyticsFilter==='3m'?'active':''}" onclick="setAnalyticsFilterAll('3m',this)">${fl[1]}</button>
+        <button class="filter-btn ${analyticsFilter==='6m'?'active':''}" onclick="setAnalyticsFilterAll('6m',this)">${fl[2]}</button>
+        <button class="filter-btn ${analyticsFilter==='all'?'active':''}" onclick="setAnalyticsFilterAll('all',this)">${fl[3]}</button>
+      </div>
+    </div>
+    <div class="analytics-summary">
+      <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:#9aa3b5;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">📊 Current Snapshot vs Period Start</div>
+      <div class="summary-grid">
+        <div class="summary-item"><div class="summary-label">Active Listings</div><div class="summary-val" style="color:#3b82f6">${latest.listings}</div>${changePct('listings')}</div>
+        <div class="summary-item"><div class="summary-label">Avg Price</div><div class="summary-val" style="color:#10b981">CA$${latest.price.toLocaleString()}</div>${changePct('price')}</div>
+        <div class="summary-item"><div class="summary-label">Avg Agent Rating</div><div class="summary-val" style="color:#f59e0b">${latest.rating}★</div>${changePct('rating')}</div>
+        <div class="summary-item"><div class="summary-label">Portfolio Score</div><div class="summary-val" style="color:#8b5cf6">${latest.score}/100</div>${changePct('score')}</div>
+      </div>
+    </div>
+    <div class="analytics-grid">
+      <div class="analytics-card"><h3>Active Listings</h3><div class="trend"><span class="trend-val" style="color:#3b82f6">${latest.listings}</span>${trendBadge(data,'listings')}</div><div class="chart-area"><canvas id="all-ac-listings"></canvas></div></div>
+      <div class="analytics-card"><h3>Avg Price / Month</h3><div class="trend"><span class="trend-val" style="color:#10b981">CA$${latest.price.toLocaleString()}</span>${trendBadge(data,'price')}</div><div class="chart-area"><canvas id="all-ac-price"></canvas></div></div>
+      <div class="analytics-card"><h3>Avg Agent Rating</h3><div class="trend"><span class="trend-val" style="color:#f59e0b">${latest.rating} ★</span>${trendBadge(data,'rating')}</div><div class="chart-area"><canvas id="all-ac-rating"></canvas></div></div>
+      <div class="analytics-card"><h3>Portfolio Score</h3><div class="trend"><span class="trend-val" style="color:#8b5cf6">${latest.score}/100</span>${trendBadge(data,'score')}</div><div class="chart-area"><canvas id="all-ac-score"></canvas></div></div>
+    </div>`;
+
+  // Destroy old all-leyad charts
+  if (!window.allLeyadCharts) window.allLeyadCharts = {};
+  ['listings','price','rating','score'].forEach(k=>{
+    if(allLeyadCharts[k]){allLeyadCharts[k].destroy();delete allLeyadCharts[k];}
+  });
+
+  const isLight = document.body.classList.contains('light');
+  const gridColor = isLight ? 'rgba(0,21,79,0.08)' : 'rgba(255,255,255,0.08)';
+  const tickColor = isLight ? '#4a5568' : '#8892a4';
+
+  function makeAllChart(id, label, dataKey, color){
+    const canvas = document.getElementById(id);
+    if(!canvas) return;
+    const vals = data.map(d=>d[dataKey]);
+    const ctx = canvas.getContext('2d');
+    const grad = ctx.createLinearGradient(0,0,0,160);
+    grad.addColorStop(0, color+'55'); grad.addColorStop(1, color+'00');
+    allLeyadCharts[dataKey] = new Chart(canvas, {
+      type:'line',
+      data:{labels, datasets:[{label, data:vals, borderColor:color, borderWidth:2.5, pointBackgroundColor:color, pointRadius:3, pointHoverRadius:5, fill:true, backgroundColor:grad, tension:0.4}]},
+      options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
+        scales:{
+          x:{ticks:{color:tickColor,font:{size:9},maxRotation:0},grid:{color:gridColor}},
+          y:{ticks:{color:tickColor,font:{size:9},callback:v=>dataKey==='price'?'$'+v:(dataKey==='rating'?v+'★':v)},grid:{color:gridColor},beginAtZero:false}
+        }}
+    });
+  }
+  makeAllChart('all-ac-listings','Listings','listings','#3b82f6');
+  makeAllChart('all-ac-price','Avg Price','price','#10b981');
+  makeAllChart('all-ac-rating','Rating','rating','#f59e0b');
+  makeAllChart('all-ac-score','Score','score','#8b5cf6');
+}
+
+function setAnalyticsFilterAll(f, el){
+  analyticsFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderAllLeyadAnalytics();
 }
 
 function renderAnalytics(){
@@ -933,6 +1529,237 @@ function renderAnalytics(){
   makeChart('ac-score','Score','score','#8b5cf6');
 }
 
+
+// ─── LEYAD AI CHAT ENGINE ───
+let chatOpen = false;
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById("chat-panel").classList.toggle("open", chatOpen);
+}
+function sendSuggestion(btn) {
+  document.getElementById("chat-input").value = btn.textContent;
+  sendChat();
+}
+function sendChat() {
+  const input = document.getElementById("chat-input");
+  const q = input.value.trim();
+  if (!q) return;
+  input.value = "";
+  addChatMsg(q, "user");
+  hideChatSugg();
+  setTimeout(() => addChatMsg(processQuery(q), "bot"), 500);
+}
+function addChatMsg(text, role) {
+  const div = document.createElement("div");
+  div.className = "chat-msg " + role;
+  div.innerHTML = text;
+  const msgs = document.getElementById("chat-messages");
+  msgs.appendChild(div);
+  msgs.scrollTop = 99999;
+}
+function hideChatSugg() {
+  const s = document.getElementById("chat-suggestions");
+  if (s) s.style.display = "none";
+}
+function processQuery(q) {
+  const query = q.toLowerCase();
+  const cityData = getCityData(ACTIVE_CITY);
+  if (!cityData.length) return "No listings available for this city yet.";
+  const scored = cityData.map(i => ({...i, sc: calcScore(i), d: getDiff(i.price, i.beds, i.zone||null)}));
+  if (query.match(/best|top|highest score|better|top 3/)) {
+    const top = [...scored].sort((a,b)=>b.sc-a.sc).slice(0,3);
+    return '<b>Top 3 listings:</b><br>' + top.map((l,i) => `${i+1}. ${l.title} (${l.agent}) — Score <b>${l.sc}/100</b> · CA$${l.price.toLocaleString()}/mo`).join("<br>");
+  }
+  if (query.match(/attention|problem|fix|issue|worst|critical|bad/)) {
+    const bad = scored.filter(l=>l.sc<55).sort((a,b)=>a.sc-b.sc).slice(0,4);
+    if (!bad.length) return "All listings score above 55/100. Great job!";
+    return `<b>${bad.length} listing${bad.length>1?"s":""} need attention:</b><br>` + bad.map(l=>`${l.title} (${l.agent}) — Score <b>${l.sc}/100</b>`).join("<br>");
+  }
+  if (query.match(/avg|average|price.*agent|agent.*price/)) {
+    const agents = [...new Set(cityData.map(i=>i.agent))];
+    return '<b>Avg price by agent:</b><br>' + agents.map(a => {
+      const items = cityData.filter(i=>i.agent===a);
+      return `<b>${a}</b>: CA$${Math.round(items.reduce((s,i)=>s+i.price,0)/items.length).toLocaleString()}/mo (${items.length} listings)`;
+    }).join("<br>");
+  }
+  const agentNames = [{key:"oriana",name:"oriana"},{key:"fernando",name:"fernando"},{key:"jeny",name:"jeny"},{key:"kathleen",name:"kathleen"}];
+  for (const ag of agentNames) {
+    if (query.includes(ag.name)) {
+      const items = scored.filter(i=>i.agent_key===ag.key);
+      if (!items.length) return `No listings for ${ag.name} in this view.`;
+      const avgSc = Math.round(items.reduce((s,i)=>s+i.sc,0)/items.length);
+      const avgPr = Math.round(items.reduce((s,i)=>s+i.price,0)/items.length);
+      const best = [...items].sort((a,b)=>b.sc-a.sc)[0];
+      return `<b>${ag.name.charAt(0).toUpperCase()+ag.name.slice(1)} portfolio:</b><br>${items.length} listings · Avg CA$${avgPr.toLocaleString()}/mo<br>Score: <b>${avgSc}/100</b><br>Best: ${best.title} (${best.sc}/100)`;
+    }
+  }
+  if (query.match(/photo|image|picture/)) {
+    const low = scored.filter(l=>l.photos<6).sort((a,b)=>a.photos-b.photos).slice(0,4);
+    if (!low.length) return "All listings have 6+ photos.";
+    return '<b>Listings with few photos:</b><br>' + low.map(l=>`${l.title} (${l.agent}) — <b>${l.photos} photos</b>`).join("<br>");
+  }
+  if (query.match(/total|summary|overview|how many|count/)) {
+    const total = cityData.length;
+    const avgPr = Math.round(cityData.reduce((s,i)=>s+i.price,0)/total);
+    const avgSc = Math.round(scored.reduce((s,i)=>s+i.sc,0)/scored.length);
+    const needAtt = scored.filter(l=>l.sc<55).length;
+    return `<b>Portfolio summary:</b><br><b>${total}</b> active listings<br>Avg price: <b>CA$${avgPr.toLocaleString()}/mo</b><br>Portfolio score: <b>${avgSc}/100</b><br>Need attention: <b>${needAtt}</b>`;
+  }
+  if (query.match(/market|compare|vs market|above|below/)) {
+    const above = scored.filter(l=>l.d>5).length;
+    const sweet = scored.filter(l=>l.d>=-5&&l.d<=0).length;
+    const below = scored.filter(l=>l.d<-10).length;
+    return `<b>Price vs Market:</b><br>Sweet spot (0 to -5%): <b>${sweet}</b><br>Above market (>+5%): <b>${above}</b><br>Below avg (<-10%): <b>${below}</b>`;
+  }
+  if (query.match(/new|recent|fresh|just listed/)) {
+    const fresh = cityData.filter(l=>!l.old).slice(0,5);
+    return fresh.length ? '<b>Fresh listings:</b><br>' + fresh.map(l=>`${l.title} (${l.agent}) — CA$${l.price.toLocaleString()}/mo`).join("<br>") : "No fresh listings right now.";
+  }
+  if (query.match(/help|what can|what do|options/)) {
+    return '<b>I can answer:</b><br>• "Best listings" / "Worst listings"<br>• "Who needs attention?"<br>• "Avg price by agent"<br>• "Oriana score" / "Fernando listings"<br>• "Listings with few photos"<br>• "Portfolio summary"<br>• "Price vs market"<br>• "Fresh listings"';
+  }
+  return `I could not find a specific answer for "<b>${q}</b>".<br>Try: "best listings", "who needs attention", "avg price", "summary". Type <em>help</em> for all options.`;
+}
+
+
+// ─── MARKET INTELLIGENCE TAB ───
+let miZone = null, miType = "2-bed";
+function renderMarketIntel() {
+  const city = ACTIVE_CITY === "all" ? "montreal" : (ACTIVE_CITY || "montreal");
+  const cityData = MARKET_INTEL[city];
+  const pane = document.getElementById("pane-marketintel");
+  if (!pane) return;
+  if (!cityData || Object.keys(cityData.zones).length === 0) {
+    pane.innerHTML = '<div style="text-align:center;padding:60px;color:#6b7280">No market intelligence data for this city yet.</div>';
+    return;
+  }
+  const zones = Object.keys(cityData.zones);
+  if (!miZone) miZone = zones[0];
+
+  // Zone selector
+  const zoneBtns = zones.map(z => `<button class="mi-zone-btn${z===miZone?" active":""}" onclick="miSelectZone('${z.replace(/'/g,"\'")}')">📍 ${z}</button>`).join("");
+
+  // Type tabs
+  const typeTabs = MI_BED_TYPES.map(t => `<button class="mi-type-btn${t===miType?" active":""}" onclick="miSelectType('${t}')">${MI_BED_LABELS[t]}</button>`).join("");
+
+  // Platform cards for selected zone+type
+  const zoneData = cityData.zones[miZone];
+  const typeData = zoneData ? zoneData[miType] : null;
+  let cards = "", median = 0, minP = 9999, maxP = 0;
+  if (typeData) {
+    const prices = Object.values(typeData);
+    median = Math.round(prices.reduce((a,b)=>a+b,0)/prices.length);
+    minP = Math.min(...prices); maxP = Math.max(...prices);
+    const maxVal = maxP;
+    cards = MI_PLATFORMS.map(p => {
+      const price = typeData[p.key] || 0;
+      const pct = Math.round((price/maxVal)*100);
+      const diff = Math.round(((price-median)/median)*100);
+      const diffStr = diff>0?`+${diff}%`:diff<0?`${diff}%`:"=avg";
+      const diffCol = diff>5?"#fca5a5":diff<-5?"#6ee7b7":"#9aa3b5";
+      return `<a class="mi-platform-card" href="${p.url}" target="_blank">
+        <div class="mi-plat-hdr"><span class="mi-plat-icon">${p.icon}</span><span class="mi-plat-name">${p.name}</span><span style="margin-left:auto;font-size:10px;color:${diffCol};font-weight:700">${diffStr}</span></div>
+        <div class="mi-plat-price">CA$${price.toLocaleString()}<span style="font-size:11px;font-weight:400;color:#6b7280">/mo</span></div>
+        <div class="mi-plat-bar"><div class="mi-plat-fill" style="width:${pct}%;background:${p.color}"></div></div>
+        <div class="mi-plat-note">vs. cross-platform median CA$${median.toLocaleString()}</div>
+      </a>`;
+    }).join("");
+  }
+
+  // Price calculator
+  const calcZoneOptions = zones.map(z => `<option value="${z}"${z===miZone?" selected":""}>${z}</option>`).join("");
+  const calcTypeOptions = MI_BED_TYPES.map(t => `<option value="${t}"${t===miType?" selected":""}>${MI_BED_LABELS[t]}</option>`).join("");
+
+  pane.innerHTML = `
+    <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#e2e8f0;margin-bottom:16px">
+      🌐 Market Intelligence — ${city.charAt(0).toUpperCase()+city.slice(1)}
+      <span style="font-size:10px;font-weight:400;color:#6b7280;margin-left:8px">All major rental platforms · 6 bedroom types · ${zones.length} zones</span>
+    </div>
+
+    <div class="mi-zone-selector">${zoneBtns}</div>
+    <div class="mi-type-tabs">${typeTabs}</div>
+
+    ${typeData ? `<div class="mi-median-box">
+      <div><div class="mi-med-label">Cross-platform median</div><div class="mi-med-main">CA$${median.toLocaleString()}/mo</div><div class="mi-med-range">Range: CA$${minP.toLocaleString()} – CA$${maxP.toLocaleString()}</div></div>
+      <div style="width:1px;height:48px;background:rgba(255,255,255,0.1)"></div>
+      <div><div class="mi-med-label">Zone</div><div class="mi-med-zone">${miZone}</div><div style="font-size:10px;color:#6b7280">${MI_BED_LABELS[miType]}</div></div>
+      <div style="width:1px;height:48px;background:rgba(255,255,255,0.1)"></div>
+      <div><div class="mi-med-label">Sweet price range</div><div style="font-size:14px;font-weight:700;color:#10b981">CA$${Math.round(minP*1.02).toLocaleString()} – CA$${Math.round(median*0.98).toLocaleString()}</div><div style="font-size:10px;color:#6b7280">0% to -5% below median</div></div>
+    </div>` : ""}
+
+    <div class="mi-grid">${cards}</div>
+
+    <!-- PRICE CALCULATOR -->
+    <div class="calc-box">
+      <div class="calc-title">🧮 Price Calculator — What should I charge?</div>
+      <div class="calc-row">
+        <div class="calc-field"><label>Zone / Neighborhood</label><select id="calc-zone" onchange="calcUpdate()">${calcZoneOptions}</select></div>
+        <div class="calc-field"><label>Property Type</label><select id="calc-type" onchange="calcUpdate()">${calcTypeOptions}</select></div>
+        <div class="calc-field"><label>Strategy</label><select id="calc-strategy" onchange="calcUpdate()">
+          <option value="sweet">✅ Sweet spot (rent fast)</option>
+          <option value="median">📊 Median market</option>
+          <option value="premium">💎 Premium (+10%)</option>
+          <option value="aggressive">🔥 Aggressive (-10%)</option>
+        </select></div>
+      </div>
+      <div style="margin-bottom:12px">
+        <button class="calc-btn" onclick="calcUpdate()">📊 Calculate Recommended Price</button>
+      </div>
+      <div class="calc-result" id="calc-result"></div>
+    </div>
+  `;
+}
+
+function miSelectZone(z) { miZone = z; renderMarketIntel(); }
+function miSelectType(t) { miType = t; renderMarketIntel(); }
+
+function calcUpdate() {
+  const zone = document.getElementById("calc-zone")?.value;
+  const type = document.getElementById("calc-type")?.value;
+  const strategy = document.getElementById("calc-strategy")?.value;
+  const city = ACTIVE_CITY === "all" ? "montreal" : (ACTIVE_CITY || "montreal");
+  const zoneData = MARKET_INTEL[city]?.zones?.[zone]?.[type];
+  const result = document.getElementById("calc-result");
+  if (!zoneData || !result) return;
+  const prices = Object.values(zoneData);
+  const median = Math.round(prices.reduce((a,b)=>a+b,0)/prices.length);
+  const minP = Math.min(...prices), maxP = Math.max(...prices);
+  let recommended, label, color, tip;
+  if (strategy === "sweet") {
+    recommended = Math.round(median * 0.97);
+    label = "Sweet Spot"; color = "#10b981";
+    tip = "Priced 3% below median — maximizes speed of rental while maintaining income.";
+  } else if (strategy === "median") {
+    recommended = median;
+    label = "Median Market"; color = "#4D9FFF";
+    tip = "Exactly at market median — balanced strategy for most properties.";
+  } else if (strategy === "premium") {
+    recommended = Math.round(median * 1.10);
+    label = "Premium"; color = "#f59e0b";
+    tip = "10% above median — only viable with exceptional photos, renovations, or included services.";
+  } else {
+    recommended = Math.round(median * 0.90);
+    label = "Aggressive"; color = "#ef4444";
+    tip = "10% below median — rents in days, but may signal lower quality. Use when urgent.";
+  }
+  result.className = "calc-result show";
+  result.innerHTML = `
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div><div style="font-size:10px;color:#6b7280;margin-bottom:2px;text-transform:uppercase">Recommended price</div>
+        <div class="calc-price-main" style="color:${color}">CA$${recommended.toLocaleString()}/mo</div>
+        <div class="calc-price-range">${MI_BED_LABELS[type]} · ${zone}</div></div>
+      <div style="width:1px;height:48px;background:rgba(255,255,255,0.1)"></div>
+      <div><div style="font-size:10px;color:#6b7280;margin-bottom:2px">Strategy</div><div style="font-size:13px;font-weight:700;color:${color}">${label}</div></div>
+      <div style="width:1px;height:48px;background:rgba(255,255,255,0.1)"></div>
+      <div><div style="font-size:10px;color:#6b7280;margin-bottom:2px">Market range</div><div style="font-size:12px;color:#9aa3b5">CA$${minP.toLocaleString()} – CA$${maxP.toLocaleString()}</div></div>
+    </div>
+    <div class="calc-reco" style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07)">
+      <strong style="color:#e2e8f0">💡 Tip:</strong> ${tip}<br>
+      <span style="color:#6b7280">Cross-platform median: CA$${median.toLocaleString()} · FB MKT avg: CA$${zoneData.fb?.toLocaleString()||"n/a"} · Rental.ca avg: CA$${zoneData.rental?.toLocaleString()||"n/a"}</span>
+    </div>`;
+}
+
+renderAll();
 </script>
 
 <div class="att-overlay" id="att-overlay" onclick="if(event.target===this)closeAtt()">
