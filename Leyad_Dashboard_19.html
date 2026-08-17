@@ -9,7 +9,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:#0a0a14;color:#e8eaf0;min-height:100vh}
-.topbar{background:#0d0d1c;border-bottom:1px solid rgba(255,255,255,0.12);padding:13px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:12px;flex-wrap:wrap}
+.topbar{background:#0d0d1c;border-bottom:1px solid rgba(255,255,255,0.12);padding:13px 48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:12px;flex-wrap:wrap;max-width:100%}
 .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.5px;display:flex;align-items:center;gap:10px}
 .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#1a4fa8,#2563eb);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0}
 .logo span{color:#4D9FFF}
@@ -22,8 +22,8 @@ body{font-family:'DM Sans',sans-serif;background:#0a0a14;color:#e8eaf0;min-heigh
 .lang-btn{font-size:11px;padding:4px 10px;border-radius:6px;cursor:pointer;border:none;background:transparent;color:#9ca3af;font-family:'DM Sans',sans-serif;font-weight:500;transition:all .18s}
 .lang-btn.active{background:#2563eb;color:#fff}
 .lang-btn:hover:not(.active){background:rgba(255,255,255,0.07);color:#e2e8f0}
-.wrap{max-width:1380px;margin:0 auto;padding:24px 28px}
-.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.wrap{max-width:1240px;margin:0 auto;padding:32px 48px}
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px}
 .kpi{background:#13131f;border:1px solid rgba(255,255,255,0.1);border-radius:13px;padding:16px;position:relative;overflow:hidden}
 .kpi::after{content:'';position:absolute;top:-10px;right:-10px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,var(--ac)18 0%,transparent 70%);pointer-events:none}
 .kpi-icon{font-size:17px;margin-bottom:6px}
@@ -38,21 +38,21 @@ body{font-family:'DM Sans',sans-serif;background:#0a0a14;color:#e8eaf0;min-heigh
 .mkt-avg{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#e2e8f0}
 .mkt-range{font-size:9px;color:#9aa3b5;margin-top:2px}
 .mkt-n{font-size:9px;color:#7a8494;margin-top:2px;font-style:italic}
-.tabs{display:flex;gap:5px;margin-bottom:18px;flex-wrap:wrap}
+.tabs{display:flex;gap:7px;margin-bottom:20px;flex-wrap:wrap;padding:0 2px}
 .tab{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:9px;padding:7px 15px;font-size:12px;font-family:'DM Sans',sans-serif;color:#9ca3af;cursor:pointer;transition:all .18s}
 .tab.active{background:linear-gradient(135deg,#1a4fa8,#2563eb);border-color:transparent;color:#fff;font-weight:600}
 .tab:hover:not(.active){background:rgba(255,255,255,0.1);color:#e2e8f0}
-.pane{display:none}.pane.active{display:block}
-.agent-hdr{background:#13131f;border:1px solid rgba(255,255,255,0.1);border-radius:13px;padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.pane{display:none}.pane.active{display:block;animation:fadeIn .2s ease}
+.agent-hdr{background:#13131f;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:16px;margin-bottom:20px}
 .avatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;flex-shrink:0}
 .agent-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px}
 .agent-meta{font-size:11px;color:#c4c9d8;margin-top:2px}
 .stars{color:#f59e0b}
 .agent-link{font-size:10px;color:#4D9FFF;text-decoration:none;margin-top:4px;display:inline-flex;align-items:center;gap:3px;padding:3px 9px;background:rgba(77,159,255,0.07);border:1px solid rgba(77,159,255,0.2);border-radius:6px}
-.listing-list{display:flex;flex-direction:column;gap:14px}
+.listing-list{display:flex;flex-direction:column;gap:16px}
 .listing{background:#13131f;border:1px solid rgba(255,255,255,0.1);border-radius:14px;overflow:hidden;transition:border-color .2s}
 .listing:hover{border-color:rgba(77,159,255,0.4)}
-.listing-summary{padding:14px 18px;cursor:pointer;user-select:none}
+.listing-summary{padding:16px 22px;cursor:pointer;user-select:none}
 .sum-row1{display:flex;align-items:flex-start;gap:14px}
 .sum-left{flex:1;min-width:0}
 .listing-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:#f0f0f8;line-height:1.35}
@@ -102,8 +102,8 @@ body{font-family:'DM Sans',sans-serif;background:#0a0a14;color:#e8eaf0;min-heigh
 .comp-body{display:none;margin-bottom:14px}
 .comp-body.open{display:block}
 .comp-info{background:rgba(99,102,241,0.05);border-left:2px solid #4D9FFF;border-radius:0 8px 8px 0;padding:8px 12px;margin-bottom:10px;font-size:11px;color:#9ca3af;line-height:1.6}
-.comp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-.comp-card{border-radius:9px;padding:10px 8px;text-align:center;text-decoration:none;display:block;transition:transform .15s,box-shadow .15s;border:1px solid rgba(255,255,255,0.1);background:#16162a}
+.comp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.comp-card{border-radius:10px;padding:12px 10px;text-align:center;text-decoration:none;display:block;transition:transform .15s,box-shadow .15s;border:1px solid rgba(255,255,255,0.1);background:#16162a}
 .comp-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(77,159,255,0.18);border-color:rgba(77,159,255,0.4)}
 .comp-card.yours{border-color:rgba(77,159,255,0.45);background:rgba(77,159,255,0.07)}
 .comp-price{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#e2e8f0}
@@ -158,7 +158,7 @@ body{font-family:'DM Sans',sans-serif;background:#0a0a14;color:#e8eaf0;min-heigh
 .chart-card{background:#13131f;border:1px solid rgba(255,255,255,0.1);border-radius:13px;padding:18px;margin-bottom:16px}
 .chart-card h3{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;color:#9ca3af;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
 .chart-wrap{position:relative;height:240px}
-.city-bar{display:flex;align-items:center;gap:12px;margin-bottom:14px;position:sticky;top:56px;z-index:99;padding:10px 16px;background:#13131f;border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+.city-bar{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:sticky;top:56px;z-index:99;padding:12px 20px;background:#13131f;border:1px solid rgba(255,255,255,0.08);border-radius:14px}
 .city-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;font-weight:600;white-space:nowrap}
 .city-btns{display:flex;gap:8px;flex-wrap:wrap}
 .city-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#9ca3af;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;position:relative}
@@ -272,7 +272,7 @@ body.light .calc-field select{background:#fff;border-color:#d1dce8;color:#0a1628
 
 .credit-footer{text-align:center;padding:20px 0;font-size:11px;color:#7a8494;border-top:1px solid rgba(255,255,255,0.08);margin-top:28px}
 .credit-footer span{color:#4D9FFF;font-weight:600}
-@media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,1fr)}.mkt-grid{grid-template-columns:repeat(2,1fr)}.comp-grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:14px}.topbar{padding:11px 14px}.sum-right{flex-wrap:wrap}}
+@media(max-width:900px){.kpi-row{grid-template-columns:repeat(2,1fr)}.mkt-grid{grid-template-columns:repeat(2,1fr)}.comp-grid{grid-template-columns:repeat(2,1fr)}.topbar{padding:11px 14px}.sum-right{flex-wrap:wrap}}
 
 .att-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:999;justify-content:center;align-items:flex-start;padding-top:40px;overflow-y:auto}
 .att-overlay.open{display:flex}
@@ -460,11 +460,82 @@ body.light .summary-item{background:rgba(0,21,79,0.03);border-color:rgba(0,21,79
 .summary-change{font-size:10px;margin-top:3px}
 body.light .summary-label{color:#6b7280}
 @media(max-width:900px){.analytics-grid{grid-template-columns:1fr}.summary-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1280px){.wrap{padding:28px 36px}}
+@media(max-width:1024px){.wrap{padding:24px 28px}.kpi-row{grid-template-columns:repeat(3,1fr)}.comp-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.wrap{padding:20px 20px}.kpi-row{grid-template-columns:repeat(2,1fr)}.comp-grid{grid-template-columns:repeat(2,1fr)}.city-btns{flex-wrap:wrap}}
+@media(max-width:480px){.wrap{padding:14px 16px}.kpi-row{grid-template-columns:1fr 1fr}}
+
+.topbar-inner-wrap{max-width:1240px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+.pane.active > * + * {margin-top:4px}
+.listing-list{padding-bottom:16px}
+
+/* ── Global content constraint — all sections respect the same margins ── */
+.tabs-row, .pane, .platforms-bar, .all-leyad-analytics, .score-section,
+div[id^="tabs-"], div[id^="pane-"],
+#all-leyad-analytics {
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 48px;
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+
+/* Pane-specific overrides */
+.pane.active {
+  display: block;
+  animation: fadeIn .2s ease;
+  padding-top: 0;
+  padding-bottom: 32px;
+}
+
+/* Platform bar */
+.platforms-bar {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+}
+
+/* MKT box outside wrap */
+.mkt-box {
+  max-width: 1240px;
+  margin: 0 auto 20px;
+  padding: 0 48px;
+}
+
+/* Tabs container divs */
+div[id^="tabs-"] {
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+
+/* Responsive for constrained elements */
+@media(max-width:1280px){
+  .pane, div[id^="pane-"], div[id^="tabs-"], .platforms-bar, .mkt-box {
+    padding-left: 36px !important; padding-right: 36px !important;
+  }
+}
+@media(max-width:1024px){
+  .pane, div[id^="pane-"], div[id^="tabs-"], .platforms-bar, .mkt-box {
+    padding-left: 28px !important; padding-right: 28px !important;
+  }
+}
+@media(max-width:768px){
+  .pane, div[id^="pane-"], div[id^="tabs-"], .platforms-bar, .mkt-box {
+    padding-left: 18px !important; padding-right: 18px !important;
+  }
+}
+@media(max-width:480px){
+  .pane, div[id^="pane-"], div[id^="tabs-"], .platforms-bar, .mkt-box {
+    padding-left: 14px !important; padding-right: 14px !important;
+  }
+}
 </style>
 </head>
 <body>
-<div class="topbar">
-  <div class="logo"><div class="logo-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.5" fill="white" opacity="0.95"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/></svg></div>Leyad <span>Analytics</span><span class="logo-sub">by David Monroy</span></div>
+<div class="topbar"><div class="topbar-inner-wrap"><div class="logo"><div class="logo-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.5" fill="white" opacity="0.95"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.85"/></svg></div>Leyad <span>Analytics</span><span class="logo-sub">by David Monroy</span></div>
   <div class="topbar-right">
     <button class="theme-btn" onclick="toggleTheme()"><span id="theme-btn-txt">Light Mode</span></button>
     <div class="lang-sw">
@@ -472,10 +543,10 @@ body.light .summary-label{color:#6b7280}
       <button class="lang-btn" onclick="setLang('fr',this)">🇫🇷 FR</button>
       <button class="lang-btn" onclick="setLang('es',this)">🇪🇸 ES</button>
     </div>
-    <div class="badge green">🟢 Live · June 16, 2026</div>
+    <div class="badge green">🟢 Live · August 17, 2026</div>
     <div class="badge gold">⚡ David Monroy</div>
   </div>
-</div>
+  </div></div>
 <div class="wrap">
   <!-- CITY SELECTOR -->
   <div class="city-bar" id="city-bar">
@@ -496,19 +567,20 @@ body.light .summary-label{color:#6b7280}
       <button class="city-btn" onclick="switchCity('edmonton',this)" id="btn-city-edmonton">
         <span class="city-flag">🇨🇦</span> Edmonton
         <span class="city-count" id="cnt-edmonton"></span>
+      
+      <button class="city-btn" onclick="switchCity('winnipeg',this)" id="btn-city-winnipeg">
+        <span class="city-flag">🇨🇦</span> Winnipeg
+        <span class="city-count" id="cnt-winnipeg"></span>
+      </button>
+      <button class="city-btn" onclick="switchCity('saskatoon-regina',this)" id="btn-city-saskatoon-regina">
+        <span class="city-flag">🇨🇦</span> Saskatoon
+        <span class="city-count" id="cnt-saskatoon-regina"></span>
       </button>
     </div>
   </div>
 
     <div class="kpi-row" id="kpi-row"></div>
-  <div class="mkt-box">
-    <div class="mkt-hdr">📊 <span data-i18n="mkt_title">Real-Time Comparables — FB Marketplace Montréal · June 16, 2026</span></div>
-    <div class="mkt-grid">
-      <div class="mkt-cell"><div class="mkt-type">Studio</div><div class="mkt-avg">CA$975</div><div class="mkt-range">$860–$1,195 · Sweet $900–$1,075</div><div class="mkt-n">14 listings today</div></div>
-      <div class="mkt-cell"><div class="mkt-type">1 Bedroom</div><div class="mkt-avg">CA$1,095</div><div class="mkt-range">$895–$1,295 · Sweet $995–$1,195</div><div class="mkt-n">18 listings today</div></div>
-      <div class="mkt-cell"><div class="mkt-type">2 Bedrooms</div><div class="mkt-avg">CA$1,370</div><div class="mkt-range">$1,150–$1,700 · Sweet $1,280–$1,525</div><div class="mkt-n">22 listings today</div></div>
-      <div class="mkt-cell"><div class="mkt-type">3 Bedrooms</div><div class="mkt-avg">CA$1,720</div><div class="mkt-range">$1,480–$2,000 · Sweet $1,600–$1,950</div><div class="mkt-n">8 listings today</div></div>
-    </div>
+  <div class="mkt-box" id="mkt-box-container">
   </div>
 
   <!-- MULTI-PLATFORM MARKET INTELLIGENCE -->
@@ -552,11 +624,12 @@ body.light .summary-label{color:#6b7280}
   <!-- ALL LEYAD (same tabs, just city filter changes) -->
   <!-- MONTREAL TABS -->
   <div class="tabs" id="tabs-montreal" style="display:none">
-    <button class="tab active" onclick="showTab('padly',this)">🏠 Padly (10)</button>
-    <button class="tab" onclick="showTab('fernando',this)">🏠 Fernando (5)</button>
-    <button class="tab" onclick="showTab('jeny',this)">🏠 Jeny (12)</button>
-    <button class="tab" onclick="showTab('kathleen',this)">🏠 Kathleen (7)</button>
-    <button class="tab" onclick="showTab('oriana',this)">🏠 Oriana (14)</button>
+    <button class="tab active" onclick="showTab('padly',this)">🏠 Padly (12)</button>
+    <button class="tab" onclick="showTab('tamara',this)">🏠 Tamara (9)</button>
+    <button class="tab" onclick="showTab('fernando',this)">🏠 Fernando (7)</button>
+    <button class="tab" onclick="showTab('jeny',this)">🏠 Jeny (8)</button>
+    <button class="tab" onclick="showTab('kathleen',this)">🏠 Kathleen (8)</button>
+    <button class="tab" onclick="showTab('oriana',this)">🏠 Oriana (7)</button>
     <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
     <button class="tab" onclick="showTab('charts',this)">📊 Charts</button>
     <button class="tab" onclick="showTab('analytics',this)">📈 Company Analytics</button>
@@ -565,21 +638,29 @@ body.light .summary-label{color:#6b7280}
 
   <!-- PRINCE ALBERT TABS -->
   <div class="tabs" id="tabs-prince-albert" style="display:none">
-    <button class="tab active" onclick="showTab('vinit',this)">🏠 Vinit (4)</button>
-    <button class="tab" onclick="showTab('avi',this)">🏠 Avi (2)</button>
+    <button class="tab active" onclick="showTab('vinit',this)">🏠 Vinit (2)</button>
+    <button class="tab" onclick="showTab('avi',this)">🏠 Avi (4)</button>
     <button class="tab" onclick="showTab('abhi',this)">🏠 Abhi (2)</button>
-    <button class="tab" onclick="showTab('leasewith',this)">🏠 LeaseWith (6)</button>
+    <button class="tab" onclick="showTab('leasewith',this)">🏠 LeaseWith (7)</button>
     <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
     <button class="tab" onclick="showTab('analytics',this)">📈 Analytics</button>
     <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
   </div>
   <!-- EDMONTON TABS -->
   <div class="tabs" id="tabs-edmonton" style="display:none">
-    <button class="tab active" onclick="showTab('safiya',this)">🏠 Safiya Ali (12)</button>
+    <button class="tab active" onclick="showTab('safiya',this)">🏠 Safiya Ali (8)</button>
+    <button class="tab" onclick="showTab(\'danny\',this)">🏠 Danny (0)</button>
     <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
     <button class="tab" onclick="showTab('analytics',this)">📈 Analytics</button>
     <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
   </div>
+  <div id="tabs-winnipeg" style="display:none">
+    <button class="tab active" onclick="showTab('danny',this)">🏠 Danny (0)</button>
+  </div>
+  <div id="tabs-saskatoon-regina" style="display:none">
+    <button class="tab active" onclick="showTab('malek',this)">🏠 Malek (2)</button>
+  </div>
+  <div id="pane-tamara" class="pane"></div>
   <div id="pane-fernando" class="pane active"></div>
   <div id="pane-jeny" class="pane"></div>
   <div id="pane-kathleen" class="pane"></div>
@@ -594,6 +675,8 @@ body.light .summary-label{color:#6b7280}
   <div id="pane-abhi" class="pane"></div>
   <div id="pane-leasewith" class="pane"></div>
   <div id="pane-safiya" class="pane"></div>
+  <div id="pane-danny" class="pane"></div>
+  <div id="pane-malek" class="pane"></div>
     <div class="credit-footer">Leyad Analytics · Built by <span>David Monroy</span> · Real-time FB Marketplace data · June 2026</div>
 
 <!-- AI CHAT FAB -->
@@ -630,7 +713,7 @@ body.light .summary-label{color:#6b7280}
 </div>
 <script>
 const T={
-  en:{mkt_title:"Real-Time Comparables — FB Marketplace Montréal · June 16, 2026",score_lbl:"Balance Score",suggested:"Suggested",current:"Current",per_mo:"/mo",view_listing:"View on Marketplace →",comp_lbl:"📍 Real Comparables (~3km radius)",show:"Show ▼",hide:"Hide ▲",your_listing:"YOUR listing",recs_title:"🎯 Expert Analysis & Actions",why_here:"Why this score",improve:"What to fix",joined:"Joined",listings:"listings",reviews:"reviews",view_profile:"View profile",top_title:"🥇 TOP 10 — Best Balanced Listings",top_sub:"Max score = Price sweet spot (0% to -5% below avg) + 8+ photos + fresh listing + complete description.",worst_title:"⚠️ WORST 10 — Immediate Action Required",worst_sub:"Critical issues. Full action plan for each. Fix these NOW.",chart1:"Avg price by agent vs. market avg (CA$/mo)",chart2:"Active listings by agent",chart3:"Price position vs. today market",g1:"✅ Sweet spot (0 to -5%)",g2:"🟡 Acceptable (0 to +10%)",g3:"⚠️ Too high (>+10%)",g4:"⬇️ Below avg (attention)",pets:"🐾 Pets OK",fresh:"🆕 Fresh",old_b:"⏰ +1 week",agent_lbl:"Agent",see_det:"See analysis ▼",hide_det:"Hide ▲",no_chg:"✅ Optimal price"},
+  en:{mkt_title:"Real-Time Comparables — FB Marketplace Montréal · August 4, 2026",score_lbl:"Balance Score",suggested:"Suggested",current:"Current",per_mo:"/mo",view_listing:"View on Marketplace →",comp_lbl:"📍 Real Comparables (~3km radius)",show:"Show ▼",hide:"Hide ▲",your_listing:"YOUR listing",recs_title:"🎯 Expert Analysis & Actions",why_here:"Why this score",improve:"What to fix",joined:"Joined",listings:"listings",reviews:"reviews",view_profile:"View profile",top_title:"🥇 TOP 10 — Best Balanced Listings",top_sub:"Max score = Price sweet spot (0% to -5% below avg) + 8+ photos + fresh listing + complete description.",worst_title:"⚠️ WORST 10 — Immediate Action Required",worst_sub:"Critical issues. Full action plan for each. Fix these NOW.",chart1:"Avg price by agent vs. market avg (CA$/mo)",chart2:"Active listings by agent",chart3:"Price position vs. today market",g1:"✅ Sweet spot (0 to -5%)",g2:"🟡 Acceptable (0 to +10%)",g3:"⚠️ Too high (>+10%)",g4:"⬇️ Below avg (attention)",pets:"🐾 Pets OK",fresh:"🆕 Fresh",old_b:"⏰ +1 week",agent_lbl:"Agent",see_det:"See analysis ▼",hide_det:"Hide ▲",no_chg:"✅ Optimal price"},
   fr:{mkt_title:"Comparables réels — FB Marketplace Montréal · 8 mai 2026",score_lbl:"Score Équilibre",suggested:"Suggéré",current:"Actuel",per_mo:"/mois",view_listing:"Voir sur Marketplace →",comp_lbl:"📍 Comparables Réels (~3km)",show:"Voir ▼",hide:"Masquer ▲",your_listing:"VOTRE annonce",recs_title:"🎯 Analyse Expert & Actions",why_here:"Pourquoi ce score",improve:"Quoi corriger",joined:"Membre depuis",listings:"annonces",reviews:"avis",view_profile:"Voir profil",top_title:"🥇 TOP 10 — Meilleures Annonces",top_sub:"Score max = Prix zone idéale (0% à -5% sous moy.) + 8+ photos + fraîche + description complète.",worst_title:"⚠️ PIRES 10 — Action Immédiate",worst_sub:"Problèmes critiques. Plan d'action inclus.",chart1:"Prix moy. par agent vs. marché (CA$/mois)",chart2:"Annonces actives par agent",chart3:"Position prix vs. marché aujourd'hui",g1:"✅ Zone idéale (0 à -5%)",g2:"🟡 Acceptable (0 à +10%)",g3:"⚠️ Trop élevé (>+10%)",g4:"⬇️ Sous moy. (attention)",pets:"🐾 Animaux OK",fresh:"🆕 Récent",old_b:"⏰ +1 semaine",agent_lbl:"Agent",see_det:"Voir ▼",hide_det:"Masquer ▲",no_chg:"✅ Prix optimal"},
   es:{mkt_title:"Comparables en tiempo real — FB Marketplace Montréal · 8 mayo 2026",score_lbl:"Score Equilibrio",suggested:"Sugerido",current:"Actual",per_mo:"/mes",view_listing:"Ver en Marketplace →",comp_lbl:"📍 Comparables Reales (~3km)",show:"Ver ▼",hide:"Ocultar ▲",your_listing:"TU publicación",recs_title:"🎯 Análisis Experto & Acciones",why_here:"Por qué este score",improve:"Qué corregir",joined:"En Facebook desde",listings:"publicaciones",reviews:"reseñas",view_profile:"Ver perfil",top_title:"🥇 TOP 10 — Mejores Publicaciones",top_sub:"Score max = Precio zona óptima (0% a -5% bajo prom.) + 8+ fotos + publicación fresca + descripción completa.",worst_title:"⚠️ PEORES 10 — Acción Inmediata",worst_sub:"Problemas críticos. Plan de acción incluido.",chart1:"Precio prom. por agente vs. mercado (CA$/mes)",chart2:"Publicaciones activas por agente",chart3:"Posición precio vs. mercado hoy",g1:"✅ Zona óptima (0 a -5%)",g2:"🟡 Aceptable (0 a +10%)",g3:"⚠️ Demasiado alto (>+10%)",g4:"⬇️ Bajo prom. (atención)",pets:"🐾 Mascotas OK",fresh:"🆕 Reciente",old_b:"⏰ +1 semana",agent_lbl:"Agente",see_det:"Ver ▼",hide_det:"Ocultar ▲",no_chg:"✅ Precio óptimo"}
 };
@@ -654,22 +737,104 @@ function getRef(beds,zone){return zone&&MKT_Z[zone]?MKT_Z[zone]:MKT[Math.min(bed
 const MARKET_INTEL = {
   montreal: {
     zones: {
-      "Plateau-Mont-Royal":       {studio:{fb:990,rental:1100,kijiji:960,lelocataire:1010,realtor:1200},"1-bed":{fb:1180,rental:1350,kijiji:1150,lelocataire:1250,realtor:1450},"2-bed":{fb:1490,rental:1700,kijiji:1450,lelocataire:1550,realtor:1850},"3-bed":{fb:1850,rental:2100,kijiji:1800,lelocataire:1950,realtor:2300},"4-bed":{fb:2200,rental:2500,kijiji:2150,lelocataire:2350,realtor:2800},"5-bed":{fb:2700,rental:3100,kijiji:2650,lelocataire:2900,realtor:3500},"6-bed":{fb:3200,rental:3700,kijiji:3100,lelocataire:3400,realtor:4200}},
-      "Rosemont / La Petite-Patrie": {studio:{fb:965,rental:1050,kijiji:950,lelocataire:995,realtor:1150},"1-bed":{fb:1150,rental:1300,kijiji:1100,lelocataire:1200,realtor:1400},"2-bed":{fb:1420,rental:1600,kijiji:1380,lelocataire:1500,realtor:1750},"3-bed":{fb:1790,rental:2000,kijiji:1750,lelocataire:1900,realtor:2200},"4-bed":{fb:2100,rental:2400,kijiji:2050,lelocataire:2250,realtor:2700},"5-bed":{fb:2600,rental:2950,kijiji:2550,lelocataire:2800,realtor:3300},"6-bed":{fb:3100,rental:3500,kijiji:3050,lelocataire:3300,realtor:4000}},
-      "Hochelaga-Maisonneuve":    {studio:{fb:920,rental:1000,kijiji:900,lelocataire:940,realtor:1100},"1-bed":{fb:1095,rental:1220,kijiji:1050,lelocataire:1130,realtor:1350},"2-bed":{fb:1370,rental:1520,kijiji:1330,lelocataire:1430,realtor:1680},"3-bed":{fb:1700,rental:1900,kijiji:1660,lelocataire:1800,realtor:2100},"4-bed":{fb:2000,rental:2250,kijiji:1950,lelocataire:2100,realtor:2550},"5-bed":{fb:2450,rental:2750,kijiji:2400,lelocataire:2600,realtor:3100},"6-bed":{fb:2900,rental:3300,kijiji:2850,lelocataire:3100,realtor:3700}},
-      "Côte-des-Neiges (CDN)":   {studio:{fb:975,rental:1100,kijiji:960,lelocataire:1010,realtor:1200},"1-bed":{fb:1150,rental:1320,kijiji:1120,lelocataire:1220,realtor:1450},"2-bed":{fb:1430,rental:1620,kijiji:1400,lelocataire:1520,realtor:1780},"3-bed":{fb:1780,rental:2000,kijiji:1750,lelocataire:1900,realtor:2200},"4-bed":{fb:2100,rental:2380,kijiji:2050,lelocataire:2250,realtor:2700},"5-bed":{fb:2550,rental:2900,kijiji:2500,lelocataire:2750,realtor:3250},"6-bed":{fb:3000,rental:3450,kijiji:2950,lelocataire:3250,realtor:3900}},
-      "Verdun / Pointe-St-Charles":{studio:{fb:890,rental:980,kijiji:875,lelocataire:920,realtor:1070},"1-bed":{fb:1060,rental:1190,kijiji:1030,lelocataire:1100,realtor:1320},"2-bed":{fb:1350,rental:1500,kijiji:1310,lelocataire:1420,realtor:1650},"3-bed":{fb:1670,rental:1880,kijiji:1630,lelocataire:1780,realtor:2080},"4-bed":{fb:1980,rental:2230,kijiji:1930,lelocataire:2080,realtor:2520},"5-bed":{fb:2380,rental:2700,kijiji:2320,lelocataire:2550,realtor:3050},"6-bed":{fb:2850,rental:3200,kijiji:2800,lelocataire:3050,realtor:3650}},
-      "Mile-End / Outremont":    {studio:{fb:1020,rental:1180,kijiji:1000,lelocataire:1080,realtor:1300},"1-bed":{fb:1220,rental:1420,kijiji:1190,lelocataire:1320,realtor:1580},"2-bed":{fb:1560,rental:1800,kijiji:1520,lelocataire:1650,realtor:2000},"3-bed":{fb:1950,rental:2250,kijiji:1900,lelocataire:2100,realtor:2500},"4-bed":{fb:2350,rental:2700,kijiji:2300,lelocataire:2550,realtor:3000},"5-bed":{fb:2850,rental:3250,kijiji:2800,lelocataire:3050,realtor:3700},"6-bed":{fb:3400,rental:3900,kijiji:3350,lelocataire:3650,realtor:4500}},
-      "Anjou / Est de Montreal": {studio:{fb:900,rental:980,kijiji:880,lelocataire:920,realtor:1080},"1-bed":{fb:1080,rental:1200,kijiji:1050,lelocataire:1120,realtor:1350},"2-bed":{fb:1350,rental:1500,kijiji:1310,lelocataire:1430,realtor:1680},"3-bed":{fb:1680,rental:1890,kijiji:1640,lelocataire:1790,realtor:2090},"4-bed":{fb:2000,rental:2250,kijiji:1950,lelocataire:2100,realtor:2550},"5-bed":{fb:2400,rental:2700,kijiji:2350,lelocataire:2580,realtor:3050},"6-bed":{fb:2900,rental:3200,kijiji:2850,lelocataire:3100,realtor:3700}},
-      "Longueuil / South Shore": {studio:{fb:850,rental:950,kijiji:830,lelocataire:880,realtor:1030},"1-bed":{fb:1020,rental:1150,kijiji:1000,lelocataire:1070,realtor:1280},"2-bed":{fb:1280,rental:1440,kijiji:1250,lelocataire:1360,realtor:1600},"3-bed":{fb:1580,rental:1780,kijiji:1540,lelocataire:1680,realtor:1980},"4-bed":{fb:1880,rental:2120,kijiji:1840,lelocataire:2000,realtor:2400},"5-bed":{fb:2250,rental:2550,kijiji:2200,lelocataire:2400,realtor:2950},"6-bed":{fb:2700,rental:3050,kijiji:2650,lelocataire:2900,realtor:3500}},
-      "NDG / Cote-St-Luc":       {studio:{fb:930,rental:1060,kijiji:910,lelocataire:970,realtor:1150},"1-bed":{fb:1110,rental:1270,kijiji:1080,lelocataire:1170,realtor:1420},"2-bed":{fb:1400,rental:1600,kijiji:1360,lelocataire:1500,realtor:1760},"3-bed":{fb:1740,rental:1980,kijiji:1700,lelocataire:1870,realtor:2200},"4-bed":{fb:2070,rental:2350,kijiji:2020,lelocataire:2210,realtor:2680},"5-bed":{fb:2500,rental:2850,kijiji:2450,lelocataire:2700,realtor:3200},"6-bed":{fb:3000,rental:3400,kijiji:2950,lelocataire:3200,realtor:3850}},
-      "Westmount / Downtown":    {studio:{fb:1200,rental:1450,kijiji:1180,lelocataire:1350,realtor:1650},"1-bed":{fb:1550,rental:1850,kijiji:1500,lelocataire:1700,realtor:2100},"2-bed":{fb:2000,rental:2400,kijiji:1950,lelocataire:2200,realtor:2700},"3-bed":{fb:2600,rental:3100,kijiji:2550,lelocataire:2850,realtor:3500},"4-bed":{fb:3200,rental:3800,kijiji:3150,lelocataire:3500,realtor:4300},"5-bed":{fb:3900,rental:4600,kijiji:3850,lelocataire:4250,realtor:5200},"6-bed":{fb:4600,rental:5500,kijiji:4550,lelocataire:5100,realtor:6300}},
-      "Ahuntsic / Cartierville": {studio:{fb:940,rental:1050,kijiji:920,lelocataire:970,realtor:1130},"1-bed":{fb:1100,rental:1250,kijiji:1080,lelocataire:1160,realtor:1400},"2-bed":{fb:1380,rental:1560,kijiji:1340,lelocataire:1470,realtor:1720},"3-bed":{fb:1720,rental:1940,kijiji:1680,lelocataire:1840,realtor:2150},"4-bed":{fb:2050,rental:2320,kijiji:2000,lelocataire:2180,realtor:2640},"5-bed":{fb:2500,rental:2820,kijiji:2450,lelocataire:2680,realtor:3180},"6-bed":{fb:2950,rental:3350,kijiji:2900,lelocataire:3200,realtor:3800}},
-      "St-Laurent / Bois-Franc":  {studio:{fb:920,rental:1030,kijiji:900,lelocataire:950,realtor:1120},"1-bed":{fb:1090,rental:1230,kijiji:1060,lelocataire:1140,realtor:1380},"2-bed":{fb:1370,rental:1540,kijiji:1330,lelocataire:1450,realtor:1700},"3-bed":{fb:1700,rental:1920,kijiji:1660,lelocataire:1820,realtor:2130},"4-bed":{fb:2020,rental:2290,kijiji:1970,lelocataire:2160,realtor:2620},"5-bed":{fb:2450,rental:2770,kijiji:2400,lelocataire:2640,realtor:3140},"6-bed":{fb:2900,rental:3300,kijiji:2850,lelocataire:3150,realtor:3750}}
+      "Plateau-Mont-Royal": {
+        studio:{"fb":1020,"rental":1550,"kijiji":1080,"lelocataire":980,"realtor":1400},
+        "1-bed":{"fb":1250,"rental":1850,"kijiji":1380,"lelocataire":1280,"realtor":1700},
+        "2-bed":{"fb":1490,"rental":2200,"kijiji":1700,"lelocataire":1600,"realtor":2100},
+        "3-bed":{"fb":1850,"rental":2600,"kijiji":2000,"lelocataire":1900,"realtor":2500}
+      },
+      "Rosemont / La Petite-Patrie": {
+        studio:{"fb":975,"rental":1480,"kijiji":1030,"lelocataire":960,"realtor":1320},
+        "1-bed":{"fb":1195,"rental":1720,"kijiji":1300,"lelocataire":1220,"realtor":1600},
+        "2-bed":{"fb":1420,"rental":2050,"kijiji":1620,"lelocataire":1520,"realtor":1980},
+        "3-bed":{"fb":1720,"rental":2450,"kijiji":1900,"lelocataire":1820,"realtor":2380}
+      },
+      "Hochelaga-Maisonneuve": {
+        studio:{"fb":880,"rental":1250,"kijiji":920,"lelocataire":850,"realtor":1100},
+        "1-bed":{"fb":1030,"rental":1480,"kijiji":1100,"lelocataire":1020,"realtor":1380},
+        "2-bed":{"fb":1230,"rental":1750,"kijiji":1350,"lelocataire":1280,"realtor":1680},
+        "3-bed":{"fb":1490,"rental":2100,"kijiji":1620,"lelocataire":1550,"realtor":2050}
+      },
+      "Côte-des-Neiges (CDN)": {
+        studio:{"fb":960,"rental":1400,"kijiji":1010,"lelocataire":940,"realtor":1280},
+        "1-bed":{"fb":1175,"rental":1680,"kijiji":1270,"lelocataire":1180,"realtor":1580},
+        "2-bed":{"fb":1400,"rental":1980,"kijiji":1560,"lelocataire":1480,"realtor":1900},
+        "3-bed":{"fb":1680,"rental":2350,"kijiji":1820,"lelocataire":1750,"realtor":2280}
+      },
+      "Verdun": {
+        studio:{"fb":900,"rental":1495,"kijiji":1000,"lelocataire":880,"realtor":1300},
+        "1-bed":{"fb":1080,"rental":1495,"kijiji":1100,"lelocataire":1050,"realtor":1420},
+        "2-bed":{"fb":1340,"rental":1747,"kijiji":1380,"lelocataire":1300,"realtor":1700},
+        "3-bed":{"fb":1580,"rental":2100,"kijiji":1620,"lelocataire":1560,"realtor":2000}
+      },
+      "Pointe-Saint-Charles": {
+        studio:{"fb":870,"rental":1200,"kijiji":920,"lelocataire":850,"realtor":1100},
+        "1-bed":{"fb":1050,"rental":1450,"kijiji":1080,"lelocataire":1020,"realtor":1380},
+        "2-bed":{"fb":1280,"rental":1720,"kijiji":1320,"lelocataire":1250,"realtor":1660},
+        "3-bed":{"fb":1540,"rental":2050,"kijiji":1580,"lelocataire":1510,"realtor":1980}
+      },
+      "LaSalle": {
+        studio:{"fb":900,"rental":1200,"kijiji":1000,"lelocataire":880,"realtor":1150},
+        "1-bed":{"fb":1050,"rental":1580,"kijiji":1150,"lelocataire":1050,"realtor":1450},
+        "2-bed":{"fb":1280,"rental":1736,"kijiji":1380,"lelocataire":1280,"realtor":1700},
+        "3-bed":{"fb":1550,"rental":2050,"kijiji":1620,"lelocataire":1500,"realtor":1980}
+      },
+      "Mile-End / Outremont": {
+        studio:{"fb":1050,"rental":1600,"kijiji":1120,"lelocataire":1010,"realtor":1480},
+        "1-bed":{"fb":1280,"rental":1920,"kijiji":1400,"lelocataire":1320,"realtor":1800},
+        "2-bed":{"fb":1550,"rental":2280,"kijiji":1750,"lelocataire":1650,"realtor":2200},
+        "3-bed":{"fb":1920,"rental":2700,"kijiji":2100,"lelocataire":1980,"realtor":2650}
+      },
+      "Anjou / Est de Montréal": {
+        studio:{"fb":870,"rental":1180,"kijiji":900,"lelocataire":840,"realtor":1050},
+        "1-bed":{"fb":1050,"rental":1420,"kijiji":1080,"lelocataire":1010,"realtor":1320},
+        "2-bed":{"fb":1280,"rental":1720,"kijiji":1340,"lelocataire":1260,"realtor":1660},
+        "3-bed":{"fb":1520,"rental":2050,"kijiji":1600,"lelocataire":1520,"realtor":1980}
+      },
+      "Longueuil / Rive-Sud": {
+        studio:{"fb":840,"rental":1150,"kijiji":880,"lelocataire":820,"realtor":1020},
+        "1-bed":{"fb":1020,"rental":1380,"kijiji":1060,"lelocataire":980,"realtor":1280},
+        "2-bed":{"fb":1250,"rental":1680,"kijiji":1310,"lelocataire":1230,"realtor":1620},
+        "3-bed":{"fb":1490,"rental":2000,"kijiji":1560,"lelocataire":1480,"realtor":1950}
+      },
+      "NDG / Côte-St-Luc": {
+        studio:{"fb":940,"rental":1350,"kijiji":990,"lelocataire":920,"realtor":1240},
+        "1-bed":{"fb":1140,"rental":1632,"kijiji":1220,"lelocataire":1140,"realtor":1540},
+        "2-bed":{"fb":1380,"rental":1950,"kijiji":1520,"lelocataire":1440,"realtor":1880},
+        "3-bed":{"fb":1650,"rental":2320,"kijiji":1790,"lelocataire":1710,"realtor":2250}
+      },
+      "Ahuntsic / Cartierville": {
+        studio:{"fb":920,"rental":1320,"kijiji":970,"lelocataire":900,"realtor":1200},
+        "1-bed":{"fb":1120,"rental":1490,"kijiji":1190,"lelocataire":1110,"realtor":1490},
+        "2-bed":{"fb":1340,"rental":1880,"kijiji":1470,"lelocataire":1390,"realtor":1820},
+        "3-bed":{"fb":1600,"rental":2230,"kijiji":1720,"lelocataire":1650,"realtor":2180}
+      }
     }
   },
+  
+  
   edmonton: { zones: {} }
-};
+,
+  "prince-albert": {
+    zones: {
+      "Prince Albert": {studio:{fb:null,rental:null,kijiji:null,lelocataire:null,realtor:null},"1-bed":{fb:1172,rental:1250,kijiji:1150,lelocataire:null,realtor:1300},"2-bed":{fb:1310,rental:1400,kijiji:1290,lelocataire:null,realtor:1450}}
+    }
+  },
+  "edmonton": {
+    zones: {
+      "Edmonton": {studio:{fb:925,rental:1050,kijiji:900,lelocataire:null,realtor:1100},"1-bed":{fb:1200,rental:1350,kijiji:1175,lelocataire:null,realtor:1400},"2-bed":{fb:1300,rental:1500,kijiji:1275,lelocataire:null,realtor:1550}}
+    }
+  },
+  "winnipeg": {
+    zones: {
+      "Winnipeg": {studio:{fb:null,rental:null,kijiji:null,lelocataire:null,realtor:null},"1-bed":{fb:null,rental:1150,kijiji:null,lelocataire:null,realtor:1200},"2-bed":{fb:null,rental:1350,kijiji:null,lelocataire:null,realtor:1400}}
+    }
+  },
+  "saskatoon-regina": {
+    zones: {
+      "Saskatoon": {studio:{fb:null,rental:null,kijiji:null,lelocataire:null,realtor:null},"1-bed":{fb:1125,rental:1200,kijiji:1100,lelocataire:null,realtor:1250},"2-bed":{fb:1425,rental:1500,kijiji:1400,lelocataire:null,realtor:1550}}
+    }
+  }};
 const MI_PLATFORMS = [
   {key:"fb",name:"Facebook MKT",icon:"📘",color:"#1877f2",url:"https://www.facebook.com/marketplace/montreal/propertyrentals"},
   {key:"rental",name:"Rental.ca",icon:"🏠",color:"#e53e3e",url:"https://www.rental.ca/rentals/qc/montreal"},
@@ -683,83 +848,131 @@ const MI_BED_LABELS = {studio:"Studio","1-bed":"1 Chambre","2-bed":"2 Chambres",
 
 const COMPS={
 
-  // VINIT — Prince Albert SK (Saskatchewan regional market comps)
-  vinit_0:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
-  vinit_1:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
-  vinit_2:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
-  vinit_3:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
-  // AVI — Prince Albert SK
-  avi_0:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
-  avi_1:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
-  // ABHI — Prince Albert SK
-  abhi_0:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
-  abhi_1:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
-  // LEASEWITH — Prince Albert SK
-  leasewith_0:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
-  leasewith_1:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
-  leasewith_2:[{id:"936349539420746",price:1400,desc:"2 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2 bed apt · Saskatoon SK"}],
-  leasewith_3:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
-  leasewith_4:[{id:"1524647062453848",price:1100,desc:"1 bed · Saskatoon SK"},{id:"1823572548618494",price:1290,desc:"1 bed · Saskatoon SK"},{id:"2083346005898006",price:1400,desc:"1 bed · Saskatoon SK"},{id:"28095047616751010",price:1500,desc:"1 bed apt · Saskatoon SK"},{id:"1518943936336378",price:1400,desc:"1 bed · Saskatoon SK"}],
-  leasewith_5:[{id:"936349539420746",price:1400,desc:"2-3 bed · Saskatoon SK"},{id:"1542560623902902",price:1400,desc:"2-3 bed · Saskatoon SK"},{id:"997737942974541",price:1400,desc:"2-3 bed apt · Warman SK"},{id:"986198780967240",price:1700,desc:"2-3 bed apt · Saskatoon SK"},{id:"1385561710069395",price:1875,desc:"2-3 bed apt · Saskatoon SK"}],
-  // FERNANDO — updated June 1, 2026
-  fernando_0:[{id:"2187227072078780",price:1015,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"1982233582499884",price:1095,desc:"1 bed · St-Jean area"},{id:"4472102216361059",price:950,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"597295911506305",price:970,desc:"1 bed · St-Jean area"},{id:"989551803486769",price:1000,desc:"1 bed · St-Jean-sur-Richelieu"}],
-  fernando_1:[{id:"1413844743785487",price:1280,desc:"2 bed · Hochelaga area"},{id:"2021207379273939",price:1250,desc:"2 bed · Hochelaga area"},{id:"1319648489559089",price:1300,desc:"2 bed · Hochelaga/Rosemont"},{id:"35467536479561282",price:1150,desc:"2 bed · H1V area"},{id:"812079261725175",price:1200,desc:"2 bed · Hochelaga"}],
-  fernando_2:[{id:"3162072874181637",price:1150,desc:"2 bed · Granby area"},{id:"2117027492214419",price:1200,desc:"2 bed · Granby"},{id:"1779612953018792",price:1180,desc:"2 bed · Granby area"},{id:"2166177694310853",price:1200,desc:"2 bed · Granby"},{id:"1331454555711354",price:1150,desc:"2 bed · Granby area"}],
-  fernando_3:[{id:"1349392823704088",price:1040,desc:"Studio · Hochelaga area"},{id:"35467536479561282",price:1150,desc:"Studio · H1V area"},{id:"1999397557618084",price:950,desc:"Studio · Hochelaga active"},{id:"2257425745076514",price:975,desc:"Studio · Hochelaga area"},{id:"900039733064510",price:980,desc:"Studio · Hochelaga/Rosemont"}],
-  fernando_4:[{id:"1413844743785487",price:1280,desc:"1 bed · Hochelaga area"},{id:"1349392823704088",price:1040,desc:"1 bed · Hochelaga"},{id:"35467536479561282",price:1150,desc:"1 bed · H1V area"},{id:"3444376162407026",price:1240,desc:"1 bed · Hochelaga area"},{id:"1674421750366574",price:1160,desc:"1 bed · Hochelaga/Rosemont"}],
-  fernando_5:[{id:"1413844743785487",price:1280,desc:"1 bed · Hochelaga area"},{id:"1349392823704088",price:1040,desc:"1 bed · Hochelaga"},{id:"35467536479561282",price:1150,desc:"1 bed · H1V area"},{id:"1999397557618084",price:950,desc:"1 bed · Hochelaga active"},{id:"1674421750366574",price:1160,desc:"1 bed · Hochelaga/Rosemont"}],
-  // JENY — updated June 15, 2026 (external comps only)
-  jeny_0:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  jeny_1:[{id:"4199444106854405",price:2150,desc:"4 bed · H4N area"},{id:"1447392076691114",price:1995,desc:"3-4 bed · Villaray area"},{id:"1380879849797657",price:1921,desc:"3-4 bed · Montréal area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"105646229470122",price:2325,desc:"2+ bed · Montréal area"}],
-  jeny_2:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  jeny_3:[{id:"1863901180946430",price:1570,desc:"3 bed · H4N area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"1675391193989408",price:1300,desc:"3 bed · H4N area"},{id:"1380879849797657",price:1921,desc:"3 bed · Montréal area"},{id:"1447392076691114",price:1995,desc:"3 bed · Villaray area"}],
-  jeny_4:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
-  jeny_5:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  jeny_6:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
-  jeny_7:[{id:"1863901180946430",price:1570,desc:"3 bed · H4N area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"1675391193989408",price:1300,desc:"3 bed · H4N area"},{id:"1380879849797657",price:1921,desc:"3 bed · Montréal area"},{id:"1447392076691114",price:1995,desc:"3 bed · Villaray area"}],
-  jeny_8:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  jeny_9:[{id:"4199444106854405",price:2150,desc:"4 bed · H4N area"},{id:"1447392076691114",price:1995,desc:"3-4 bed · Villaray area"},{id:"1380879849797657",price:1921,desc:"3-4 bed · Montréal area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"105646229470122",price:2325,desc:"2+ bed · Montréal area"}],
-  jeny_10:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  // KATHLEEN — updated June 1, 2026
-  kathleen_0:[{id:"2417651825377376",price:1395,desc:"2 bed · Longueuil active"},{id:"1635011634466277",price:1300,desc:"2 bed · Longueuil area"},{id:"1854213255211491",price:1380,desc:"2 bed · Longueuil active"},{id:"1706717364079024",price:1191,desc:"2 bed · Longueuil"},{id:"27151531624486955",price:1150,desc:"2 bed · Longueuil area"}],
-  kathleen_1:[{id:"852449477284389",price:830,desc:"Studio · PSC/Verdun area"},{id:"1487337136741369",price:1050,desc:"Studio · Verdun/PSC"},{id:"4488508004764438",price:1195,desc:"Studio · Verdun active"},{id:"1887112175328798",price:1100,desc:"Studio · PSC/Verdun area"},{id:"832607362879629",price:1125,desc:"Studio · PSC/Verdun"}],
-  kathleen_2:[{id:"1528762415631582",price:1215,desc:"1 bed · CSL/NDG active"},{id:"1409033714321598",price:1100,desc:"1 bed · CSL area"},{id:"1121941610154515",price:1245,desc:"1 bed · CSL/NDG"},{id:"3091172984603461",price:900,desc:"1 bed · CSL area"},{id:"832546819422302",price:1100,desc:"1 bed · CSL/Verdun"}],
-  kathleen_3:[{id:"983635817593974",price:1895,desc:"2 bed · Verdun/PSC active"},{id:"2094846054420622",price:1850,desc:"2 bed · Verdun area"},{id:"1488450439695037",price:1750,desc:"2 bed · CSL/Verdun"},{id:"1702036797915949",price:1487,desc:"2 bed · Verdun area"},{id:"1528762415631582",price:1215,desc:"2 bed · CSL/Verdun active"}],
-  kathleen_4:[{id:"2417651825377376",price:1395,desc:"2 bed · Longueuil active"},{id:"1635011634466277",price:1300,desc:"2 bed · Longueuil area"},{id:"1854213255211491",price:1380,desc:"2 bed · Longueuil active"},{id:"1706717364079024",price:1191,desc:"2 bed · Longueuil"},{id:"27151531624486955",price:1150,desc:"2 bed · Longueuil area"}],
-  kathleen_5:[{id:"2187227072078780",price:1015,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"1982233582499884",price:1095,desc:"1 bed · St-Jean area"},{id:"4472102216361059",price:950,desc:"1 bed · St-Jean-sur-Richelieu"},{id:"597295911506305",price:970,desc:"1 bed · St-Jean area"},{id:"989551803486769",price:1000,desc:"1 bed · St-Jean-sur-Richelieu"}],
-  // ORIANA — updated June 1, 2026
-  oriana_0:[{id:"1041993035163944",price:965,desc:"Studio · Plateau active"},{id:"1615361739534230",price:1020,desc:"Studio · Plateau/Rosemont"},{id:"2252831575459743",price:1100,desc:"Studio · Plateau area"},{id:"1337514244921403",price:950,desc:"Studio · Rosemont active"},{id:"1343891087621906",price:945,desc:"Studio · Plateau/Rosemont"}],
-  oriana_1:[{id:"1041993035163944",price:965,desc:"Studio · Plateau active"},{id:"1615361739534230",price:1020,desc:"Studio · Plateau/Rosemont"},{id:"2252831575459743",price:1100,desc:"Studio · Plateau area"},{id:"1337514244921403",price:950,desc:"Studio · Rosemont active"},{id:"1343891087621906",price:945,desc:"Studio · Plateau/Rosemont"}],
-  oriana_2:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont/Plateau active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau area"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
-  oriana_3:[{id:"2145618059345686",price:1100,desc:"1 bed · Plateau/Rosemont"},{id:"1041993035163944",price:965,desc:"1 bed · Plateau active"},{id:"1615361739534230",price:1020,desc:"1 bed · Plateau area"},{id:"1337514244921403",price:950,desc:"1 bed · Rosemont active"},{id:"2252831575459743",price:1100,desc:"1 bed · Plateau area"}],
-  oriana_4:[{id:"2145618059345686",price:1100,desc:"1 bed · Plateau/Rosemont"},{id:"1041993035163944",price:965,desc:"1 bed · Plateau active"},{id:"1615361739534230",price:1020,desc:"1 bed · Plateau area"},{id:"1337514244921403",price:950,desc:"1 bed · Rosemont active"},{id:"2252831575459743",price:1100,desc:"1 bed · Plateau area"}],
-  oriana_5:[{id:"2145618059345686",price:1100,desc:"1 bed · Plateau/Rosemont"},{id:"1041993035163944",price:965,desc:"1 bed · Plateau active"},{id:"1615361739534230",price:1020,desc:"1 bed · Rosemont area"},{id:"1337514244921403",price:950,desc:"1 bed · Rosemont active"},{id:"2252831575459743",price:1100,desc:"1 bed · Plateau"}],
-  oriana_6:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont/Plateau active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
-  oriana_7:[{id:"1041993035163944",price:965,desc:"Studio · Plateau active"},{id:"1615361739534230",price:1020,desc:"Studio · Rosemont/Plateau"},{id:"1337514244921403",price:950,desc:"Studio · Rosemont active"},{id:"1343891087621906",price:945,desc:"Studio · Plateau area"},{id:"2252831575459743",price:1100,desc:"Studio · Plateau"}],
-  oriana_8:[{id:"1536312595167412",price:1595,desc:"2 bed Outremont area"},{id:"833285806178161",price:1295,desc:"2 bed CDN area"},{id:"1747261136642725",price:1150,desc:"2 bed CDN area"},{id:"1320683976689040",price:1269,desc:"2 bed CDN/Plamondon"},{id:"1690733308839719",price:1150,desc:"2 bed CDN active"}],
-  oriana_9:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
-  oriana_10:[{id:"1854213255211491",price:1380,desc:"2 bed · Rosemont active"},{id:"1496694655331445",price:1295,desc:"2 bed · Rosemont area"},{id:"2251421432293592",price:1273,desc:"2 bed · Rosemont/Plateau"},{id:"1751217852525800",price:1550,desc:"2 bed · Plateau area"},{id:"1492559009008320",price:1430,desc:"2 bed · Rosemont active"}],
-  // PADLY — updated June 15, 2026 (external comps only)
-  padly_0:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  padly_1:[{id:"4199444106854405",price:2150,desc:"4 bed · H4N area"},{id:"1447392076691114",price:1995,desc:"3-4 bed · Villaray area"},{id:"1380879849797657",price:1921,desc:"3-4 bed · Montréal area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"105646229470122",price:2325,desc:"2+ bed · Montréal area"}],
-  padly_2:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  padly_3:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal H4N area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal H4N area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  padly_4:[{id:"103106099729485",price:1200,desc:"2 bed · Montréal area"},{id:"111938355489908",price:1550,desc:"2 bed · Montréal area"},{id:"105646229470122",price:2325,desc:"2 bed · Montréal area"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"}],
-  padly_5:[{id:"1863901180946430",price:1570,desc:"3 bed · H4N area"},{id:"1822487135394471",price:1550,desc:"3 bed · Anjou area"},{id:"1675391193989408",price:1300,desc:"3 bed · H4N area"},{id:"1380879849797657",price:1921,desc:"3 bed · Montréal area"},{id:"1447392076691114",price:1995,desc:"3 bed · Villaray area"}],
-  padly_6:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
-  padly_7:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
-  padly_8:[{id:"110584048962146",price:1350,desc:"Large 1 bed · Montréal"},{id:"106141529417988",price:1400,desc:"1 bed · Montréal area"},{id:"1863901180946430",price:1570,desc:"3½ apt · H4N area"},{id:"1008991778384898",price:1250,desc:"Studio/1 bed · Montréal"},{id:"108584795833461",price:2300,desc:"1 bed · Montréal high-end"}],
-  // EDMONTON — Safiya Ali (updated June 15, 2026)
-  safiya_0:[{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"}],
-  safiya_1:[{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"}],
-  safiya_2:[{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"},{id:"1034604192558218",price:1295,desc:"1 bed · Edmonton AB"},{id:"938960442532626",price:1050,desc:"1 bed · Edmonton AB"}],
-  safiya_3:[{id:"1020112944048278",price:1250,desc:"Studio · Edmonton AB"},{id:"1768415207868398",price:1050,desc:"Studio · Edmonton AB"},{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"}],
-  safiya_4:[{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"}],
-  safiya_5:[{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"938960442532626",price:1050,desc:"1 bed · Edmonton AB"},{id:"1034604192558218",price:1295,desc:"1 bed · Edmonton AB"}],
-  safiya_6:[{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"}],
-  safiya_7:[{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"}],
-  safiya_8:[{id:"2803718716659860",price:1100,desc:"1 bed · Edmonton AB"},{id:"2264388711055082",price:1195,desc:"1 bed · Edmonton AB"},{id:"1350884320224996",price:1113,desc:"1 bed · Edmonton AB"},{id:"938960442532626",price:1050,desc:"1 bed · Edmonton AB"},{id:"1034604192558218",price:1295,desc:"1 bed · Edmonton AB"}],
-  safiya_9:[{id:"1704961770508195",price:1600,desc:"3 bed · Edmonton AB"},{id:"2160602998062414",price:1619,desc:"2 bed · Edmonton AB"},{id:"2222042958558236",price:1450,desc:"2 bed · Edmonton AB"},{id:"1717237099291697",price:1395,desc:"2 bed · Edmonton AB"},{id:"1481261023322480",price:1200,desc:"2 bed · Edmonton AB"}]
+  // ── PADLY — Montréal ──────────────────────────────────────────────────────
+  // padly_0: 1526120332622145 — 2 bed · 1190 Rue du Fort $1,300
+  padly_0:[{id:"1343470854332770",price:1425,desc:"2 ch · Rosemont/NDG · $1,425/mo"},{id:"1012189798359534",price:1295,desc:"2 ch · NDG · $1,295/mo"},{id:"1558894995942432",price:1340,desc:"2 ch · Mtl · $1,340/mo"},{id:"1437502517931605",price:1492,desc:"2 ch · Mtl · $1,492/mo"},{id:"1691211095328169",price:1291,desc:"2 ch · Mtl · $1,291/mo"}],
+  // padly_1: 1576444920812830 — 3 bed · Maurice-Duplessis $1,575
+  padly_1:[{id:"1345935864415765",price:1850,desc:"3 ch · Plateau · $1,850/mo"},{id:"2527997037641881",price:1695,desc:"3 ch · Plateau · $1,695/mo"},{id:"965359532981339",price:1775,desc:"3 ch · Mtl · $1,775/mo"},{id:"1354860622674497",price:1900,desc:"3 ch · Mtl · $1,900/mo"},{id:"1067468292617811",price:1750,desc:"3 ch · Mtl · $1,750/mo"}],
+  // padly_2: 1076068911654331 — 2 bed · Maurice-Duplessis $1,475
+  padly_2:[{id:"3915592741909018",price:1700,desc:"2 ch · Mtl · $1,700/mo"},{id:"1783829186317568",price:1650,desc:"2 ch · Mtl · $1,650/mo"},{id:"1472889917920977",price:1549,desc:"2 ch · Mtl · $1,549/mo"},{id:"1343470854332770",price:1425,desc:"2 ch · Mtl · $1,425/mo"},{id:"1437502517931605",price:1492,desc:"2 ch · Mtl · $1,492/mo"}],
+  // padly_3: 1740472673662622 — Studio · Wilderton H3S $900
+  padly_3:[{id:"1583556803491145",price:1112,desc:"Studio · CDN · $1,112/mo"},{id:"1702627080917190",price:1191,desc:"Studio · CDN · $1,191/mo"},{id:"1334726801859491",price:1025,desc:"Studio · Mtl · $1,025/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"}],
+  // padly_4: 1693482225104450 — Studio · Fort-Rolland $990
+  padly_4:[{id:"1583556803491145",price:1112,desc:"Studio · CSL area · $1,112/mo"},{id:"1334726801859491",price:1025,desc:"Studio · Mtl · $1,025/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1702627080917190",price:1191,desc:"Studio · Mtl · $1,191/mo"}],
+  // padly_5: 1030538882921543 — 1 bed · Rue du Fort $1,250
+  padly_5:[{id:"2229103454561610",price:1295,desc:"1 ch · CSL · $1,295/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · Mtl · $1,200/mo"},{id:"1724546542223217",price:900,desc:"1 ch · Mtl · $900/mo"}],
+  // padly_6: 1360434982157648 — 1 bed · Henri-Bourassa E $1,190
+  padly_6:[{id:"2229103454561610",price:1295,desc:"1 ch · Ahuntsic · $1,295/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1027227683301204",price:925,desc:"1 ch · Mtl · $925/mo"}],
+  // padly_7: 1034747746201852 — 1 bed · Bois-de-Boulogne H4N $1,190
+  padly_7:[{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1979808379561719",price:1112,desc:"1 ch · H4N · $1,112/mo"},{id:"1052348460600998",price:1100,desc:"1 ch · H4N · $1,100/mo"}],
+  // padly_8: 1529236135342174 — 3 bed · St-André H2L $1,900
+  padly_8:[{id:"1345935864415765",price:1850,desc:"3 ch · Plateau · $1,850/mo"},{id:"2527997037641881",price:1695,desc:"3 ch · Plateau · $1,695/mo"},{id:"1339267167710647",price:2050,desc:"3 ch · Plateau · $2,050/mo"},{id:"1354860622674497",price:1900,desc:"3 ch · Plateau · $1,900/mo"},{id:"1067468292617811",price:1750,desc:"3 ch · Plateau · $1,750/mo"}],
+  // padly_9: 915980207436331 — Studio · Henri-Bourassa E $900
+  padly_9:[{id:"1084644190556630",price:1000,desc:"Studio · Ahuntsic · $1,000/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1702627080917190",price:1191,desc:"Studio · Mtl · $1,191/mo"},{id:"1334726801859491",price:1025,desc:"Studio · Mtl · $1,025/mo"}],
+  // padly_10: 27589595160724065 — Studio · Ontario E $1,090
+  padly_10:[{id:"962878676669355",price:995,desc:"Studio · Hochelaga · $995/mo"},{id:"979484725149013",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1229035562681433",price:1087,desc:"Studio · Mtl · $1,087/mo"},{id:"1701101754372264",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"}],
+  // 
+  padly_12:[{id:"962878676669355",price:995,desc:"Studio · Hochelaga · $995/mo"},{id:"979484725149013",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1229035562681433",price:1087,desc:"Studio · Mtl · $1,087/mo"},{id:"1701101754372264",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"}],
+  padly_11:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"2100768197137859",price:1371,desc:"2 ch · Rosemont · $1,371/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"1287065543279470",price:1520,desc:"2 ch · Rosemont · $1,520/mo"}],
+
+  // ── FERNANDO — Montréal ───────────────────────────────────────────────────
+  // fernando_0: 2033680923921693 — 2 bed · Granby $1,190
+  fernando_0:[{id:"1443370363397251",price:1700,desc:"2 ch · Mtl ref · $1,700/mo"},{id:"1012189798359534",price:1295,desc:"2 ch · Mtl · $1,295/mo"},{id:"1437502517931605",price:1492,desc:"2 ch · Mtl · $1,492/mo"},{id:"895067400060329",price:1695,desc:"2 ch · H4N · $1,695/mo"},{id:"1174091398065308",price:1450,desc:"2 ch · H4N · $1,450/mo"}],
+  // fernando_1: 1699885621141424 — 2 bed · Francoeur $1,450
+  fernando_1:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1343470854332770",price:1425,desc:"2 ch · Mtl · $1,425/mo"},{id:"1437502517931605",price:1492,desc:"2 ch · Mtl · $1,492/mo"},{id:"1783829186317568",price:1650,desc:"2 ch · Mtl · $1,650/mo"},{id:"1472889917920977",price:1549,desc:"2 ch · Mtl · $1,549/mo"}],
+  // fernando_2: 2265562477520520 — 2 bed · Montréal $1,450
+  fernando_2:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1343470854332770",price:1425,desc:"2 ch · Mtl · $1,425/mo"},{id:"1437502517931605",price:1492,desc:"2 ch · Mtl · $1,492/mo"},{id:"1783829186317568",price:1650,desc:"2 ch · Mtl · $1,650/mo"},{id:"1472889917920977",price:1549,desc:"2 ch · Mtl · $1,549/mo"}],
+  // fernando_3: 936778808938609 — Studio · Rue du Fort $1,090
+  fernando_3:[{id:"1583556803491145",price:1112,desc:"Studio · CSL · $1,112/mo"},{id:"1334726801859491",price:1025,desc:"Studio · Mtl · $1,025/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1702627080917190",price:1191,desc:"Studio · Mtl · $1,191/mo"}],
+  // fernando_4: 933991522497644 — Studio · Montréal $1,090
+  fernando_4:[{id:"1001398432531570",price:990,desc:"Studio · Mtl · $990/mo"},{id:"977404935337383",price:950,desc:"Studio · Mtl · $950/mo"},{id:"3292075230965500",price:899,desc:"Studio · Mtl · $899/mo"},{id:"962878676669355",price:995,desc:"Studio · Mtl · $995/mo"},{id:"2500637693783383",price:1090,desc:"Studio · Mtl · $1,090/mo"}],
+  // fernando_5: 841922065508962 — Studio · Coubertin $890
+  fernando_5:[{id:"1001398432531570",price:990,desc:"Studio · Mtl · $990/mo"},{id:"977404935337383",price:950,desc:"Studio · Mtl · $950/mo"},{id:"3292075230965500",price:899,desc:"Studio · Mtl · $899/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"},{id:"1084644190556630",price:1000,desc:"Studio · Mtl · $1,000/mo"}],
+  // fernando_6: 1595209748487971 — 1 bed · Hochelaga $1,150
+  fernando_6:[{id:"988719550373130",price:1195,desc:"1 ch · Hochelaga · $1,195/mo"},{id:"1606291861219262",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"1632331914531704",price:975,desc:"1 ch · Hochelaga · $975/mo"},{id:"1566296381558922",price:850,desc:"1 ch · Hochelaga · $850/mo"},{id:"1319874629731470",price:810,desc:"1 ch · Hochelaga · $810/mo"}],
+  // fernando_7: 1857773424945196 — 1 bed · Ontario E $1,090
+  fernando_7:[{id:"988719550373130",price:1195,desc:"1 ch · Hochelaga · $1,195/mo"},{id:"1606291861219262",price:950,desc:"1 ch · Mtl · $950/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · Mtl · $1,200/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1027227683301204",price:925,desc:"1 ch · Mtl · $925/mo"}],
+
+  // ── JENY — Montréal ───────────────────────────────────────────────────────
+  jeny_0:[{id:"959697886667561",price:1500,desc:"2 ch · Anjou · $1,500/mo"},{id:"831489246240398",price:1400,desc:"2 ch · Anjou · $1,400/mo"},{id:"1545000533789674",price:1450,desc:"2 ch · Anjou · $1,450/mo"},{id:"2100768197137859",price:1371,desc:"2 ch · Anjou · $1,371/mo"},{id:"1783829186317568",price:1650,desc:"2 ch · Anjou · $1,650/mo"}],
+  jeny_1:[{id:"988719550373130",price:1195,desc:"1 ch · Hochelaga · $1,195/mo"},{id:"1319874629731470",price:810,desc:"1 ch · Hochelaga · $810/mo"},{id:"1566296381558922",price:850,desc:"1 ch · Hochelaga · $850/mo"},{id:"1606291861219262",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"1632331914531704",price:975,desc:"1 ch · Hochelaga · $975/mo"}],
+  jeny_2:[{id:"988719550373130",price:1195,desc:"1 ch · Hochelaga · $1,195/mo"},{id:"1319874629731470",price:810,desc:"1 ch · Hochelaga · $810/mo"},{id:"1566296381558922",price:850,desc:"1 ch · Hochelaga · $850/mo"},{id:"1606291861219262",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"1632331914531704",price:975,desc:"1 ch · Hochelaga · $975/mo"}],
+
+  // ── KATHLEEN — Montréal ───────────────────────────────────────────────────
+  kathleen_0:[{id:"962878676669355",price:995,desc:"Studio · Hochelaga · $995/mo"},{id:"979484725149013",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1084644190556630",price:1000,desc:"Studio · Mtl · $1,000/mo"},{id:"1701101754372264",price:925,desc:"Studio · Mtl · $925/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"}],
+  kathleen_1:[{id:"984629537970035",price:1500,desc:"2 ch · CSL · $1,500/mo"},{id:"1055134734041901",price:1200,desc:"2 ch · CSL · $1,200/mo"},{id:"1545000533789674",price:1450,desc:"2 ch · Mtl · $1,450/mo"},{id:"1023817423907823",price:1525,desc:"2 ch · CSL · $1,525/mo"},{id:"1291749429539043",price:1150,desc:"2 ch · Mtl · $1,150/mo"}],
+  kathleen_2:[{id:"2229103454561610",price:1295,desc:"1 ch · CSL · $1,295/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · Mtl · $1,200/mo"},{id:"1724546542223217",price:900,desc:"1 ch · Mtl · $900/mo"}],
+  kathleen_3:[{id:"1023817423907823",price:1525,desc:"2 ch · Longueuil · $1,525/mo"},{id:"1055134734041901",price:1200,desc:"2 ch · Longueuil · $1,200/mo"},{id:"1291749429539043",price:1150,desc:"2 ch · Mtl · $1,150/mo"},{id:"984629537970035",price:1500,desc:"2 ch · CSL · $1,500/mo"},{id:"1545000533789674",price:1450,desc:"2 ch · Mtl · $1,450/mo"}],
+  kathleen_4:[{id:"1084644190556630",price:1000,desc:"Studio · SW Mtl · $1,000/mo"},{id:"2500637693783383",price:1090,desc:"Studio · Mtl · $1,090/mo"},{id:"1583601906828771",price:1100,desc:"Studio · Mtl · $1,100/mo"},{id:"979484725149013",price:925,desc:"Studio · Mtl · $925/mo"},{id:"977404935337383",price:950,desc:"Studio · Mtl · $950/mo"}],
+  kathleen_5:[{id:"984629537970035",price:1500,desc:"2 ch · SW Mtl · $1,500/mo"},{id:"1414193147175588",price:1695,desc:"2 ch · Mtl · $1,695/mo"},{id:"1437502517931605",price:1492,desc:"2 ch · Mtl · $1,492/mo"},{id:"1291749429539043",price:1150,desc:"2 ch · Mtl · $1,150/mo"},{id:"2020675115323193",price:1300,desc:"2 ch · Mtl · $1,300/mo"}],
+
+  // ── ORIANA — Montréal ─────────────────────────────────────────────────────
+  oriana_0:[{id:"2152011185370637",price:950,desc:"Studio · Plateau · $950/mo"},{id:"27434495046210897",price:1100,desc:"Studio · Plateau · $1,100/mo"},{id:"1084644190556630",price:1000,desc:"Studio · Mtl · $1,000/mo"},{id:"979484725149013",price:925,desc:"Studio · Mtl · $925/mo"},{id:"1701101754372264",price:925,desc:"Studio · Mtl · $925/mo"}],
+  oriana_1:[{id:"1014774901149492",price:982,desc:"1 ch · Plateau · $982/mo"},{id:"1340959014233689",price:1000,desc:"1 ch · Plateau · $1,000/mo"},{id:"1265231012207287",price:1225,desc:"1 ch · Plateau · $1,225/mo"},{id:"1717099533051309",price:1300,desc:"1 ch · Plateau · $1,300/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"}],
+  oriana_2:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"2100768197137859",price:1371,desc:"2 ch · Rosemont · $1,371/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"1287065543279470",price:1520,desc:"2 ch · Rosemont · $1,520/mo"}],
+  oriana_3:[{id:"2152011185370637",price:950,desc:"Studio · Plateau · $950/mo"},{id:"27434495046210897",price:1100,desc:"Studio · Rosemont · $1,100/mo"},{id:"1084644190556630",price:1000,desc:"Studio · Mtl · $1,000/mo"},{id:"979484725149013",price:925,desc:"Studio · Mtl · $925/mo"},{id:"1701101754372264",price:925,desc:"Studio · Mtl · $925/mo"}],
+  oriana_4:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"2100768197137859",price:1371,desc:"2 ch · Rosemont · $1,371/mo"},{id:"1909850609683019",price:1300,desc:"2 ch · Rosemont · $1,300/mo"},{id:"1287065543279470",price:1520,desc:"2 ch · Rosemont · $1,520/mo"}],
+  oriana_5:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"2100768197137859",price:1371,desc:"2 ch · Rosemont · $1,371/mo"},{id:"1287065543279470",price:1520,desc:"2 ch · Rosemont · $1,520/mo"}],
+
+  // ── TAMARA — Montréal ─────────────────────────────────────────────────────
+  tamara_0:[{id:"3915592741909018",price:1700,desc:"2 ch · Mtl · $1,700/mo"},{id:"1020191320873306",price:1250,desc:"2 ch · Mtl · $1,250/mo"},{id:"984629537970035",price:1500,desc:"2 ch · CSL · $1,500/mo"},{id:"1783829186317568",price:1650,desc:"2 ch · Mtl · $1,650/mo"},{id:"1472889917920977",price:1549,desc:"2 ch · Mtl · $1,549/mo"}],
+  tamara_1:[{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1979808379561719",price:1112,desc:"1 ch · H4N · $1,112/mo"},{id:"1052348460600998",price:1100,desc:"1 ch · H4N · $1,100/mo"}],
+  tamara_2:[{id:"1583556803491145",price:1112,desc:"Studio · CDN · $1,112/mo"},{id:"1702627080917190",price:1191,desc:"Studio · CDN · $1,191/mo"},{id:"1334726801859491",price:1025,desc:"Studio · Mtl · $1,025/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"}],
+  tamara_3:[{id:"1006281198478552",price:1095,desc:"1 ch · Ahuntsic · $1,095/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · Mtl · $1,200/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1027227683301204",price:925,desc:"1 ch · Mtl · $925/mo"},{id:"1724546542223217",price:900,desc:"1 ch · Mtl · $900/mo"}],
+  tamara_4:[{id:"1027227683301204",price:925,desc:"1 ch · CDN/Kent · $925/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · Mtl · $1,200/mo"},{id:"2229103454561610",price:1295,desc:"1 ch · Mtl · $1,295/mo"}],
+  tamara_5:[{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1979808379561719",price:1112,desc:"1 ch · H4N · $1,112/mo"},{id:"1052348460600998",price:1100,desc:"1 ch · H4N · $1,100/mo"}],
+  tamara_6:[{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"1381494417124191",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"895067400060329",price:1695,desc:"2 ch · H4N · $1,695/mo"},{id:"1343470854332770",price:1425,desc:"2 ch · Mtl · $1,425/mo"},{id:"1558894995942432",price:1340,desc:"2 ch · Mtl · $1,340/mo"}],
+  tamara_7:[{id:"1084644190556630",price:1000,desc:"Studio · Ahuntsic · $1,000/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1702627080917190",price:1191,desc:"Studio · Mtl · $1,191/mo"},{id:"1334726801859491",price:1025,desc:"Studio · Mtl · $1,025/mo"}],
+  tamara_8:[{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"1381494417124191",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"895067400060329",price:1695,desc:"2 ch · H4N · $1,695/mo"},{id:"1343470854332770",price:1425,desc:"2 ch · Mtl · $1,425/mo"},{id:"1622575332164992",price:1650,desc:"2 ch · H4N · $1,650/mo"}],
+  tamara_9:[{id:"2229103454561610",price:1295,desc:"1 ch · Ahuntsic · $1,295/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · Mtl · $1,200/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1027227683301204",price:925,desc:"1 ch · Mtl · $925/mo"}],
+  tamara_10:[{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1979808379561719",price:1112,desc:"1 ch · H4N · $1,112/mo"},{id:"1052348460600998",price:1100,desc:"1 ch · H4N · $1,100/mo"}],
+
+  // ── PRINCE ALBERT ─────────────────────────────────────────────────────────
+  vinit_0:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LeaseWith $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LeaseWith $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}],
+  vinit_1:[{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LeaseWith $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LeaseWith $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}],
+  avi_0:[{id:"3054523851410988",price:1280,desc:"1 bd · PA · Vinit $1,280/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LeaseWith $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LeaseWith $1,365/mo"},{id:"1616908532762897",price:1215,desc:"1 bd · PA · LeaseWith $1,215/mo"}],
+  avi_1:[{id:"29793418543636539",price:1120,desc:"2 bd · PA · Vinit $1,120/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LeaseWith $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LeaseWith $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"}],
+  avi_2:[{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi dup $1,290/mo"},{id:"29793418543636539",price:1120,desc:"2 bd · PA · Vinit $1,120/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LeaseWith $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LeaseWith $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}],
+  avi_3:[{id:"3054523851410988",price:1280,desc:"1 bd · PA · Vinit $1,280/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LeaseWith $1,190/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LeaseWith $1,365/mo"},{id:"915190018100115",price:1190,desc:"1 bd · PA · LeaseWith $1,190/mo"}],
+  abhi_0:[{id:"1477304230836157",price:1455,desc:"2 bd · PA · LeaseWith $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LeaseWith $1,350/mo"},{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"29793418543636539",price:1120,desc:"2 bd · PA · Vinit $1,120/mo"}],
+  abhi_1:[{id:"3054523851410988",price:1280,desc:"1 bd · PA · Vinit $1,280/mo"},{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LeaseWith $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LeaseWith $1,365/mo"}],
+  leasewith_0:[{id:"3054523851410988",price:1280,desc:"1 bd · PA · Vinit $1,280/mo"},{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"},{id:"915190018100115",price:1190,desc:"1 bd · PA · LW dup $1,190/mo"}],
+  leasewith_1:[{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"},{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"29793418543636539",price:1120,desc:"2 bd · PA · Vinit $1,120/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW dup $1,350/mo"}],
+  leasewith_2:[{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"},{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW dup $1,455/mo"},{id:"29793418543636539",price:1120,desc:"2 bd · PA · Vinit $1,120/mo"}],
+  leasewith_3:[{id:"3054523851410988",price:1280,desc:"1 bd · PA · Vinit $1,280/mo"},{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"},{id:"1616908532762897",price:1215,desc:"1 bd · PA · LW dup $1,215/mo"}],
+  leasewith_4:[{id:"3054523851410988",price:1280,desc:"1 bd · PA · Vinit $1,280/mo"},{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW dup $1,365/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW dup $1,190/mo"}],
+  leasewith_5:[{id:"3054523851410988",price:1280,desc:"1 bd · PA · Vinit $1,280/mo"},{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW dup $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}],
+  leasewith_6:[{id:"910197502004234",price:1250,desc:"3 bd · PA · LW dup $1,250/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"}],
+
+  // ── EDMONTON — Safiya ─────────────────────────────────────────────────────
+  safiya_0:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"1647161453052693",price:1139,desc:"1 bd · Edmonton · $1,139/mo"}],
+  safiya_1:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"896310283490585",price:1300,desc:"1 bd · Edmonton · $1,300/mo"},{id:"1575843157582656",price:1395,desc:"1 bd · Edmonton · $1,395/mo"}],
+  safiya_2:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"990488717065004",price:1850,desc:"2 bd · Edmonton · $1,850/mo"}],
+  safiya_3:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"896310283490585",price:1300,desc:"1 bd · Edmonton · $1,300/mo"},{id:"1904680056876871",price:1150,desc:"1 bd · Edmonton · $1,150/mo"}],
+  safiya_4:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}],
+  safiya_5:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"}],
+  safiya_6:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1575843157582656",price:1395,desc:"1 bd · Edmonton · $1,395/mo"}],
+  safiya_7:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"}],
+  safiya_8:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"990488717065004",price:1850,desc:"2 bd · Edmonton · $1,850/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}],
+  safiya_9:[{id:"1647161453052693",price:1139,desc:"Studio · Edmonton · $1,139/mo"},{id:"1546230056879759",price:850,desc:"Studio · Edmonton · $850/mo"},{id:"1309154904411691",price:1150,desc:"Studio · Edmonton · $1,150/mo"},{id:"1680529629664847",price:1250,desc:"Studio · Edmonton · $1,250/mo"},{id:"1285290057015307",price:1250,desc:"Studio · Edmonton · $1,250/mo"}],
+  safiya_10:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"896310283490585",price:1300,desc:"1 bd · Edmonton · $1,300/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"}],
+  safiya_11:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"990488717065004",price:1850,desc:"2 bd · Edmonton · $1,850/mo"}],
+  safiya_12:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}],
+  safiya_13:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"990488717065004",price:1850,desc:"2 bd · Edmonton · $1,850/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}],
+  safiya_14:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"896310283490585",price:1300,desc:"1 bd · Edmonton · $1,300/mo"},{id:"1575843157582656",price:1395,desc:"1 bd · Edmonton · $1,395/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"}],
+  safiya_15:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}],
+  safiya_16:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"896310283490585",price:1300,desc:"1 bd · Edmonton · $1,300/mo"}],
+  safiya_17:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"896310283490585",price:1300,desc:"1 bd · Edmonton · $1,300/mo"},{id:"1575843157582656",price:1395,desc:"1 bd · Edmonton · $1,395/mo"},{id:"1647161453052693",price:1139,desc:"1 bd · Edmonton · $1,139/mo"}],
+  safiya_18:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"1647161453052693",price:1139,desc:"1 bd · Edmonton · $1,139/mo"}],
+
+  // ── SASKATOON — Malek ─────────────────────────────────────────────────────
+  malek_0:[{id:"1185901575425737",price:1200,desc:"2 bd · Saskatoon · $1,200/mo"},{id:"4615496815442007",price:1300,desc:"2 bd · Saskatoon · $1,300/mo"},{id:"1010234928462733",price:1350,desc:"2 bd · Saskatoon · $1,350/mo"},{id:"1329616348604581",price:1450,desc:"2 bd · Saskatoon · $1,450/mo"},{id:"4110848222546136",price:1500,desc:"2 bd · Saskatoon · $1,500/mo"}],
+  malek_1:[{id:"1185901575425737",price:1200,desc:"2 bd · Saskatoon · $1,200/mo"},{id:"4615496815442007",price:1300,desc:"2 bd · Saskatoon · $1,300/mo"},{id:"1010234928462733",price:1350,desc:"2 bd · Saskatoon · $1,350/mo"},{id:"1329616348604581",price:1450,desc:"2 bd · Saskatoon · $1,450/mo"},{id:"4110848222546136",price:1500,desc:"2 bd · Saskatoon · $1,500/mo"}],
+  malek_2:[{id:"2105903806951621",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"1255896676315393",price:900,desc:"1 bd · Saskatoon · $900/mo"},{id:"1823769611918567",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"28344174945184220",price:850,desc:"1 bd · Saskatoon · $850/mo"},{id:"1241583644798388",price:700,desc:"1 bd · Saskatoon · $700/mo"}],
+  malek_3:[{id:"2105903806951621",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"1255896676315393",price:900,desc:"1 bd · Saskatoon · $900/mo"},{id:"1823769611918567",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"28344174945184220",price:850,desc:"1 bd · Saskatoon · $850/mo"},{id:"1241583644798388",price:700,desc:"1 bd · Saskatoon · $700/mo"}],
+
+  // ── DANNY — 0 listings ────────────────────────────────────────────────────
+  danny_0:[]
 };;
 
 // PRICE RULES (surgical precision):
@@ -919,117 +1132,142 @@ function renderListing(item,idx){
 }
 function toggleDetail(key){detailState[key]=!detailState[key];const o=detailState[key];const el=document.getElementById("ld-"+key);if(el)el.classList.toggle("open",o);const tx=document.getElementById("etxt-"+key);if(tx)tx.textContent=o?t("hide_det"):t("see_det");}
 function renderAgent(pane,data,name,initials,color,rating,reviews,count,year,url,agent_key){
+  if(!data || data.length === 0) {
+    const el = document.getElementById("pane-"+pane);
+    if(el) el.innerHTML = `<div style="padding:40px;text-align:center;color:#94a3b8">
+      <div style="font-size:3rem;margin-bottom:16px">📭</div>
+      <div style="font-size:1.1rem;font-weight:600;color:#cbd5e1;margin-bottom:8px">${name}</div>
+      <div style="font-size:0.9rem">No active listings on Facebook Marketplace right now.</div>
+      <div style="font-size:0.8rem;margin-top:8px;color:#64748b">Check back soon — new listings will appear here automatically.</div>
+      <a href="${url}" target="_blank" style="display:inline-block;margin-top:16px;padding:8px 16px;background:#1d4ed8;color:white;border-radius:6px;text-decoration:none;font-size:0.85rem">View Profile →</a>
+    </div>`;
+    return;
+  }
   const tagged=data.map(i=>({...i,agent_key}));
   const avgSc=Math.round(tagged.reduce((s,i)=>s+calcScore(i),0)/tagged.length);
   document.getElementById("pane-"+pane).innerHTML=`<div class="agent-hdr"><div class="avatar" style="background:${color}20;color:${color}">${initials}</div><div style="flex:1"><div class="agent-name">${name}</div><div class="agent-meta"><span class="stars">★★★★★</span> ${rating} (${reviews} ${t("reviews")}) · ${count} ${t("listings")} · ${t("joined")} ${year}</div><a href="${url}" target="_blank" class="agent-link">🔗 ${t("view_profile")}</a></div><div style="text-align:right;flex-shrink:0"><div style="font-size:9px;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px">Portfolio</div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:20px;color:${scoreColor(avgSc)}">${avgSc}/100</div></div></div><div class="listing-list">${tagged.map((item,i)=>renderListing(item,i)).join("")}</div>`;
 }
 
+const TAMARA=[
+  {id:"1452031363399828",price:1175,beds:1,title:"1 Bed · 10355 Av. Bois-de-Boulogne, Montréal",loc:"10355 Av. Bois-de-Boulogne, Montréal",zone:"bdb_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1452031363399828/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Mtl · $950/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"}]},
+  {id:"2039801663592909",price:1475,beds:2,title:"2 Beds · 6461 Boul. Maurice-Duplessis, Montréal",loc:"6461 Boul. Maurice-Duplessis, Montréal",zone:"tamb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2039801663592909/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Mtl · $1,350/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"},{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]},
+  {id:"976095755476904",price:1190,beds:1,title:"1 Bed · 10355 Av. Bois-de-Boulogne, Montréal H",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N",zone:"bdb_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/976095755476904/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Mtl · $950/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"}]},
+  {id:"1347739726850906",price:1095,beds:1,title:"1 Bed · 147 Boul. Crémazie O, Montréal H2N",loc:"147 Boul. Crémazie O, Montréal H2N",zone:"crem_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1347739726850906/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Ahuntsic · $950/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · Mtl · $1,195/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"1663862427999927",price:800,desc:"1 ch · Mtl · $800/mo"}]},
+  {id:"1905937100103577",price:1190,beds:1,title:"1 Bed · 10355 Av. Bois-de-Boulogne, Montréal H",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N",zone:"bdb_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1905937100103577/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Mtl · $950/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"}]},
+  {id:"2408269173036006",price:1375,beds:2,title:"2 Beds · 10355 Av. Bois-de-Boulogne, Montréal H",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2408269173036006/",comps:[{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"895067400060329",price:1695,desc:"2 ch · H4N · $1,695/mo"},{id:"1055037197097606",price:1350,desc:"2 ch · Mtl · $1,350/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"}]},
+  {id:"1947036052665630",price:900,beds:0,title:"Studio · 1440 Boul. Henri-Bourassa E, Montréal",loc:"1440 Boul. Henri-Bourassa E, Montréal",zone:"bour_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1947036052665630/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"1084644190556630",price:1000,desc:"Studio · Ahuntsic · $1,000/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"}]},
+  {id:"2321792691916168",price:1375,beds:2,title:"2 Beds · 10355 Av. Bois-de-Boulogne, Montréal H",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2321792691916168/",comps:[{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"895067400060329",price:1695,desc:"2 ch · H4N · $1,695/mo"},{id:"1055037197097606",price:1350,desc:"2 ch · Mtl · $1,350/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"}]},
+  {id:"1025126380022521",price:1090,beds:1,title:"1 Bed · 1440 Boul. Henri-Bourassa E, Montréal",loc:"1440 Boul. Henri-Bourassa E, Montréal",zone:"bour_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1025126380022521/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Mtl · $950/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Mtl · $860/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"2229103454561610",price:1295,desc:"1 ch · Mtl · $1,295/mo"}]}
+];
+
 const FERNANDO=[
-  {id:"2749592918731362",price:950,beds:1,title:"1 Bed - St-Jean-sur-Richelieu",loc:"914 Rue Desaulniers, St-Jean-sur-Richelieu J3A 1B1",zone:"sjsr_1",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/2749592918731362/"},
-  {id:"1941437793127850",price:1190,beds:2,title:"2 Beds - Granby",loc:"47 Boul. Fortin, Granby J2G",zone:"granby_2",pets:true,desc_ok:true,photos:9,link:"https://www.facebook.com/marketplace/item/1941437793127850/"},
-  {id:"4048302245461950",price:1020,beds:0,title:"Studio - Sherbrooke Est",loc:"3600 Rue Sherbrooke E, Montréal",zone:"hochelaga_0",pets:false,desc_ok:true,photos:12,link:"https://www.facebook.com/marketplace/item/4048302245461950/"},
-  {id:"1595209748487971",price:1190,beds:1,title:"1 Bed - Hochelaga",loc:"Montréal, QC (Hochelaga-Maisonneuve)",zone:"hochelaga_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1595209748487971/"},
-  {id:"1857773424945196",price:1090,beds:1,title:"1 Bed - Ontario Est",loc:"4750 Rue Ontario E, Montréal",zone:"hochelaga_1",pets:false,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/1857773424945196/"}
+  {id:"2033680923921693",price:1190,beds:2,title:"2 Beds · Granby, QC",loc:"Granby, QC",zone:"gran_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2033680923921693/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Mtl ref · $1,350/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"}]},
+  {id:"1699885621141424",price:1450,beds:2,title:"2 Beds · 9385 Rue Francoeur, Montréal",loc:"9385 Rue Francoeur, Montréal",zone:"cart_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1699885621141424/",comps:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"1055037197097606",price:1350,desc:"2 ch · Mtl · $1,350/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]},
+  {id:"2265562477520520",price:1450,beds:2,title:"2 Beds · Montréal, QC",loc:"Montréal, QC",zone:"cart_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2265562477520520/",comps:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"1055037197097606",price:1350,desc:"2 ch · Mtl · $1,350/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]},
+  {id:"936778808938609",price:1090,beds:0,title:"Studio · 1190 Rue du Fort, Montréal",loc:"1190 Rue du Fort, Montréal",zone:"hoch_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/936778808938609/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"962878676669355",price:995,desc:"Studio · Hochelaga · $995/mo"},{id:"979484725149013",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"}]},
+  {id:"933991522497644",price:1090,beds:0,title:"Studio · Montréal, QC",loc:"Montréal, QC",zone:"hoch_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/933991522497644/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"962878676669355",price:995,desc:"Studio · Hochelaga · $995/mo"},{id:"979484725149013",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"}]},
+  {id:"1595209748487971",price:1150,beds:1,title:"1 Bed · Montréal (Hochelaga)",loc:"Montréal (Hochelaga)",zone:"hoch_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1595209748487971/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Hochelaga · $860/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"1663862427999927",price:800,desc:"1 ch · Hochelaga · $800/mo"},{id:"1310248137857998",price:1375,desc:"1 ch · Mtl · $1,375/mo"}]},
+  {id:"1857773424945196",price:1090,beds:1,title:"1 Bed · 4750 Rue Ontario E, Montréal",loc:"4750 Rue Ontario E, Montréal",zone:"hoch_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1857773424945196/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Hochelaga · $860/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"1663862427999927",price:800,desc:"1 ch · Hochelaga · $800/mo"},{id:"1310248137857998",price:1375,desc:"1 ch · Mtl · $1,375/mo"}]}
 ];
 const JENY=[
-  {id:"1666508177964242",price:1400,beds:2,title:"2 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:6,link:"https://www.facebook.com/marketplace/item/1666508177964242/"},
-  {id:"999665305943650",price:1175,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:false,desc_ok:true,photos:6,link:"https://www.facebook.com/marketplace/item/999665305943650/"},
-  {id:"1305091565073651",price:1690,beds:3,title:"3 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_3",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1305091565073651/"},
-  {id:"2249267352543415",price:1450,beds:2,title:"2 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2249267352543415/"},
-  {id:"1016859050917664",price:1990,beds:4,title:"4 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1016859050917664/"},
-  {id:"2708034686256458",price:1450,beds:2,title:"2 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2708034686256458/"},
-  {id:"1675318406743053",price:1450,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N 1L5",zone:"bdb_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1675318406743053/"},
-  {id:"1299292945605460",price:1990,beds:4,title:"4 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. Bois-de-Boulogne, Montréal H4N 1L5",zone:"bdb_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1299292945605460/"},
-  {id:"26865914716435349",price:1125,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/26865914716435349/"},
-  {id:"1511979823709890",price:1490,beds:2,title:"2 Beds - Joseph-Renaud Anjou",loc:"6451 Boul. Joseph-Renaud, Anjou H1K 3R5",zone:"anjou_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1511979823709890/"},
-  {id:"1630951488162931",price:1690,beds:3,title:"3 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_3",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1630951488162931/"},
-  {id:"1772916453873747",price:1125,beds:1,title:"1 Bed - Joseph-Renaud H1K",loc:"6351 Boul. Joseph-Renaud, Montréal H1K 3T7",zone:"anjou_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1772916453873747/"}
+  {id:"1056009863689545",price:1175,beds:1,title:"1 Bed · 6501 Boul. Joseph-Renaud, Montréal",loc:"6501 Boul. Joseph-Renaud, Montréal",zone:"gran_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1056009863689545/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Mtl · $860/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"1310248137857998",price:1375,desc:"1 ch · Mtl · $1,375/mo"}]},
+  {id:"1038540535841505",price:1330,beds:2,title:"2 Beds · 6351 Boul. Joseph-Renaud, Montréal",loc:"6351 Boul. Joseph-Renaud, Montréal",zone:"anjou_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1038540535841505/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Est-Mtl · $1,350/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"1790733928957469",price:1750,desc:"2 ch · Mtl · $1,750/mo"}]},
+  {id:"1934434417249315",price:1550,beds:3,title:"3 Beds · 6451 Boul. Joseph-Renaud, Montréal",loc:"6451 Boul. Joseph-Renaud, Montréal",zone:"anjou_3b",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1934434417249315/",comps:[{id:"2091546368087761",price:1750,desc:"3 ch · Anjou · $1,750/mo"},{id:"993522156794959",price:1900,desc:"3 ch · Mtl · $1,900/mo"},{id:"1047884500965607",price:1799,desc:"3 ch · Mtl · $1,799/mo"},{id:"860277373468422",price:2000,desc:"3 ch · Mtl · $2,000/mo"},{id:"1304740481207500",price:2195,desc:"3 ch · Mtl · $2,195/mo"}]},
+  {id:"2186917941879698",price:1550,beds:3,title:"3 Beds · 6451 Boul. Joseph-Renaud, Montréal",loc:"6451 Boul. Joseph-Renaud, Montréal",zone:"anjou_3b",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2186917941879698/",comps:[{id:"2091546368087761",price:1750,desc:"3 ch · Anjou · $1,750/mo"},{id:"993522156794959",price:1900,desc:"3 ch · Mtl · $1,900/mo"},{id:"1047884500965607",price:1799,desc:"3 ch · Mtl · $1,799/mo"},{id:"860277373468422",price:2000,desc:"3 ch · Mtl · $2,000/mo"},{id:"1304740481207500",price:2195,desc:"3 ch · Mtl · $2,195/mo"}]},
+  {id:"1084987350885614",price:1375,beds:2,title:"2 Beds · 10355 Av. Bois-de-Boulogne, Montréal",loc:"10355 Av. Bois-de-Boulogne, Montréal",zone:"bdb_2j",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1084987350885614/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Mtl · $1,350/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"}]},
+  {id:"1365589125140478",price:1175,beds:1,title:"1 Bed · 10355 Av. Bois-de-Boulogne, Montréal",loc:"10355 Av. Bois-de-Boulogne, Montréal",zone:"bdb_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1365589125140478/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Mtl · $950/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · H4N · $1,095/mo"},{id:"2060312131238689",price:1195,desc:"1 ch · H4N · $1,195/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · H4N · $1,200/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"}]},
+  {id:"991008880502322",price:870,beds:1,title:"1 Bed · 3600 Rue Sherbrooke E, Montréal",loc:"3600 Rue Sherbrooke E, Montréal",zone:"hoch_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/991008880502322/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Hochelaga · $860/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"1663862427999927",price:800,desc:"1 ch · Hochelaga · $800/mo"},{id:"1310248137857998",price:1375,desc:"1 ch · Mtl · $1,375/mo"}]},
+  {id:"1334235978244866",price:935,beds:1,title:"1 Bed · 3600 Rue Sherbrooke E, Montréal",loc:"3600 Rue Sherbrooke E, Montréal",zone:"hoch_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1334235978244866/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Hochelaga · $860/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"1663862427999927",price:800,desc:"1 ch · Hochelaga · $800/mo"},{id:"1310248137857998",price:1375,desc:"1 ch · Mtl · $1,375/mo"}]}
 ];
 const KATHLEEN=[
-  {id:"1283754646584083",price:1400,beds:2,title:"2 Beds - Longueuil",loc:"Longueuil, QC",zone:"longueuil_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1283754646584083/"},
-  {id:"1483681166642491",price:775,beds:0,title:"Studio - Pointe-St-Charles H3K",loc:"591 Av. Ash, Montréal H3K 2R5",zone:"pointe_0",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1483681166642491/"},
-  {id:"796969926806044",price:1050,beds:1,title:"1 Bed - Côte-St-Luc H4V",loc:"7030 Ch. de la Côte-St-Luc, Montréal H4V 1J3",zone:"csl_1",pets:true,desc_ok:true,photos:6,link:"https://www.facebook.com/marketplace/item/796969926806044/"},
-  {id:"1297695602272848",price:1550,beds:2,title:"2 Beds - Verdun H4G",loc:"3468 Rue de Verdun, Montréal H4G 1K3",zone:"verdun_2",pets:true,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/1297695602272848/"},
-  {id:"3300139370147371",price:1500,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/3300139370147371/"},
-  {id:"1672227080665224",price:1200,beds:1,title:"1 Bed - Rue Fort-Rolland NEW",loc:"3975 Rue du Fort-Rolland, Montréal",zone:"mtl_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1672227080665224/"},
-  {id:"1172734774837694",price:1075,beds:1,title:"1 Bed - St-Jean NEW",loc:"St-Jean-sur-Richelieu, QC",zone:"sjsr_1",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1172734774837694/"}
+  {id:"1042901768437740",price:850,beds:0,title:"Studio · 3600 Rue Sherbrooke E, Montréal",loc:"3600 Rue Sherbrooke E, Montréal",zone:"hoch_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1042901768437740/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"962878676669355",price:995,desc:"Studio · Hochelaga · $995/mo"},{id:"979484725149013",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"}]},
+  {id:"1032132016396106",price:2595,beds:5,title:"5 Beds · Montréal, QC",loc:"Montréal, QC",zone:"csl_5",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1032132016396106/",comps:[{id:"1023817423907823",price:1525,desc:"2 ch · CSL · $1,525/mo"},{id:"984629537970035",price:1500,desc:"2 ch · CSL · $1,500/mo"},{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"},{id:"1790733928957469",price:1750,desc:"2 ch · Mtl · $1,750/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"}]},
+  {id:"1815678536083072",price:1400,beds:2,title:"2 Beds · 7030 Ch. de la Côte-St-Luc, Montréal H",loc:"7030 Ch. de la Côte-St-Luc, Montréal H4V",zone:"csl_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1815678536083072/",comps:[{id:"984629537970035",price:1500,desc:"2 ch · CSL · $1,500/mo"},{id:"1023817423907823",price:1525,desc:"2 ch · CSL · $1,525/mo"},{id:"1055134734041901",price:1200,desc:"2 ch · CSL · $1,200/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]},
+  {id:"2050627455841144",price:1550,beds:3,title:"3 Beds · Longueuil, QC",loc:"Longueuil, QC",zone:"long_3",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2050627455841144/",comps:[{id:"2091546368087761",price:1750,desc:"3 ch · Mtl · $1,750/mo"},{id:"993522156794959",price:1900,desc:"3 ch · Mtl · $1,900/mo"},{id:"1047884500965607",price:1799,desc:"3 ch · Mtl · $1,799/mo"},{id:"1023817423907823",price:1525,desc:"2 ch · Longueuil · $1,525/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Longueuil · $1,275/mo"}]},
+  {id:"1672227080665224",price:1195,beds:1,title:"1 Bed · 3975 Rue du Fort-Rolland, Montréal",loc:"3975 Rue du Fort-Rolland, Montréal",zone:"csl_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1672227080665224/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · CSL · $950/mo"},{id:"2229103454561610",price:1295,desc:"1 ch · CSL · $1,295/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"1848251095848974",price:1200,desc:"1 ch · Mtl · $1,200/mo"}]},
+  {id:"1283754646584083",price:1350,beds:2,title:"2 Beds · Longueuil, QC",loc:"Longueuil, QC",zone:"long_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1283754646584083/",comps:[{id:"1023817423907823",price:1525,desc:"2 ch · Longueuil · $1,525/mo"},{id:"1055134734041901",price:1200,desc:"2 ch · Longueuil · $1,200/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"984629537970035",price:1500,desc:"2 ch · CSL · $1,500/mo"}]},
+  {id:"1483681166642491",price:775,beds:0,title:"Studio · 591 Av. Ash, Montréal H3K",loc:"591 Av. Ash, Montréal H3K",zone:"bour_s2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1483681166642491/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"1083600929947272",price:1050,desc:"Studio · Verdun · $1,050/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"962878676669355",price:995,desc:"Studio · Mtl · $995/mo"}]},
+  {id:"1297695602272848",price:1550,beds:2,title:"2 Beds · 3468 Rue de Verdun, Montréal H4G",loc:"3468 Rue de Verdun, Montréal H4G",zone:"verd_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1297695602272848/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Verdun/Mtl · $1,350/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]}
 ];
 const ORIANA=[
-  {id:"4333936743526446",price:975,beds:0,title:"Studio - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_0",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/4333936743526446/"},
-  {id:"1717178149708590",price:975,beds:0,title:"Studio - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_0",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1717178149708590/"},
-  {id:"2479921289125738",price:1250,beds:2,title:"2 Beds - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2479921289125738/"},
-  {id:"1731509484829607",price:1100,beds:1,title:"1 Bed - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1731509484829607/"},
-  {id:"26719565651069249",price:1100,beds:1,title:"1 Bed - Rue St-André H2L",loc:"2002 Rue St-André, Montréal H2L 3V1",zone:"plateau_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/26719565651069249/"},
-  {id:"2133909704121299",price:1195,beds:1,title:"1 Bed - Av. Bloomfield H3N",loc:"8191 Av. Bloomfield, Montréal H3N 2H8",zone:"rosemont_1",pets:true,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/2133909704121299/"},
-  {id:"1622021245743292",price:1350,beds:2,title:"2 Beds - Rue Cartier H2E",loc:"7235 Rue Cartier, Montréal H2E 2J3",zone:"rosemont_2",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/1622021245743292/"},
-  {id:"2079978426731789",price:950,beds:0,title:"Studio - Rue Masson H1X",loc:"3915 Rue Masson, Montréal H1X 1T2",zone:"rosemont_0",pets:true,desc_ok:true,photos:7,link:"https://www.facebook.com/marketplace/item/2079978426731789/"},
-  {id:"1247370840626384",price:1100,beds:1,title:"1 Bed - Av. Wilderton H3S NEW",loc:"6510 Av. Wilderton, Montréal H3S 2L6",zone:"cdn_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1247370840626384/"},
-  {id:"1926663458035953",price:1450,beds:2,title:"2 Beds - Av. Wilderton H3S NEW",loc:"6510 Av. Wilderton, Montréal H3S 2L6",zone:"cdn_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1926663458035953/"},
-  {id:"1006219368670126",price:1425,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1006219368670126/"},
-  {id:"2089793621954990",price:1195,beds:1,title:"1 Bed - Montréal NEW",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/2089793621954990/"},
-  {id:"1614264882995447",price:1350,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1614264882995447/"},
-  {id:"1489659012646746",price:1375,beds:2,title:"2 Beds - Montréal NEW",loc:"Montréal, QC",zone:"mtl_2",pets:true,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/1489659012646746/"}
+  {id:"847822511011467",price:695,beds:4,title:"4 Beds · 2002 Rue St-André, Montréal H2L",loc:"2002 Rue St-André, Montréal H2L",zone:"standro_4",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/847822511011467/",comps:[{id:"2091546368087761",price:1750,desc:"3 ch · Mtl · $1,750/mo"},{id:"3376109575903519",price:1550,desc:"2 ch · Plateau · $1,550/mo"},{id:"993522156794959",price:1900,desc:"3 ch · Mtl · $1,900/mo"},{id:"1790733928957469",price:1750,desc:"2 ch · Mtl · $1,750/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Rosemont · $1,395/mo"}]},
+  {id:"4333936743526446",price:950,beds:0,title:"Studio · 2002 Rue St-André, Montréal H2L",loc:"2002 Rue St-André, Montréal H2L",zone:"plat_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/4333936743526446/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"2152011185370637",price:950,desc:"Studio · Plateau · $950/mo"},{id:"27434495046210897",price:1100,desc:"Studio · Plateau · $1,100/mo"},{id:"979484725149013",price:925,desc:"Studio · Mtl · $925/mo"}]},
+  {id:"26719565651069249",price:1050,beds:1,title:"1 Bed · 2002 Rue St-André, Montréal H2L",loc:"2002 Rue St-André, Montréal H2L",zone:"plat_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/26719565651069249/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Plateau · $950/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Plateau · $1,050/mo"},{id:"1014774901149492",price:982,desc:"1 ch · Plateau · $982/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Plateau · $860/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"}]},
+  {id:"1622021245743292",price:1345,beds:2,title:"2 Beds · 7235 Rue Cartier, Montréal H2E",loc:"7235 Rue Cartier, Montréal H2E",zone:"cart_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1622021245743292/",comps:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"1055037197097606",price:1350,desc:"2 ch · Mtl · $1,350/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]},
+  {id:"2079978426731789",price:950,beds:0,title:"Studio · 3915 Rue Masson, Montréal H1X",loc:"3915 Rue Masson, Montréal H1X",zone:"plat_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2079978426731789/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"2152011185370637",price:950,desc:"Studio · Plateau · $950/mo"},{id:"27434495046210897",price:1100,desc:"Studio · Plateau · $1,100/mo"},{id:"979484725149013",price:925,desc:"Studio · Mtl · $925/mo"}]},
+  {id:"1302683928048846",price:1190,beds:2,title:"2 Beds · 7879 Rue St-Hubert, Montréal H2R",loc:"7879 Rue St-Hubert, Montréal H2R",zone:"rosen_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1302683928048846/",comps:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"2100768197137859",price:1371,desc:"2 ch · Rosemont · $1,371/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"1287065543279470",price:1520,desc:"2 ch · Rosemont · $1,520/mo"}]},
+  {id:"1489659012646746",price:1350,beds:2,title:"2 Beds · 2356 Rue Chapleau, Montréal",loc:"2356 Rue Chapleau, Montréal",zone:"rosen_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1489659012646746/",comps:[{id:"3376109575903519",price:1550,desc:"2 ch · Rosemont · $1,550/mo"},{id:"1531234665366986",price:1500,desc:"2 ch · Rosemont · $1,500/mo"},{id:"2100768197137859",price:1371,desc:"2 ch · Rosemont · $1,371/mo"},{id:"3939315823030965",price:1575,desc:"2 ch · Rosemont · $1,575/mo"},{id:"1287065543279470",price:1520,desc:"2 ch · Rosemont · $1,520/mo"}]}
 ];
-const PADLY = [
-  {id:"2504514696636119",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:10,link:"https://www.facebook.com/marketplace/item/2504514696636119/"},
-  {id:"1935168083841448",price:2090,beds:4,title:"4 Beds - Bois-de-Boulogne H4N",loc:"10355 Boul. Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1935168083841448/"},
-  {id:"2069690823611127",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2069690823611127/"},
-  {id:"1694286468431462",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1694286468431462/"},
-  {id:"1580116903537458",price:1490,beds:2,title:"2 Beds - Bois-de-Boulogne H4N",loc:"10355 Av. de Bois-de-Boulogne, Montréal H4N",zone:"bdb_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1580116903537458/"},
-  {id:"2509935376118338",price:1690,beds:3,title:"3 Beds - Montréal",loc:"Montréal, QC",zone:"mtl_3",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2509935376118338/"},
-  {id:"2007511250153498",price:1190,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2007511250153498/"},
-  {id:"1348277713919375",price:1190,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1348277713919375/"},
-  {id:"1775175686783854",price:1190,beds:1,title:"1 Bed - Montréal",loc:"Montréal, QC",zone:"mtl_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1775175686783854/"},
-  {id:"857783916917086",price:995,beds:0,title:"Studio - Rue la Fontaine NEW",loc:"3490 Rue la Fontaine, Montréal",zone:"mtl_0",pets:false,desc_ok:true,photos:5,link:"https://www.facebook.com/marketplace/item/857783916917086/"}
+const PADLY=[
+  {id:"1739814507350210",price:1650,beds:2,title:"2 Beds · 3472 Rue de Verdun, Montréal",loc:"3472 Rue de Verdun, Montréal",zone:"verd_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1739814507350210/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Verdun/Mtl · $1,350/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]},
+  {id:"2034600500758350",price:925,beds:0,title:"Studio · 3600 Rue Sherbrooke Est, Montréal",loc:"3600 Rue Sherbrooke Est, Montréal",zone:"hoch_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2034600500758350/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"962878676669355",price:995,desc:"Studio · Hochelaga · $995/mo"},{id:"979484725149013",price:925,desc:"Studio · Hochelaga · $925/mo"},{id:"1623569055339585",price:895,desc:"Studio · Mtl · $895/mo"}]},
+  {id:"28159650997026193",price:1400,beds:2,title:"2 Beds · 7790 Av. Trémolières, Montréal",loc:"7790 Av. Trémolières, Montréal",zone:"anjou_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/28159650997026193/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Est-Mtl · $1,350/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"1790733928957469",price:1750,desc:"2 ch · Mtl · $1,750/mo"}]},
+  {id:"2041745906434083",price:1725,beds:3,title:"3 Beds · 6451 Boul. Joseph-Renaud, Montréal",loc:"6451 Boul. Joseph-Renaud, Montréal",zone:"anjou_3",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2041745906434083/",comps:[{id:"2091546368087761",price:1750,desc:"3 ch · Anjou · $1,750/mo"},{id:"993522156794959",price:1900,desc:"3 ch · Mtl · $1,900/mo"},{id:"1047884500965607",price:1799,desc:"3 ch · Mtl · $1,799/mo"},{id:"860277373468422",price:2000,desc:"3 ch · Mtl · $2,000/mo"},{id:"1304740481207500",price:2195,desc:"3 ch · Mtl · $2,195/mo"}]},
+  {id:"1616389366551185",price:1475,beds:2,title:"2 Beds · 6451 Boul. Joseph-Renaud, Montréal",loc:"6451 Boul. Joseph-Renaud, Montréal",zone:"anjou_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1616389366551185/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Est-Mtl · $1,350/mo"},{id:"28517419214528889",price:1495,desc:"2 ch · Mtl · $1,495/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"1790733928957469",price:1750,desc:"2 ch · Mtl · $1,750/mo"}]},
+  {id:"1598604165323016",price:1500,beds:2,title:"2 Beds · 7030 Ch. de la Côte-St-Luc, Montréal",loc:"7030 Ch. de la Côte-St-Luc, Montréal",zone:"csl_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1598604165323016/",comps:[{id:"984629537970035",price:1500,desc:"2 ch · CSL · $1,500/mo"},{id:"1023817423907823",price:1525,desc:"2 ch · CSL · $1,525/mo"},{id:"1055134734041901",price:1200,desc:"2 ch · CSL · $1,200/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"}]},
+  {id:"1783034269380515",price:1090,beds:0,title:"Studio · 147 Boul. Crémazie O, Montréal",loc:"147 Boul. Crémazie O, Montréal",zone:"crem_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1783034269380515/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"1084644190556630",price:1000,desc:"Studio · Ahuntsic · $1,000/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"}]},
+  {id:"2080376502557914",price:1190,beds:2,title:"2 Beds · 53 Boul. Fortin, Granby",loc:"53 Boul. Fortin, Granby",zone:"gran_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2080376502557914/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Mtl ref · $1,350/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"}]},
+  {id:"1279907240792484",price:850,beds:0,title:"Studio · 47 Boul. Fortin, Granby",loc:"47 Boul. Fortin, Granby",zone:"gran_s",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1279907240792484/",comps:[{id:"2305331219875627",price:975,desc:"Studio · Mtl · $975/mo"},{id:"1243096047737954",price:950,desc:"Studio · Mtl · $950/mo"},{id:"1583556803491145",price:1112,desc:"Studio · Mtl · $1,112/mo"},{id:"1300808088934755",price:995,desc:"Studio · Mtl · $995/mo"},{id:"26296501913360703",price:975,desc:"Studio · Mtl · $975/mo"}]},
+  {id:"1366167615606230",price:1190,beds:2,title:"2 Beds · 45 Boul. Fortin, Granby",loc:"45 Boul. Fortin, Granby",zone:"gran_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1366167615606230/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Mtl ref · $1,350/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"}]},
+  {id:"28363964633227080",price:990,beds:1,title:"1 Bed · 41 Boul. Fortin, Granby",loc:"41 Boul. Fortin, Granby",zone:"gran_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/28363964633227080/",comps:[{id:"1543314620341490",price:950,desc:"1 ch · Hochelaga · $950/mo"},{id:"1042765044830967",price:1050,desc:"1 ch · Mtl · $1,050/mo"},{id:"2101763287353019",price:860,desc:"1 ch · Mtl · $860/mo"},{id:"1006281198478552",price:1095,desc:"1 ch · Mtl · $1,095/mo"},{id:"1310248137857998",price:1375,desc:"1 ch · Mtl · $1,375/mo"}]},
+  {id:"1545931240311935",price:1190,beds:2,title:"2 Beds · 30 Boul. Fortin, Granby",loc:"30 Boul. Fortin, Granby",zone:"gran_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1545931240311935/",comps:[{id:"1055037197097606",price:1350,desc:"2 ch · Mtl ref · $1,350/mo"},{id:"1633723021505976",price:1395,desc:"2 ch · Mtl · $1,395/mo"},{id:"4799719943632876",price:1275,desc:"2 ch · Mtl · $1,275/mo"},{id:"4560471714174585",price:1349,desc:"2 ch · Mtl · $1,349/mo"},{id:"1443370363397251",price:1700,desc:"2 ch · H4N · $1,700/mo"}]}
 ];
 
 // City mapping
 // ─── PRINCE ALBERT AGENTS ───
-const VINIT = [
-  {id:"3054523851410988",title:"1 Bed - 399 32nd St W, Prince Albert SK",price:1280,beds:1,photos:6,desc_ok:true,pets:true,zone:"pa_1",loc:"399 32nd St W, Prince Albert SK S6V 5Z3",link:"https://www.facebook.com/marketplace/item/3054523851410988/",desc:"1 bed next to South Hill mall. Elevator. Balcony. Walk-in closet. Dog/cat friendly. 1yr lease."},
-  {id:"2606842419750650",title:"2 Bed - 3030 Dunn Dr, Prince Albert SK",price:1290,beds:2,photos:4,desc_ok:true,pets:true,zone:"pa_2",loc:"3030 Dunn Dr, Prince Albert SK S6V 7E7",link:"https://www.facebook.com/marketplace/item/2606842419750650/",desc:"Spacious 2 bed. Dog/cat friendly. AC. Balcony. 1 year lease. Heating available."},
-  {id:"633074193192702", title:"2 Bed - Prince Albert SK",price:1490,beds:2,photos:5,desc_ok:true,pets:true,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/633074193192702/",desc:"Perfect location for family. In-unit laundry. AC. Dishwasher. Walk-in closet. Balcony."},
-  {id:"29793418543636539",title:"2 Bed - Prince Albert SK",price:1120,beds:2,photos:4,desc_ok:true,pets:true,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/29793418543636539/",desc:"Apartment for rent. Dog/cat friendly. Fireplace. Dishwasher. Basement. Ceiling fan."},
+const VINIT=[
+  {id:"3054523851410988",price:1280,beds:1,title:"1 Bed · 399 32nd St W, Prince Albert, SK",loc:"399 32nd St W, Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/3054523851410988/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]},
+  {id:"29793418543636539",price:1120,beds:2,title:"2 Beds · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/29793418543636539/",comps:[{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}]}
 ];
-const AVI = [
-  {id:"26363547823325331",title:"2 Bed - Prince Albert SK",price:1290,beds:2,photos:3,desc_ok:true,pets:false,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/26363547823325331/",desc:"Best and affordable apartment. One car park included. Heat and water included."},
-  {id:"901148949618689", title:"1 Bed - Prince Albert SK (South Hill)",price:1155,beds:1,photos:4,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK (South Hill area)",link:"https://www.facebook.com/marketplace/item/901148949618689/",desc:"Newly renovated 1 bedroom. New flooring. New appliances. One car park. Heat & water included."},
+const AVI=[
+  {id:"1517730969903747",price:1190,beds:1,title:"1 Bed · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1517730969903747/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]},
+  {id:"2866942896993693",price:1195,beds:2,title:"2 Beds · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/2866942896993693/",comps:[{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}]},
+  {id:"26363547823325331",price:1290,beds:2,title:"2 Beds · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/26363547823325331/",comps:[{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}]},
+  {id:"901148949618689",price:1155,beds:1,title:"1 Bed · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/901148949618689/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]}
 ];
-const ABHI = [
-  {id:"1689482188708476",title:"2 Bed - 1132 Central Ave, Prince Albert SK",price:1490,beds:2,photos:3,desc_ok:true,pets:false,zone:"pa_2",loc:"1132 Central Ave, Prince Albert SK",link:"https://www.facebook.com/marketplace/item/1689482188708476/",desc:"Apartment for rent. Downtown location. Wingspan Properties. Mon–Fri 9am–5pm."},
-  {id:"887514197633854", title:"1 Bed - Prince Albert SK (South Hill)",price:1155,beds:1,photos:4,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK (South Hill area)",link:"https://www.facebook.com/marketplace/item/887514197633854/",desc:"Newly renovated studio next to South Hill mall. New flooring & appliances. Heat & water included."},
+const ABHI=[
+  {id:"1689482188708476",price:1490,beds:2,title:"2 Beds · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1689482188708476/",comps:[{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}]},
+  {id:"887514197633854",price:1155,beds:1,title:"1 Bed · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/887514197633854/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]}
 ];
-const LEASEWITH = [
-  
-  {id:"1477304230836157",title:"2 Bed - 399 32nd St W, Prince Albert SK",price:1455,beds:2,photos:5,desc_ok:true,pets:true, zone:"pa_2",loc:"399 32nd St W, Prince Albert SK S6V 5Z3",link:"https://www.facebook.com/marketplace/item/1477304230836157/",desc:"Wingspan Properties. Dog/cat friendly. Elevator. Secured entry. Balcony. Walk-in closet."},
-  {id:"1842045623843093",title:"1 Bed - 33 River St E, Prince Albert SK",price:1190,beds:1,photos:4,desc_ok:true,pets:false,zone:"pa_1",loc:"33 River St E, Prince Albert SK",link:"https://www.facebook.com/marketplace/item/1842045623843093/",desc:"Wingspan Properties. 1 bed apartment. 33 River St E, Prince Albert SK."},
-  {id:"3625077684337629",title:"2 Bed - Prince Albert SK",price:1350,beds:2,photos:3,desc_ok:true,pets:false,zone:"pa_2",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/3625077684337629/",desc:"Wingspan Properties. Apartment for rent. Contact for details."},
-  {id:"915190018100115", title:"1 Bed - Prince Albert SK",price:1190,beds:1,photos:3,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/915190018100115/",desc:"Wingspan Properties. 1132 Central Ave, Prince Albert SK S6V 4V6."},
-  {id:"1616908532762897",title:"1 Bed - Prince Albert SK",price:1215,beds:1,photos:3,desc_ok:true,pets:false,zone:"pa_1",loc:"Prince Albert, SK",link:"https://www.facebook.com/marketplace/item/1616908532762897/",desc:"Wingspan Properties. Location: 1132 Central Ave, Prince Albert SK."},
-  {id:"910197502004234", title:"3 Bed - 1401 28th St E, Prince Albert SK",price:1250,beds:3,photos:4,desc_ok:true,pets:false,zone:"pa_3",loc:"1401 28th St E, Prince Albert SK S6V 6Z8",link:"https://www.facebook.com/marketplace/item/910197502004234/",desc:"3 bed apartment. 1401 28th St E. Wingspan Properties."},
+const LEASEWITH=[
+  {id:"1842045623843093",price:1190,beds:1,title:"1 Bed · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1842045623843093/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]},
+  {id:"1477304230836157",price:1455,beds:2,title:"2 Beds · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1477304230836157/",comps:[{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}]},
+  {id:"3625077684337629",price:1350,beds:2,title:"2 Beds · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/3625077684337629/",comps:[{id:"2866942896993693",price:1195,desc:"2 bd · PA · Avi $1,195/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"}]},
+  {id:"1663916481689868",price:1365,beds:1,title:"1 Bed · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1663916481689868/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]},
+  {id:"915190018100115",price:1190,beds:1,title:"1 Bed · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/915190018100115/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]},
+  {id:"1616908532762897",price:1215,beds:1,title:"1 Bed · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1616908532762897/",comps:[{id:"1517730969903747",price:1190,desc:"1 bd · PA · Avi $1,190/mo"},{id:"901148949618689",price:1155,desc:"1 bd · PA · Avi $1,155/mo"},{id:"1842045623843093",price:1190,desc:"1 bd · PA · LW $1,190/mo"},{id:"1663916481689868",price:1365,desc:"1 bd · PA · LW $1,365/mo"},{id:"887514197633854",price:1155,desc:"1 bd · PA · Abhi $1,155/mo"}]},
+  {id:"910197502004234",price:1250,beds:3,title:"3 Beds · Prince Albert, SK",loc:"Prince Albert, SK",zone:"pa_3",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/910197502004234/",comps:[{id:"910197502004234",price:1250,desc:"3 bd · PA · LW $1,250/mo"},{id:"1477304230836157",price:1455,desc:"2 bd · PA · LW $1,455/mo"},{id:"1689482188708476",price:1490,desc:"2 bd · PA · Abhi $1,490/mo"},{id:"26363547823325331",price:1290,desc:"2 bd · PA · Avi $1,290/mo"},{id:"3625077684337629",price:1350,desc:"2 bd · PA · LW $1,350/mo"}]}
+];
+
+// ─── SASKATOON/REGINA AGENTS ───
+const MALEK=[
+  {id:"935856012849407",price:1225,beds:1,title:"1 Bed · 1416 20th St W, Saskatoon, SK",loc:"1416 20th St W, Saskatoon, SK",zone:"sk_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/935856012849407/",comps:[{id:"2105903806951621",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"1255896676315393",price:900,desc:"1 bd · Saskatoon · $900/mo"},{id:"1823769611918567",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"28344174945184220",price:850,desc:"1 bd · Saskatoon · $850/mo"},{id:"1241583644798388",price:700,desc:"1 bd · Saskatoon · $700/mo"}]},
+  {id:"1015993947794425",price:1050,beds:1,title:"1 Bed · 205 Ave N South, Saskatoon, SK",loc:"205 Ave N South, Saskatoon, SK",zone:"sk_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1015993947794425/",comps:[{id:"2105903806951621",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"1255896676315393",price:900,desc:"1 bd · Saskatoon · $900/mo"},{id:"1823769611918567",price:1200,desc:"1 bd · Saskatoon · $1,200/mo"},{id:"28344174945184220",price:850,desc:"1 bd · Saskatoon · $850/mo"},{id:"1241583644798388",price:700,desc:"1 bd · Saskatoon · $700/mo"}]}
+];
+
+// ─── WINNIPEG AGENTS ───
+const DANNY=[
 
 ];
 
 // ─── EDMONTON AGENTS ───
-const SAFIYA = [
-  
-  {id:"1854146668875521",title:"2 Bed - 10945 84 St NW, Edmonton AB",price:1250,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"10945 84 St NW, Edmonton AB T6A 3P8",link:"https://www.facebook.com/marketplace/item/1854146668875521/"},
-  {id:"1707985713723016",title:"2 Bed - 10707 106 St NW, Edmonton AB",price:1375,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"10707 106 St NW, Edmonton AB T5H 2X8",link:"https://www.facebook.com/marketplace/item/1707985713723016/"},
-  {id:"1020147234035102",title:"1 Bed - 10707 106 St NW, Edmonton AB",price:1195,beds:1,photos:4,desc_ok:true,pets:false,zone:"yeg_1",loc:"10707 106 St NW, Edmonton AB T5H 2X8",link:"https://www.facebook.com/marketplace/item/1020147234035102/"},
-  {id:"1026993743113953",title:"Studio - Edmonton AB",price:1095,beds:0,photos:4,desc_ok:true,pets:false,zone:"yeg_0",loc:"Edmonton, AB",link:"https://www.facebook.com/marketplace/item/1026993743113953/"},
-  {id:"987355700366540",title:"2 Bed - 11835 89 St NW, Edmonton AB",price:1250,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"11835 89 St NW, Edmonton AB T5B 3R8",link:"https://www.facebook.com/marketplace/item/987355700366540/"},
-  {id:"1495356855374967",title:"1 Bed - 11045 83 St NW, Edmonton AB",price:1150,beds:1,photos:4,desc_ok:true,pets:false,zone:"yeg_1",loc:"11045 83 St NW, Edmonton AB T5H 1S7",link:"https://www.facebook.com/marketplace/item/1495356855374967/"},
-  {id:"1794521644894108",title:"2 Bed - 11835 89 St NW (B), Edmonton AB",price:1295,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"11835 89 St NW, Edmonton AB T5B 3R8",link:"https://www.facebook.com/marketplace/item/1794521644894108/"},
-  {id:"26607311672302353",title:"2 Bed - 11835 89 St NW (C), Edmonton AB",price:1250,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"11835 89 St NW, Edmonton AB T5B 3R8",link:"https://www.facebook.com/marketplace/item/26607311672302353/"},
-  {id:"2424573657971273",title:"1 Bed - Edmonton AB (South)",price:1125,beds:1,photos:4,desc_ok:true,pets:false,zone:"yeg_1",loc:"Edmonton, AB",link:"https://www.facebook.com/marketplace/item/2424573657971273/"},
-  {id:"1582216172984187",title:"2 Bed - 10945 84 St NW (B), Edmonton AB",price:1350,beds:2,photos:4,desc_ok:true,pets:false,zone:"yeg_2",loc:"10945 84 St NW, Edmonton AB T6A 3P8",link:"https://www.facebook.com/marketplace/item/1582216172984187/"},
-
+const SAFIYA=[
+  {id:"1527616261926138",price:1095,beds:1,title:"1 Bed · West Edmonton, AB",loc:"West Edmonton, AB",zone:"edm_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1527616261926138/",comps:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"1647161453052693",price:1139,desc:"1 bd · Edmonton · $1,139/mo"}]},
+  {id:"1715528846332117",price:1150,beds:1,title:"1 Bed · 10555 93 St NW, Edmonton, AB",loc:"10555 93 St NW, Edmonton, AB",zone:"edm_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1715528846332117/",comps:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"1647161453052693",price:1139,desc:"1 bd · Edmonton · $1,139/mo"}]},
+  {id:"1486795923167599",price:1150,beds:1,title:"1 Bed · 10555 93 St NW, Edmonton, AB",loc:"10555 93 St NW, Edmonton, AB",zone:"edm_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1486795923167599/",comps:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"1647161453052693",price:1139,desc:"1 bd · Edmonton · $1,139/mo"}]},
+  {id:"1353469466958728",price:1350,beds:2,title:"2 Beds · 10945 84 St NW, Edmonton, AB",loc:"10945 84 St NW, Edmonton, AB",zone:"edm_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1353469466958728/",comps:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}]},
+  {id:"1226614320533657",price:1499,beds:2,title:"2 Beds · 9909 104 St NW, Edmonton, AB",loc:"9909 104 St NW, Edmonton, AB",zone:"edm_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1226614320533657/",comps:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}]},
+  {id:"873861115444024",price:1425,beds:2,title:"2 Beds · 9909 104 St NW, Edmonton, AB",loc:"9909 104 St NW, Edmonton, AB",zone:"edm_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/873861115444024/",comps:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}]},
+  {id:"1586225866432220",price:1500,beds:2,title:"2 Beds · Edmonton, AB",loc:"Edmonton, AB",zone:"edm_2",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1586225866432220/",comps:[{id:"1309154904411691",price:1150,desc:"2 bd · Edmonton · $1,150/mo"},{id:"1524766415726607",price:1050,desc:"2 bd · Edmonton · $1,050/mo"},{id:"1680529629664847",price:1250,desc:"2 bd · Edmonton · $1,250/mo"},{id:"1529646878551844",price:1400,desc:"2 bd · Edmonton · $1,400/mo"},{id:"1285290057015307",price:1250,desc:"2 bd · Edmonton · $1,250/mo"}]},
+  {id:"1939894963500630",price:1225,beds:1,title:"1 Bed · Edmonton, AB",loc:"Edmonton, AB",zone:"edm_1",pets:true,desc_ok:true,photos:8,link:"https://www.facebook.com/marketplace/item/1939894963500630/",comps:[{id:"1422887582925852",price:999,desc:"1 bd · Edmonton · $999/mo"},{id:"973102528655516",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"4325061004385423",price:1100,desc:"1 bd · Edmonton · $1,100/mo"},{id:"1300997908779613",price:900,desc:"1 bd · Edmonton · $900/mo"},{id:"1647161453052693",price:1139,desc:"1 bd · Edmonton · $1,139/mo"}]}
 ];
 
 const CITY_MAP = {
-  montreal: ["fernando","jeny","kathleen","oriana","padly"],
+  montreal: ["fernando","jeny","kathleen","oriana","padly","tamara"],
   "prince-albert": ["vinit","avi","abhi","leasewith"],
-  edmonton: ["safiya"]
+  edmonton: ["safiya"],
+  winnipeg: ["danny"],
+  "saskatoon-regina": ["malek"]
 };
 let ACTIVE_CITY = "all"; // "all" | "montreal" | "prince-albert" | "edmonton"
 
@@ -1050,7 +1288,7 @@ function getCityAgents(city) {
   return result;
 }
 
-const ALL_DATA=[...FERNANDO.map(i=>({...i,agent:"Fernando",agentColor:"#6366f1",agent_key:"fernando"})),...JENY.map(i=>({...i,agent:"Jeny",agentColor:"#10b981",agent_key:"jeny"})),...KATHLEEN.map(i=>({...i,agent:"Kathleen",agentColor:"#f59e0b",agent_key:"kathleen"})),...ORIANA.map(i=>({...i,agent:"Oriana",agentColor:"#ec4899",agent_key:"oriana"})),...VINIT.map(i=>({...i,agent:"Vinit",agentColor:"#8b5cf6",agent_key:"vinit"})),...AVI.map(i=>({...i,agent:"Avi",agentColor:"#06b6d4",agent_key:"avi"})),...ABHI.map(i=>({...i,agent:"Abhi",agentColor:"#f97316",agent_key:"abhi"})),...LEASEWITH.map(i=>({...i,agent:"LeaseWith",agentColor:"#84cc16",agent_key:"leasewith"})),...SAFIYA.map(i=>({...i,agent:"Safiya",agentColor:"#0ea5e9",agent_key:"safiya"})),...PADLY.map(i=>({...i,agent:"Padly",agentColor:"#a855f7",agent_key:"padly"}))];
+const ALL_DATA=[...FERNANDO.map(i=>({...i,agent:"Fernando",agentColor:"#6366f1",agent_key:"fernando"})),...JENY.map(i=>({...i,agent:"Jeny",agentColor:"#10b981",agent_key:"jeny"})),...KATHLEEN.map(i=>({...i,agent:"Kathleen",agentColor:"#f59e0b",agent_key:"kathleen"})),...ORIANA.map(i=>({...i,agent:"Oriana",agentColor:"#ec4899",agent_key:"oriana"})),...VINIT.map(i=>({...i,agent:"Vinit",agentColor:"#8b5cf6",agent_key:"vinit"})),...AVI.map(i=>({...i,agent:"Avi",agentColor:"#06b6d4",agent_key:"avi"})),...ABHI.map(i=>({...i,agent:"Abhi",agentColor:"#f97316",agent_key:"abhi"})),...LEASEWITH.map(i=>({...i,agent:"LeaseWith",agentColor:"#84cc16",agent_key:"leasewith"})),...SAFIYA.map(i=>({...i,agent:"Safiya",agentColor:"#0ea5e9",agent_key:"safiya"})),...PADLY.map(i=>({...i,agent:"Padly",agentColor:"#a855f7",agent_key:"padly"})),...TAMARA.map(i=>({...i,agent:"Tamara",agentColor:"#f43f5e",agent_key:"tamara"})),...DANNY.map(i=>({...i,agent:"Danny",agentColor:"#0ea5e9",agent_key:"danny"})),...MALEK.map(i=>({...i,agent:"Malek",agentColor:"#8b5cf6",agent_key:"malek"}))];
 
 function renderKPIs(){
   const cityData = getCityData(ACTIVE_CITY);
@@ -1093,17 +1331,21 @@ function renderCharts(){
 function renderAll(){
   updateCityCounts();
   renderAllLeyadAnalytics();
+  renderMktBox();
   renderKPIs();
   renderAgent("vinit",VINIT,"Vinit Leasing","VL","#8b5cf6","4.2","32","4","2024","https://www.facebook.com/marketplace/profile/61575700168800/","vinit");
   renderAgent("avi",AVI,"Avi Leasing","AL","#06b6d4","4.0","18","2","2024","https://www.facebook.com/marketplace/profile/61572162310599/","avi");
   renderAgent("abhi",ABHI,"Abhi Abhi","AA","#f97316","4.1","22","2","2024","https://www.facebook.com/marketplace/profile/100062298857231/","abhi");
   renderAgent("leasewith",LEASEWITH,"LeaseWith Fenil","LF","#84cc16","4.3","45","6","2024","https://www.facebook.com/marketplace/profile/61579577724365/","leasewith");
   renderAgent("fernando",FERNANDO,"Fernando Muñoz","FM","#6366f1","4.7","58","5","2010","https://www.facebook.com/marketplace/profile/1764619868/","fernando");
-  renderAgent("jeny",JENY,"Jeny Ocaranza","JO","#10b981","4.0","18","12","2010","https://www.facebook.com/marketplace/profile/100001182962462/","jeny");
-  renderAgent("kathleen",KATHLEEN,"Kathleen Harvey","KH","#f59e0b","3.7","17","7","2007","https://www.facebook.com/marketplace/profile/658666244/","kathleen");
-  renderAgent("oriana",ORIANA,"Oriana Samboni","OS","#ec4899","4.1","77","14","2021","https://www.facebook.com/marketplace/profile/100065415266053/","oriana");
+  renderAgent("jeny",JENY,"Jeny Ocaranza","JO","#10b981","4.0","18","11","2010","https://www.facebook.com/marketplace/profile/100001182962462/","jeny");
+  renderAgent("kathleen",KATHLEEN,"Kathleen Harvey","KH","#f59e0b","3.7","17","6","2007","https://www.facebook.com/marketplace/profile/658666244/","kathleen");
+  renderAgent("oriana",ORIANA,"Oriana Samboni","OS","#ec4899","4.1","77","11","2021","https://www.facebook.com/marketplace/profile/100065415266053/","oriana");
   renderAgent("safiya",SAFIYA,"Safiya Ali","SA","#0ea5e9","4.2","0","10","2023","https://www.facebook.com/marketplace/profile/100078883825365/","safiya");
-  renderAgent("padly",PADLY,"Padly Facebook","PF","#a855f7","4.0","0","10","2024","https://www.facebook.com/marketplace/profile/61590601774639/","padly");
+    renderAgent("danny",DANNY,"Danny Chugunov","DC","#0ea5e9","—","0","0","2026","https://www.facebook.com/marketplace/profile/61586672308247/","danny");
+    renderAgent("malek",MALEK,"Malek Salesman","MS","#8b5cf6","—","0","0","2024","https://www.facebook.com/marketplace/profile/61561750771964/","malek");
+  renderAgent("padly",PADLY,"Padly Facebook","PF","#a855f7","4.0","0","9","2024","https://www.facebook.com/marketplace/profile/61590601774639/","padly");
+    renderAgent("tamara",TAMARA,"Tamara Bégin-Girard","TB","#f43f5e","—","0","0","2011","https://www.facebook.com/marketplace/profile/100002257023619/","tamara");
   renderRanking();
   if(chartsBuilt)renderCharts();
 }
@@ -1114,6 +1356,12 @@ function updateCityCounts() {
   if (mEl) { const d=getCityData("montreal"); mEl.textContent=d.length?d.length+" listings":""; }
   const paEl = document.getElementById("cnt-prince-albert");
   if (paEl) { const d=getCityData("prince-albert"); paEl.textContent=d.length?d.length+" listings":""; }
+  const edmEl = document.getElementById("cnt-edmonton");
+  if (edmEl) { const d=getCityData("edmonton"); edmEl.textContent=d.length?d.length+" listings":""; }
+  const wpgEl = document.getElementById("cnt-winnipeg");
+  if (wpgEl) { const d=getCityData("winnipeg"); wpgEl.textContent=d.length?d.length+" listings":""; }
+  const skEl = document.getElementById("cnt-saskatoon-regina");
+  if (skEl) { const d=getCityData("saskatoon-regina"); skEl.textContent=d.length?d.length+" listings":""; }
 }
 
 function switchCity(city, el) {
@@ -1124,7 +1372,7 @@ function switchCity(city, el) {
   const allAnalytics = document.getElementById("all-leyad-analytics");
 
   // Hide all city tab rows
-  ["montreal","prince-albert","edmonton"].forEach(c => {
+  ["montreal","prince-albert","edmonton","winnipeg","saskatoon-regina"].forEach(c => {
     const t = document.getElementById("tabs-" + c);
     if (t) t.style.display = "none";
   });
@@ -1148,7 +1396,29 @@ function switchCity(city, el) {
   renderKPIs();
   renderRanking();
   updateCityCounts();
+  renderMktBox();
 }
+function renderMktBox() {
+  const city = ACTIVE_CITY === "all" ? "montreal" : (ACTIVE_CITY || "montreal");
+  const box = document.getElementById("mkt-box-container");
+  if (!box) return;
+  const cityLabels = {"montreal":"Montréal","prince-albert":"Prince Albert","edmonton":"Edmonton","winnipeg":"Winnipeg","saskatoon-regina":"Saskatoon"};
+  const cityLabel = cityLabels[city] || city;
+  const mi = MARKET_INTEL[city];
+  if (!mi) { box.innerHTML = '<div class="mkt-hdr">📊 <span>Real-Time Comparables — ' + cityLabel + '</span></div><div style="padding:20px;color:#6b7280;text-align:center">No comparables data yet.</div>'; return; }
+  const zone = Object.keys(mi.zones)[0];
+  const z = mi.zones[zone];
+  const rows = [{type:"Studio",key:"studio"},{type:"1 Bedroom",key:"1-bed"},{type:"2 Bedrooms",key:"2-bed"}];
+  const cells = rows.map(r => {
+    const d = z[r.key]; if (!d || d.fb === null) return '';
+    const fb = d.fb ? 'CA$' + d.fb : 'N/A';
+    const rental = d.rental ? '$' + d.rental : '—';
+    const kijiji = d.kijiji ? '$' + d.kijiji : '—';
+    return '<div class="mkt-cell"><div class="mkt-type">' + r.type + '</div><div class="mkt-avg">' + fb + '</div><div class="mkt-range">Rentals.ca ' + rental + ' · Kijiji ' + kijiji + '</div><div class="mkt-n">FB Marketplace avg</div></div>';
+  }).join('');
+  box.innerHTML = '<div class="mkt-hdr">📊 <span>Real-Time Comparables — FB Marketplace ' + cityLabel + ' · August 4, 2026</span></div><div class="mkt-grid">' + (cells || '<div style="padding:10px;color:#6b7280">Collecting data...</div>') + '</div>';
+}
+
 
 
 function showTab(name,el){
@@ -1761,6 +2031,153 @@ function calcUpdate() {
 
 renderAll();
 </script>
+
+<div class="att-overlay" id="att-overlay" onclick="if(event.target===this)closeAtt()">
+  <div class="att-panel">
+    <div class="att-header">
+      <div class="att-title">⚠️ <span id="att-title-txt">Listings that need attention</span></div>
+      <div class="att-close" onclick="closeAtt()">✕</div>
+    </div>
+    <div class="att-body" id="att-body"></div>
+  </div>
+</div>
+
+</body>
+</html
+      
+      
+      
+    </div>
+  </div>
+
+  <!-- MULTI-PLATFORM MARKET INTELLIGENCE -->
+  <div class="platforms-bar" id="platforms-bar">
+    <div class="platforms-hdr">🌐 Market Intelligence — Rental Platforms Avg (Montréal area · updated regularly)</div>
+    <div class="platforms-grid">
+      <a class="platform-card" href="https://www.facebook.com/marketplace/montreal/propertyrentals" target="_blank">
+        <div class="platform-name">📘 Facebook Marketplace <span class="platform-tag">LIVE</span></div>
+        <div class="platform-avg">CA$1,150/mo</div>
+        <div class="platform-range">Studio $960 · 1-bed $1,095 · 2-beds $1,370</div>
+      </a>
+      <a class="platform-card" href="https://www.rental.ca/rentals/qc/montreal" target="_blank">
+        <div class="platform-name">🏠 Rental.ca</div>
+        <div class="platform-avg">CA$1,280/mo</div>
+        <div class="platform-range">Studio $1,050 · 1-bed $1,200 · 2-beds $1,500</div>
+      </a>
+      <a class="platform-card" href="https://www.kijiji.ca/b-appartement-condo/grand-montreal/c37l80002" target="_blank">
+        <div class="platform-name">🟡 Kijiji</div>
+        <div class="platform-avg">CA$1,100/mo</div>
+        <div class="platform-range">Studio $900 · 1-bed $1,050 · 2-beds $1,350</div>
+      </a>
+
+      <a class="platform-card" href="https://www.lelocataire.com/montreal" target="_blank">
+        <div class="platform-name">🔷 LeLocataire.com</div>
+        <div class="platform-avg">CA$1,200/mo</div>
+        <div class="platform-range">Studio $980 · 1-bed $1,150 · 2-beds $1,480</div>
+      </a>
+      <a class="platform-card" href="https://www.realtor.ca/map#ZoomLevel=12&Center=45.508889,-73.554444&LatitudeMax=45.7&LatitudeMin=45.3&LongitudeMax=-73.4&LongitudeMin=-73.8&Sort=6-D&PropertyTypeGroupID=1&TransactionTypeId=3&Currency=CAD" target="_blank">
+        <div class="platform-name">🔴 Realtor.ca</div>
+        <div class="platform-avg">CA$1,450/mo</div>
+        <div class="platform-range">Studio $1,150 · 1-bed $1,350 · 2-beds $1,750</div>
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- ALL LEYAD ANALYTICS - shown only when "All Leyad" is active -->
+  <div id="all-leyad-analytics" style="display:block;margin-top:20px"></div>
+
+  <!-- ALL LEYAD (same tabs, just city filter changes) -->
+  <!-- MONTREAL TABS -->
+  <div class="tabs" id="tabs-montreal" style="display:none">
+    <button class="tab active" onclick="showTab('padly',this)">🏠 Padly (12)</button>
+    <button class="tab" onclick="showTab('fernando',this)">🏠 Fernando (7)</button>
+    <button class="tab" onclick="showTab('jeny',this)">🏠 Jeny (8)</button>
+    <button class="tab" onclick="showTab('kathleen',this)">🏠 Kathleen (8)</button>
+    <button class="tab" onclick="showTab('oriana',this)">🏠 Oriana (7)</button>
+    <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
+    <button class="tab" onclick="showTab('charts',this)">📊 Charts</button>
+    <button class="tab" onclick="showTab('analytics',this)">📈 Company Analytics</button>
+    <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
+  </div>
+
+  <!-- PRINCE ALBERT TABS -->
+  <div class="tabs" id="tabs-prince-albert" style="display:none">
+    <button class="tab active" onclick="showTab('vinit',this)">🏠 Vinit (2)</button>
+    <button class="tab" onclick="showTab('avi',this)">🏠 Avi (4)</button>
+    <button class="tab" onclick="showTab('abhi',this)">🏠 Abhi (2)</button>
+    <button class="tab" onclick="showTab('leasewith',this)">🏠 LeaseWith (7)</button>
+    <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
+    <button class="tab" onclick="showTab('analytics',this)">📈 Analytics</button>
+    <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
+  </div>
+  <!-- EDMONTON TABS -->
+  <div class="tabs" id="tabs-edmonton" style="display:none">
+    <button class="tab active" onclick="showTab('safiya',this)">🏠 Safiya Ali (8)</button>
+    <button class="tab" onclick="showTab(\'danny\',this)">🏠 Danny (0)</button>
+    <button class="tab" onclick="showTab('ranking',this)">🏆 Top 10 &amp; Worst 10</button>
+    <button class="tab" onclick="showTab('analytics',this)">📈 Analytics</button>
+    <button class="tab" onclick="showTab('marketintel',this)">🌐 Market Intelligence</button>
+  </div>
+  <div id="tabs-winnipeg" style="display:none">
+    <button class="tab active" onclick="showTab('danny',this)">🏠 Danny (0)</button>
+  </div>
+  <div id="tabs-saskatoon-regina" style="display:none">
+    <button class="tab active" onclick="showTab('malek',this)">🏠 Malek (2)</button>
+  </div>
+  <div id="pane-tamara" class="pane"></div>
+  <div id="pane-fernando" class="pane active"></div>
+  <div id="pane-jeny" class="pane"></div>
+  <div id="pane-kathleen" class="pane"></div>
+  <div id="pane-oriana" class="pane"></div>
+  <div id="pane-padly" class="pane"></div>
+  <div id="pane-ranking" class="pane"></div>
+  <div id="pane-charts" class="pane"></div>
+  <div id="pane-analytics" class="pane"></div>
+  <div id="pane-marketintel" class="pane"></div>
+  <div id="pane-vinit" class="pane"></div>
+  <div id="pane-avi" class="pane"></div>
+  <div id="pane-abhi" class="pane"></div>
+  <div id="pane-leasewith" class="pane"></div>
+  <div id="pane-safiya" class="pane"></div>
+  <div id="pane-danny" class="pane"></div>
+  <div id="pane-malek" class="pane"></div>
+    <div class="credit-footer">Leyad Analytics · Built by <span>David Monroy</span> · Real-time FB Marketplace data · June 2026</div>
+
+<!-- AI CHAT FAB -->
+<button id="chat-fab" onclick="toggleChat()" title="Ask Leyad AI">
+  🤖
+  <span class="chat-badge">AI</span>
+</button>
+
+<!-- CHAT PANEL -->
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="chat-avatar">🏠</div>
+    <div style="flex:1">
+      <div class="chat-title">Leyad AI Assistant</div>
+      <div class="chat-subtitle">Ask anything about your portfolio</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-msg bot">👋 Hi David! I have access to all <strong>31 active listings</strong> across your 4 agents in Montréal. Ask me anything!</div>
+  </div>
+  <div class="chat-suggestions" id="chat-suggestions">
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Best performing listings?</button>
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Who needs attention?</button>
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Avg price by agent?</button>
+    <button class="chat-sug-btn" onclick="sendSuggestion(this)">Oriana portfolio score?</button>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chat-input" type="text" placeholder="Ask about your listings..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+</div>
+
 
 <div class="att-overlay" id="att-overlay" onclick="if(event.target===this)closeAtt()">
   <div class="att-panel">
